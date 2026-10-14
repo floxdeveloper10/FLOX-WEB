@@ -9,13 +9,19 @@ import './Proyecto.css'
 
 // /proyectos/:slug → el sitio demo del proyecto si ya existe; si no, "En construcción".
 export default function Proyecto() {
-  const { slug } = useParams()
+  const { slug, '*': rest = '' } = useParams()
   const project = projects.find((p) => p.slug === slug)
-  const Site = projectSites[slug]
-  // Si el proyecto no existe se muestra la 404, con su título
-  useDocumentTitle(project ? `${project.name}${Site ? ' · Proyecto demo' : ''}` : 'Página no encontrada')
+  const entry = projectSites[slug]
+  // Subrutas solo en los sitios que tienen varias páginas (la agencia)
+  const validPath = !rest || entry?.nested
+  const Site = validPath ? entry?.Site : null
+  // Si el proyecto no existe se muestra la 404, con su título.
+  // Los sitios con varias páginas ponen el título de cada página.
+  let title = project ? project.name : 'Página no encontrada'
+  if (Site) title = entry.nested ? undefined : `${project.name} · Proyecto demo`
+  useDocumentTitle(title)
 
-  if (!project) return <NotFound />
+  if (!project || !validPath) return <NotFound />
   // Proyecto con sitio demo completo (diseño propio)
   if (Site) return <Site />
 

@@ -2,12 +2,23 @@ import { lazy } from 'react'
 
 // Sitios demo completos (con su propio diseño, sin el encabezado ni el pie de FLOX).
 // Para agregar otro: slug de src/data/proyectos.js → componente cargado aparte.
+// nested: el sitio tiene sus propias páginas (/proyectos/agencia/tours…)
 export const projectSites = {
-  hotel: lazy(() => import('./hotel/HotelSite.jsx')),
+  hotel: { Site: lazy(() => import('./hotel/HotelSite.jsx')), nested: false },
+  agencia: { Site: lazy(() => import('./agencia/AgenciaSite.jsx')), nested: true },
 }
 
-// ¿La ruta es un sitio demo completo? (/proyectos/hotel)
+// Si la ruta pertenece a un sitio demo, devuelve su slug; si no, null.
+// /proyectos/hotel → 'hotel' · /proyectos/agencia/tours/vinicunca → 'agencia'
+export function projectSiteSlug(pathname) {
+  const match = pathname.match(/^\/proyectos\/([^/]+)(\/.*)?$/)
+  if (!match) return null
+  const site = projectSites[match[1]]
+  const rest = (match[2] ?? '').replace(/\/+$/, '')
+  if (!site || (rest && !site.nested)) return null
+  return match[1]
+}
+
 export function isProjectSitePath(pathname) {
-  const match = pathname.match(/^\/proyectos\/([^/]+)\/?$/)
-  return Boolean(match && projectSites[match[1]])
+  return projectSiteSlug(pathname) !== null
 }

@@ -1,0 +1,171 @@
+.afav__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(30, 30, 30, 0.5);
+}
+
+.afav {
+  position: fixed;
+  top: var(--demobar-h);
+  right: 0;
+  bottom: 0;
+  z-index: 85;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, 100%);
+  background: var(--a-sand);
+  box-shadow: -20px 0 50px -20px rgba(30, 30, 30, 0.5);
+}
+
+.afav__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--a-line);
+}
+
+.afav__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+}
+
+.afav__title .aicon {
+  color: var(--a-terra);
+}
+
+.afav__count {
+  display: grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--a-coal);
+  color: var(--a-white);
+  font-family: var(--a-sans);
+  font-size: 0.8rem;
+}
+
+.afav__close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--a-line);
+  border-radius: 50%;
+  background: none;
+  color: var(--a-coal);
+  cursor: pointer;
+}
+
+.afav__empty {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px;
+  color: var(--a-muted);
+  text-align: center;
+}
+
+.afav__empty .aicon {
+  width: 48px;
+  height: 48px;
+  color: var(--a-terra);
+}
+
+.afav__list {
+  display: grid;
+  flex: 1;
+  align-content: start;
+  gap: 10px;
+  margin: 0;
+  padding: 16px 20px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.afav__item {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--a-white);
+}
+
+.afav__thumb {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+}
+
+.afav__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.afav__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.afav__name {
+  color: var(--a-coal);
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.afav__name:hover {
+  text-decoration: underline;
+}
+
+.afav__meta {
+  color: var(--a-muted);
+  font-size: 0.82rem;
+}
+
+.afav__remove {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--a-muted);
+  cursor: pointer;
+}
+
+.afav__remove:hover {
+  background: rgba(194, 80, 46, 0.1);
+  color: var(--a-terra-text);
+}
+
+.afav__remove .aicon {
+  width: 20px;
+  height: 20px;
+}
+
+.afav__foot {
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--a-line);
+}
+
+.afav__consult {
+  width: 100%;
+  min-height: 54px;
+}

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import Chakana from '../components/brand/Chakana.jsx'
-import { whatsappLink } from '../data/site.js'
+import Chakana from '../../components/brand/Chakana.jsx'
+import { whatsappLink } from '../../data/site.js'
 import './DemoBar.css'
 
 /**

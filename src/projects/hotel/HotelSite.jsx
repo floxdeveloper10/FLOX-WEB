@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
-import DemoBar from '../DemoBar.jsx'
+import DemoBar from '../shared/DemoBar.jsx'
+import useGoogleFonts from '../shared/useGoogleFonts.js'
 import HotelNav from './components/HotelNav.jsx'
 import HotelHero from './components/HotelHero.jsx'
 import Rooms from './components/Rooms.jsx'
@@ -14,24 +15,13 @@ import { rooms, text } from './hotel.data.js'
 import { addDays, formatPrice, todayISO } from './utils.js'
 import './hotel.css'
 
+// Fuentes del hotel (se cargan solo al entrar aquí)
 const FONTS_URL =
   'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap'
 
-// Las fuentes del hotel se cargan solo al entrar aquí (no pesan en el resto de la web de FLOX)
-function useHotelFonts() {
-  useEffect(() => {
-    if (document.getElementById('hotel-fonts')) return
-    const link = document.createElement('link')
-    link.id = 'hotel-fonts'
-    link.rel = 'stylesheet'
-    link.href = FONTS_URL
-    document.head.appendChild(link)
-  }, [])
-}
-
 // Web del Hotel Killa Wasi: proyecto demo con identidad propia, distinta de FLOX.
 export default function HotelSite() {
-  useHotelFonts()
+  useGoogleFonts('hotel-fonts', FONTS_URL)
   const reduceMotion = useReducedMotion()
   const [lang, setLang] = useState('es')
   const [currency, setCurrency] = useState('USD')

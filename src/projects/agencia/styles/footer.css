@@ -1,0 +1,154 @@
+.afoot {
+  background: var(--a-coal);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.afoot__grid {
+  display: grid;
+  gap: 36px;
+  padding-block: 56px 40px;
+}
+
+.afoot__tagline {
+  margin-top: 14px;
+}
+
+.afoot__contact {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 0.92rem;
+}
+
+.afoot__contact .aicon {
+  width: 18px;
+  height: 18px;
+  color: var(--a-yellow);
+}
+
+.agencia .afoot__title {
+  margin-bottom: 14px;
+  color: var(--a-yellow);
+  font-family: var(--a-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.afoot__links {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.afoot__links a {
+  display: inline-block;
+  padding: 6px 0;
+  color: var(--a-white);
+  text-decoration: none;
+}
+
+.afoot__links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.afoot__socials {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.afoot__social {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: var(--a-white);
+}
+
+.afoot__note {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+}
+
+/* Medios de pago */
+.apay {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.apay__item {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 46px;
+  border-radius: 8px;
+  background: var(--a-sand);
+}
+
+.apay__item svg {
+  width: 44px;
+  height: 36px;
+}
+
+.afoot__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.afoot__bottom-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-block: 18px;
+  font-size: 0.88rem;
+}
+
+.afoot__flox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  color: var(--a-white);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  text-decoration: none;
+}
+
+.afoot__flox:hover strong {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.afoot__chakana {
+  width: 22px;
+  height: 22px;
+}
+
+@media (min-width: 700px) {
+  .afoot__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  .afoot__grid {
+    grid-template-columns: 1.4fr 0.8fr 1fr 1fr;
+    gap: 40px;
+    padding-block: 72px 48px;
+  }
+}

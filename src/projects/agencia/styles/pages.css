@@ -1,0 +1,303 @@
+/* ─── Detalle (en construcción) ───────────────────── */
+.adetail__media {
+  overflow: hidden;
+  height: clamp(220px, 40vw, 420px);
+}
+
+.adetail__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.adetail__box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding-block: 40px 80px;
+}
+
+.adetail__box .a-lead {
+  max-width: 560px;
+  margin: 0 0 8px;
+}
+
+.adetail__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 8px;
+  border-radius: 999px;
+  background: var(--a-yellow);
+  color: var(--a-coal);
+  font-weight: 700;
+}
+
+.adetail__stripes {
+  width: 26px;
+  height: 16px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(-45deg, var(--a-coal) 0 5px, var(--a-yellow) 5px 10px);
+}
+
+/* ─── 404 ──────────────────────────────────────────── */
+.anotfound__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.anotfound__art {
+  width: min(280px, 80%);
+  height: auto;
+}
+
+.anotfound .a-lead {
+  margin-bottom: 12px;
+}
+
+/* ─── Nosotros ─────────────────────────────────────── */
+.aabout__grid {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+
+.aabout__grid .a-lead + .a-lead {
+  margin-top: 12px;
+}
+
+.aabout__art {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+}
+
+.aabout__art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ateam__note {
+  margin-top: 12px;
+  color: var(--a-muted);
+}
+
+.ateam__list {
+  display: grid;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ateam__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 20px;
+  border-radius: 18px;
+  background: var(--a-sand);
+  text-align: center;
+}
+
+.ateam__avatar {
+  width: 120px;
+  height: 120px;
+}
+
+.ateam__name {
+  margin-top: 14px;
+  font-size: 1.3rem;
+}
+
+.ateam__role {
+  margin-top: 4px;
+  color: var(--a-terra-text);
+  font-weight: 700;
+}
+
+.ateam__langs {
+  display: flex;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ateam__langs li {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--a-white);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.aextra__grid {
+  display: grid;
+  gap: 32px;
+}
+
+.aextra__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+
+.aextra__title .aicon {
+  color: var(--a-terra);
+}
+
+.aextra__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aextra__chips li {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--a-white);
+  font-weight: 600;
+}
+
+.aextra__list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aextra__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.aextra__list .aicon {
+  color: var(--a-green);
+}
+
+@media (min-width: 900px) {
+  .aabout__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+  }
+
+  .ateam__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .aextra__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+/* ─── Contacto ─────────────────────────────────────── */
+.acontact__grid {
+  display: grid;
+  gap: 40px;
+}
+
+.acontact__form {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--a-white);
+}
+
+.acontact__row {
+  display: grid;
+  gap: 16px;
+}
+
+.acontact__dates {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.acontact__dates legend {
+  margin-bottom: 8px;
+}
+
+.acontact__send {
+  min-height: 54px;
+}
+
+.acontact__info {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.acontact__card {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--a-white);
+}
+
+.agencia .acontact__card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.acontact__card-title .aicon {
+  color: var(--a-terra);
+}
+
+.acontact__hours div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--a-line);
+}
+
+.acontact__hours dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.acontact__note {
+  color: var(--a-muted);
+}
+
+@media (min-width: 640px) {
+  .acontact__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  .acontact__grid {
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 56px;
+  }
+
+  .acontact__form {
+    padding: 28px;
+  }
+
+  .acontact__info {
+    margin-top: 120px;
+  }
+}

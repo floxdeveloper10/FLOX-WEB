@@ -21,7 +21,8 @@ export default function App() {
         ))}
         <Route path="nosotros" element={<Nosotros />} />
         <Route path="proyectos" element={<Proyectos />} />
-        <Route path="proyectos/:slug" element={<Proyecto />} />
+        {/* /proyectos/agencia/tours…: los sitios demo con varias páginas manejan sus propias rutas */}
+        <Route path="proyectos/:slug/*" element={<Proyecto />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

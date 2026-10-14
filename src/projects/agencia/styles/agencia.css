@@ -1,0 +1,293 @@
+/* Identidad de Andes Ruta Travel: todo vive dentro de .agencia para no mezclarse con FLOX */
+.agencia {
+  --a-terra: #c2502e;
+  --a-terra-dark: #9e3d20;
+  --a-green: #2f5d50;
+  --a-green-dark: #234840;
+  --a-sand: #f4ebdd;
+  --a-sand-2: #eadcc7;
+  --a-coal: #1e1e1e;
+  --a-yellow: #f2b33d;
+  --a-white: #ffffff;
+  --a-muted: #5a554e;
+  --a-line: rgba(30, 30, 30, 0.12);
+  /* Terracota oscurecida para texto pequeño sobre arena (contraste ≥ 4.5:1) */
+  --a-terra-text: #a8401f;
+
+  --a-display: 'Archivo', 'Arial Black', system-ui, sans-serif;
+  --a-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --demobar-h: 40px;
+  --anav-h: 64px;
+  --a-gutter: 16px;
+  --a-radius: 14px;
+  --a-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  min-height: 100vh;
+  background: var(--a-sand);
+  color: var(--a-coal);
+  font-family: var(--a-sans);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.agencia h1,
+.agencia h2,
+.agencia h3,
+.agencia h4 {
+  font-family: var(--a-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.agencia :focus-visible {
+  outline: 3px solid var(--a-yellow);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.agencia button,
+.agencia input,
+.agencia select,
+.agencia textarea {
+  font: inherit;
+}
+
+.ag-page {
+  min-height: 60vh;
+}
+
+.a-container {
+  width: 100%;
+  max-width: calc(1240px + var(--a-gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--a-gutter);
+}
+
+.a-section {
+  padding-block: 72px;
+}
+
+.a-section--white {
+  background: var(--a-white);
+}
+
+.a-section--green {
+  background: var(--a-green);
+  color: var(--a-white);
+}
+
+.a-heading {
+  max-width: 720px;
+  margin-bottom: 36px;
+}
+
+.a-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.a-eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--a-terra-text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.a-section--green .a-eyebrow {
+  color: var(--a-yellow);
+}
+
+.a-title {
+  font-size: clamp(2rem, 4vw + 1rem, 3.2rem);
+}
+
+.a-lead {
+  margin-top: 12px;
+  color: var(--a-muted);
+  font-size: 1.08rem;
+}
+
+.a-section--green .a-lead {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Etiqueta "Datos de ejemplo" / "Opiniones de ejemplo" */
+.a-sample {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px dashed currentColor;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* ─── Botones ─────────────────────────────────────── */
+.a-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.2s var(--a-ease);
+}
+
+.a-btn:active {
+  transform: scale(0.97);
+}
+
+.a-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Blanco sobre terracota: contraste 4.6:1 */
+.a-btn--primary {
+  background: var(--a-terra);
+  color: var(--a-white);
+}
+
+.a-btn--primary:hover {
+  background: var(--a-terra-dark);
+}
+
+.a-btn--green {
+  background: var(--a-green);
+  color: var(--a-white);
+}
+
+.a-btn--green:hover {
+  background: var(--a-green-dark);
+}
+
+/* Carbón sobre amarillo: contraste 10:1 */
+.a-btn--yellow {
+  background: var(--a-yellow);
+  color: var(--a-coal);
+}
+
+.a-btn--outline {
+  border-color: currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.a-btn--whatsapp {
+  background: #25d366;
+  color: var(--a-coal);
+}
+
+/* ─── Campos ──────────────────────────────────────── */
+.a-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.a-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.a-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1.5px solid rgba(30, 30, 30, 0.18);
+  border-radius: 10px;
+  background: var(--a-white);
+  color: var(--a-coal);
+  font-size: 1rem;
+}
+
+textarea.a-input {
+  min-height: 120px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.a-input:focus {
+  border-color: var(--a-green);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 93, 80, 0.25);
+}
+
+.a-input[aria-invalid='true'] {
+  border-color: #b3261e;
+}
+
+.a-error {
+  color: #a1221a;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Selector de dos opciones (ES/EN, USD/PEN) */
+.a-toggle {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(30, 30, 30, 0.08);
+}
+
+.a-toggle__btn {
+  min-width: 40px;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.a-toggle__btn[aria-pressed='true'] {
+  background: var(--a-green);
+  color: var(--a-white);
+}
+
+.a-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.aicon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .agencia {
+    --anav-h: 72px;
+    --a-gutter: 32px;
+  }
+
+  .a-section {
+    padding-block: 104px;
+  }
+}
