@@ -55,7 +55,7 @@ export const projects = [
     category: 'hoteles',
     description: 'Web con habitaciones, fotos, ubicación en el mapa y reservas directas por WhatsApp, sin comisiones.',
     services: ['Página web', 'Reservas por WhatsApp', 'Google Maps'],
-    status: 'construccion',
+    status: 'listo',
     preview: 'browser',
     url: 'killawasi.pe',
     colors: { primary: '#1F2A44', secondary: '#34446B', accent: '#E9C46A', bg: '#F4F1EA', tint: '#D9E0F0' },

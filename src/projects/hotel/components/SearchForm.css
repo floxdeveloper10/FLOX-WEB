@@ -1,0 +1,63 @@
+/* Buscador sobre la portada: panel de piedra translúcido */
+.hsearch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+  border-top: 2px solid var(--h-gold);
+  background: rgba(233, 228, 218, 0.97);
+  color: var(--h-ink);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+}
+
+.hsearch__field--guests,
+.hsearch__submit,
+.hsearch__error {
+  grid-column: 1 / -1;
+}
+
+.hsearch__input {
+  min-height: 50px;
+  border-color: rgba(27, 42, 65, 0.2);
+}
+
+.hsearch__submit {
+  min-height: 54px;
+}
+
+.hsearch__error {
+  margin: 0;
+}
+
+.hsearch__spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(27, 42, 65, 0.25);
+  border-top-color: var(--h-navy);
+  border-radius: 50%;
+  animation: hsearch-spin 0.7s linear infinite;
+}
+
+@keyframes hsearch-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 900px) {
+  .hsearch {
+    grid-template-columns: 1fr 1fr 0.9fr auto;
+    align-items: end;
+    gap: 16px;
+    padding: 20px 22px;
+  }
+
+  .hsearch__field--guests,
+  .hsearch__submit {
+    grid-column: auto;
+  }
+
+  .hsearch__submit {
+    min-width: 240px;
+  }
+}

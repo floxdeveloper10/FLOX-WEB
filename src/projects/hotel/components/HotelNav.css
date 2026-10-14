@@ -1,0 +1,235 @@
+.hnav {
+  position: fixed;
+  top: var(--demobar-h);
+  right: 0;
+  left: 0;
+  z-index: 60;
+  height: var(--hnav-h);
+  color: var(--h-white);
+}
+
+/* Fondo que aparece al bajar (con opacidad: más liviano que animar el color) */
+.hnav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 42, 65, 0.96);
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+/* Sobre la portada, un degradado sutil para que el menú se lea sobre la ilustración */
+.hnav::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 -30px;
+  background: linear-gradient(rgba(14, 22, 36, 0.45), transparent);
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+
+.hnav--solid::before {
+  opacity: 1;
+}
+
+.hnav--solid::after {
+  opacity: 0;
+}
+
+.hnav__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+}
+
+.hnav__brand {
+  margin-right: auto;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.hnav__nav,
+.hnav__toggles {
+  display: none;
+}
+
+/* "Reservar" compacto en el celular */
+.hnav__book {
+  min-height: 40px;
+  padding: 0 12px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.hnav .hlogo__text {
+  white-space: nowrap;
+}
+
+@media (max-width: 380px) {
+  .hnav .hlogo__mark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hnav .hlogo__name {
+    font-size: 1.25rem;
+  }
+}
+
+.hnav__nav ul {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hnav__link {
+  position: relative;
+  padding: 10px 12px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.hnav__link::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  bottom: 4px;
+  left: 12px;
+  height: 1px;
+  background: var(--h-gold);
+  transform: scaleX(0);
+  transition: transform 0.3s var(--h-ease);
+}
+
+.hnav__link:hover::after,
+.hnav__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.hnav__toggles {
+  gap: 8px;
+}
+
+.hnav__burger {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.hnav__burger svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.hnav__burger .hicon {
+  width: 26px;
+  height: 26px;
+}
+
+@media (min-width: 1100px) {
+  .hnav__nav,
+  .hnav__toggles {
+    display: flex;
+  }
+
+  .hnav__book {
+    min-height: 44px;
+    padding: 0 22px;
+    font-size: 0.85rem;
+  }
+
+  .hnav__burger {
+    display: none;
+  }
+
+  .hnav__brand {
+    margin-right: 12px;
+  }
+
+  .hnav__nav {
+    margin-right: auto;
+  }
+}
+
+/* ─── Panel del celular ─────────────────────────────── */
+.hnav-panel {
+  position: fixed;
+  inset: var(--demobar-h) 0 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--h-navy);
+  color: var(--h-white);
+}
+
+.hnav-panel__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: var(--hnav-h);
+}
+
+.hnav-panel__links {
+  flex: 1;
+  margin: 0;
+  padding-top: 24px;
+  list-style: none;
+}
+
+.hotel .hnav-panel__link {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: none;
+  color: inherit;
+  font-family: var(--h-serif);
+  font-size: 2.1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.hnav-panel__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-block: 24px 32px;
+}
+
+.hnav-panel__toggles {
+  display: flex;
+  gap: 10px;
+}
+
+.hnav-panel__book {
+  width: 100%;
+  min-height: 54px;
+}

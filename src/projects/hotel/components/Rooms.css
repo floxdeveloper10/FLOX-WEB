@@ -1,0 +1,175 @@
+.hrooms__summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 14px;
+  max-width: 720px;
+  margin: -16px auto 40px;
+  padding: 14px 20px;
+  border: 1px solid rgba(201, 165, 76, 0.6);
+  background: var(--h-white);
+  font-weight: 500;
+  text-align: center;
+}
+
+.hrooms__summary .hicon {
+  color: var(--h-gold-text);
+}
+
+.hrooms__change {
+  padding: 6px 4px;
+  border: 0;
+  background: none;
+  color: var(--h-gold-text);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.hrooms__list {
+  display: grid;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hroom {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--h-white);
+  box-shadow: 0 1px 0 var(--h-line), 0 24px 50px -36px rgba(27, 42, 65, 0.6);
+}
+
+.hroom__media {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.hroom__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--h-ease);
+}
+
+.hroom:hover .hroom__img {
+  transform: scale(1.04);
+}
+
+.hroom__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px 22px 24px;
+}
+
+.hroom__name {
+  font-size: 2rem;
+}
+
+.hroom__desc {
+  margin-top: 6px;
+  color: var(--h-muted);
+}
+
+.hroom__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin-top: 16px;
+  color: var(--h-muted);
+  font-size: 0.9rem;
+}
+
+.hroom__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hroom__meta .hicon {
+  width: 18px;
+  height: 18px;
+  color: var(--h-gold-text);
+}
+
+.hroom__amenities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin: 18px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--h-line);
+  list-style: none;
+  font-size: 0.92rem;
+}
+
+.hroom__amenities li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hroom__amenities .hicon {
+  color: var(--h-navy-3);
+}
+
+.hroom__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.hroom__amount {
+  font-family: var(--h-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hroom__per {
+  color: var(--h-muted);
+  font-size: 0.9rem;
+}
+
+.hroom__total {
+  margin-top: 6px;
+  color: var(--h-muted);
+  font-size: 0.92rem;
+}
+
+.hroom__total strong {
+  color: var(--h-ink);
+}
+
+.hroom__book {
+  flex-grow: 1;
+}
+
+.hroom__notice {
+  margin-top: 14px;
+}
+
+@media (min-width: 900px) {
+  .hrooms__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px;
+  }
+
+  .hroom__body {
+    padding: 30px 32px 32px;
+  }
+
+  .hroom__book {
+    flex-grow: 0;
+  }
+}

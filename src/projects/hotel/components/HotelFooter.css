@@ -1,0 +1,116 @@
+.hfoot {
+  background: #142033;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hfoot__top {
+  display: grid;
+  gap: 36px;
+  padding-block: 64px 48px;
+}
+
+.hfoot__brand .hlogo {
+  color: var(--h-white);
+}
+
+.hfoot__tagline {
+  max-width: 260px;
+  margin-top: 16px;
+}
+
+.hotel .hfoot__title {
+  margin-bottom: 14px;
+  color: var(--h-gold);
+  font-family: var(--h-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.hfoot__list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hfoot__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hfoot__list .hicon {
+  width: 18px;
+  height: 18px;
+  color: var(--h-gold);
+}
+
+.hfoot__socials {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hfoot__social {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: var(--h-white);
+}
+
+.hfoot__note {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+}
+
+.hfoot__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hfoot__bottom-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-block: 18px;
+  font-size: 0.88rem;
+}
+
+/* "Web hecha por FLOX": con la marca FLOX */
+.hfoot__flox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  color: var(--h-white);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  text-decoration: none;
+}
+
+.hfoot__flox:hover strong {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.hfoot__chakana {
+  width: 22px;
+  height: 22px;
+}
+
+@media (min-width: 900px) {
+  .hfoot__top {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+    padding-block: 80px 56px;
+  }
+}

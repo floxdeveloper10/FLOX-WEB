@@ -1,0 +1,334 @@
+/* Identidad del Hotel Killa Wasi: todo vive dentro de .hotel para no mezclarse con FLOX */
+.hotel {
+  --h-navy: #1b2a41;
+  --h-navy-2: #26385a;
+  --h-navy-3: #3a4e74;
+  --h-stone: #e9e4da;
+  --h-stone-2: #dcd4c5;
+  --h-gold: #c9a54c;
+  --h-gold-light: #e6cf8f;
+  /* Dorado oscurecido para texto pequeño sobre piedra o blanco (contraste ≥ 4.5:1) */
+  --h-gold-text: #7a5e1a;
+  --h-white: #ffffff;
+  --h-ink: #1b2a41;
+  --h-muted: #4f5b6e;
+  --h-line: rgba(27, 42, 65, 0.14);
+
+  --h-serif: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --h-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --demobar-h: 40px;
+  --hnav-h: 64px;
+  --h-gutter: 20px;
+  --h-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  min-height: 100vh;
+  background: var(--h-white);
+  color: var(--h-ink);
+  font-family: var(--h-sans);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.hotel h1,
+.hotel h2,
+.hotel h3,
+.hotel h4 {
+  font-family: var(--h-serif);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+
+.hotel :focus-visible {
+  outline: 2px solid var(--h-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.hotel button,
+.hotel input,
+.hotel select {
+  font: inherit;
+}
+
+.h-container {
+  width: 100%;
+  max-width: calc(1200px + var(--h-gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--h-gutter);
+}
+
+.h-section {
+  padding-block: 80px;
+}
+
+.h-section--stone {
+  background: var(--h-stone);
+}
+
+.h-section--navy {
+  background: var(--h-navy);
+  color: var(--h-white);
+}
+
+/* Encabezado de sección: antetítulo con líneas doradas + título en Cormorant */
+.h-heading {
+  max-width: 680px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.h-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: var(--h-gold-text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.h-eyebrow::before,
+.h-eyebrow::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.h-section--navy .h-eyebrow {
+  color: var(--h-gold);
+}
+
+.h-title {
+  font-size: clamp(2.2rem, 4.5vw + 1rem, 3.6rem);
+}
+
+.h-lead {
+  margin-top: 14px;
+  color: var(--h-muted);
+  font-size: 1.08rem;
+}
+
+.h-section--navy .h-lead {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Botones */
+.h-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1.5px solid transparent;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    transform 0.2s var(--h-ease);
+}
+
+.h-btn:active {
+  transform: scale(0.98);
+}
+
+/* Azul noche sobre dorado: contraste 6:1 */
+.h-btn--gold {
+  background: var(--h-gold);
+  color: var(--h-navy);
+}
+
+.h-btn--gold:hover {
+  background: var(--h-gold-light);
+}
+
+.h-btn--navy {
+  background: var(--h-navy);
+  color: var(--h-white);
+}
+
+.h-btn--navy:hover {
+  background: var(--h-navy-2);
+}
+
+.h-btn--outline {
+  border-color: currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.h-btn .hicon,
+.h-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.h-btn:disabled {
+  cursor: progress;
+  opacity: 0.85;
+}
+
+.hicon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* Logo */
+.hlogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hlogo__mark {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.hlogo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.hlogo__name {
+  font-family: var(--h-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.hlogo__sub {
+  margin-top: 3px;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Selector de dos opciones (ES/EN, US$/S/) */
+.h-toggle {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+}
+
+.h-toggle__btn {
+  min-width: 38px;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.h-toggle__btn[aria-pressed='true'] {
+  background: var(--h-gold);
+  color: var(--h-navy);
+}
+
+.h-toggle--dark {
+  border-color: var(--h-line);
+}
+
+/* Campos de formulario */
+.h-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.h-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.h-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--h-line);
+  border-radius: 2px;
+  background: var(--h-white);
+  color: var(--h-ink);
+  font-size: 1rem;
+}
+
+.h-input:focus {
+  border-color: var(--h-gold);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(201, 165, 76, 0.3);
+}
+
+.h-input[aria-invalid='true'] {
+  border-color: #b3261e;
+}
+
+.h-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  border-left: 3px solid #b3261e;
+  background: #fbeceb;
+  color: #8c1d18;
+  font-size: 0.9rem;
+}
+
+.h-notice {
+  padding: 10px 12px;
+  border-left: 3px solid var(--h-gold);
+  background: #f7f1e1;
+  color: #5c4613;
+  font-size: 0.9rem;
+}
+
+.h-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .hotel {
+    --hnav-h: 76px;
+    --h-gutter: 32px;
+  }
+
+  .h-section {
+    padding-block: 112px;
+  }
+}
