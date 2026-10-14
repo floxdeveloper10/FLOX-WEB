@@ -1,38 +1,63 @@
-import { Link, useParams } from 'react-router-dom'
-import AgenciaIcon from '../components/AgenciaIcon.jsx'
-import TourImage from '../components/TourImage.jsx'
+import { useParams, useSearchParams } from 'react-router-dom'
+import TourCard from '../components/TourCard.jsx'
+import TourHero from '../components/detail/TourHero.jsx'
+import TourGallery from '../components/detail/TourGallery.jsx'
+import TourSections from '../components/detail/TourSections.jsx'
+import BookingBox from '../components/detail/BookingBox.jsx'
 import { useAgencia, useAgenciaTitle } from '../agenciaState.js'
-import { findTour, to } from '../utils.js'
+import { tours } from '../agencia.data.js'
+import { findTour } from '../utils.js'
+import { useBooking } from '../useBooking.js'
 import NoEncontrado from './NoEncontrado.jsx'
 
-// /tours/:id → por ahora "Detalle en construcción" (se completa en la parte 2)
+// 3 tours de la misma categoría (si no alcanzan, se completan con los más recomendados)
+function relatedTours(tour) {
+  const same = tours.filter((x) => x.id !== tour.id && x.category === tour.category)
+  const others = tours.filter((x) => x.id !== tour.id && x.category !== tour.category).sort((a, b) => a.rank - b.rank)
+  return [...same, ...others].slice(0, 3)
+}
+
+function Booking({ tour, editKey }) {
+  const { booking, setBooking, editing } = useBooking(tour, editKey)
+  return <BookingBox tour={tour} booking={booking} setBooking={setBooking} editing={editing} />
+}
+
 export default function TourDetalle() {
   const { id } = useParams()
+  const [params] = useSearchParams()
   const { t, lang } = useAgencia()
   const tour = findTour(id)
   useAgenciaTitle(tour ? tour.name[lang] : t.pageTitle.notFound)
 
   if (!tour) return <NoEncontrado />
+  const editKey = params.get('editar') ?? ''
 
   return (
-    <section className="adetail" aria-labelledby="adetail-title">
-      <div className="adetail__media">
-        <TourImage tour={tour} lang={lang} className="adetail__img" eager />
+    <>
+      <TourHero tour={tour} />
+      <div className="a-container addetail">
+        <div className="addetail__main">
+          <TourGallery tour={tour} />
+          <TourSections tour={tour} />
+        </div>
+        {/* Se vuelve a crear al entrar o salir del modo edición para cargar los datos correctos */}
+        <Booking key={`${tour.id}-${editKey}`} tour={tour} editKey={editKey} />
       </div>
-      <div className="a-container adetail__box">
-        <span className="adetail__badge">
-          <span className="adetail__stripes" aria-hidden="true" />
-          {t.detail.title}
-        </span>
-        <h1 id="adetail-title" className="a-title">
-          {tour.name[lang]}
-        </h1>
-        <p className="a-lead">{t.detail.text}</p>
-        <Link to={to('/tours')} className="a-btn a-btn--primary">
-          <AgenciaIcon name="back" />
-          {t.detail.back}
-        </Link>
-      </div>
-    </section>
+
+      <section className="a-section adrelated" aria-labelledby="adrelated-title">
+        <div className="a-container">
+          <h2 id="adrelated-title" className="a-title adrelated__title">
+            {t.tour.related}
+          </h2>
+          <ul className="adrelated__list">
+            {relatedTours(tour).map((x) => (
+              <li key={x.id}>
+                <TourCard tour={x} showSummary={false} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </>
   )
 }

@@ -1,4 +1,4 @@
-import { categories, difficulties, durations, sorts, tours, USD_TO_PEN } from './agencia.data.js'
+import { categories, difficulties, durations, extras as EXTRAS, sorts, tours, travelerTypes, USD_TO_PEN } from './agencia.data.js'
 
 export const BASE = '/proyectos/agencia'
 export const to = (path = '') => `${BASE}${path}`
@@ -124,3 +124,103 @@ export const categoryOf = (id) => categories.find((c) => c.id === id)
 export const difficultyOf = (id) => difficulties.find((d) => d.id === id)
 
 export const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())
+
+// ─── Reservas (parte 2) ─────────────────────────────────────
+export const toISO = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
+export const addDaysISO = (iso, days) => {
+  const d = parseISO(iso)
+  d.setDate(d.getDate() + days)
+  return toISO(d)
+}
+
+// Fechas "Agotado" de ejemplo: 3 salidas de las próximas semanas, distintas en cada tour
+export function soldOutDates(tour) {
+  const result = new Set()
+  const picks = [1 + (tour.rank % 3), 5 + (tour.rank % 2), 9]
+  let found = 0
+  for (let i = 1; i <= 90 && result.size < picks.length; i++) {
+    const iso = addDaysISO(todayISO(), i)
+    if (!tour.departures.includes(weekdayOf(iso))) continue
+    found += 1
+    if (picks.includes(found)) result.add(iso)
+  }
+  return result
+}
+
+// Estado de un día en el calendario de un tour
+export function dayStatus(tour, iso, soldOut) {
+  if (iso < todayISO()) return 'past'
+  if (!tour.departures.includes(weekdayOf(iso))) return 'none'
+  if (soldOut.has(iso)) return 'soldout'
+  return 'available'
+}
+
+export const totalTravelers = (tr) => tr.adults + tr.students + tr.children
+
+// Precio de una reserva en USD: líneas del detalle + total
+export function bookingPrice(tour, travelers, extraIds = []) {
+  const lines = travelerTypes
+    .filter((type) => travelers[type.id] > 0)
+    .map((type) => ({
+      kind: 'traveler',
+      id: type.id,
+      qty: travelers[type.id],
+      unit: tour.price * (1 - type.discount),
+      amount: travelers[type.id] * tour.price * (1 - type.discount),
+    }))
+  const people = totalTravelers(travelers)
+  for (const id of extraIds) {
+    const extra = EXTRAS[id]
+    if (!extra) continue
+    const qty = extra.per === 'persona' ? people : 1
+    lines.push({ kind: 'extra', id, qty, unit: extra.price, amount: qty * extra.price })
+  }
+  const total = Math.round(lines.reduce((sum, l) => sum + l.amount, 0) * 100) / 100
+  return { lines, total }
+}
+
+export const itemTotal = (item) => {
+  const tour = findTour(item.tourId)
+  return tour ? bookingPrice(tour, item.travelers, item.extras).total : 0
+}
+
+export const cartTotal = (items) => items.reduce((sum, item) => sum + itemTotal(item), 0)
+
+// "2 adultos, 1 niño"
+export function travelersSummary(travelers, t) {
+  return ['adults', 'students', 'children']
+    .filter((id) => travelers[id] > 0)
+    .map((id) => t.travelersText[id](travelers[id]))
+    .join(', ')
+}
+
+export const extrasSummary = (ids, lang) => ids.map((id) => EXTRAS[id]?.label[lang]).filter(Boolean).join(', ')
+
+// Identificador de una reserva del carrito
+export const newKey = () => Math.random().toString(36).slice(2, 10)
+
+// Código de reserva legible: ART-7K3F9 (sin letras que se confunden, como O/0 o I/1)
+export function bookingCode() {
+  const alphabet = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ'
+  const values = new Uint32Array(5)
+  crypto.getRandomValues(values)
+  return `ART-${[...values].map((v) => alphabet[v % alphabet.length]).join('')}`
+}
+
+// Mensaje de WhatsApp con todo el pedido, ordenado
+export function orderMessage({ code, form, items, t, lang, price }) {
+  const o = t.order
+  const lines = [o.intro, '', `${o.code}: ${code}`, '', `${o.client}: ${form.name.trim()}`, `${o.email}: ${form.email.trim()}`, `${o.country}: ${form.country}`, `${o.whatsapp}: ${form.whatsapp.trim()}`]
+  if (form.hotel.trim()) lines.push(`${o.hotel}: ${form.hotel.trim()}`)
+  if (form.comments.trim()) lines.push(`${o.comments}: ${form.comments.trim()}`)
+  items.forEach((item, i) => {
+    const tour = findTour(item.tourId)
+    lines.push('', `${i + 1}. ${tour.name[lang]}`)
+    lines.push(`   • ${o.date}: ${formatDate(item.date, t.locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}`)
+    lines.push(`   • ${o.travelers}: ${travelersSummary(item.travelers, t)}`)
+    if (item.extras.length) lines.push(`   • ${o.extras}: ${extrasSummary(item.extras, lang)}`)
+    lines.push(`   • ${o.subtotal}: ${price(itemTotal(item))}`)
+  })
+  lines.push('', `${o.total}: ${price(cartTotal(items))}`, '', o.footer)
+  return lines.join('\n')
+}

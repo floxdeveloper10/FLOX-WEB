@@ -1,0 +1,41 @@
+/* Al imprimir (o guardar como PDF) solo sale el comprobante, con los colores de la agencia */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  /* Papel blanco: sin el fondo arena de la página */
+  html,
+  body,
+  .agencia {
+    background: #fff !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .areceipt,
+  .areceipt * {
+    visibility: visible;
+  }
+
+  .areceipt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Que nada fijo (barras, avisos) ocupe espacio en el papel */
+  .demobar,
+  .anav,
+  .afoot,
+  .atoast-region,
+  .abook-bar {
+    display: none !important;
+  }
+}

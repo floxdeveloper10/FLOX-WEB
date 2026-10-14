@@ -33,6 +33,33 @@ const PATHS = {
   ),
   filter: <path d="M4 6h16M7 12h10M10 18h4" />,
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
+  cart: (
+    <>
+      <path d="M3 4h2.5l2.2 11h10.6l2-8H6.6" />
+      <circle cx="9" cy="19.5" r="1.4" />
+      <circle cx="17" cy="19.5" r="1.4" />
+    </>
+  ),
+  plus: <path d="M12 5v14M5 12h14" />,
+  minus: <path d="M5 12h14" />,
+  share: (
+    <>
+      <circle cx="18" cy="5.5" r="2.5" />
+      <circle cx="6" cy="12" r="2.5" />
+      <circle cx="18" cy="18.5" r="2.5" />
+      <path d="m8.2 10.8 7.6-4.1M8.2 13.2l7.6 4.1" />
+    </>
+  ),
+  x: <path d="M7 7l10 10M17 7 7 17" />,
+  chevron: <path d="m6 9 6 6 6-6" />,
+  printer: (
+    <>
+      <path d="M7 9V3.5h10V9" />
+      <rect x="3.5" y="9" width="17" height="8" rx="2" />
+      <path d="M7 14h10v6.5H7Z" />
+    </>
+  ),
+  edit: <path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16Z" />,
   pin: (
     <>
       <path d="M12 21.5s-7-6.3-7-11.5a7 7 0 0 1 14 0c0 5.2-7 11.5-7 11.5Z" />

@@ -15,6 +15,31 @@ const LINKS = [
   { path: '/contacto', key: 'contact' },
 ]
 
+// Carrito con contador que rebota suavemente al añadir algo
+function CartButton() {
+  const { t, cart, openCart } = useAgencia()
+  return (
+    <button type="button" className="anav__fav anav__cart" aria-label={t.cart.label(cart.length)} onClick={(e) => openCart(e.currentTarget)}>
+      <AgenciaIcon name="cart" />
+      <AnimatePresence>
+        {cart.length > 0 && (
+          <motion.span
+            key={cart.length}
+            className="anav__fav-count anav__cart-count"
+            initial={{ scale: 0.3, y: -6 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0 }}
+            transition={{ type: 'spring', stiffness: 520, damping: 12 }}
+            aria-hidden="true"
+          >
+            {cart.length}
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </button>
+  )
+}
+
 function FavoritesButton({ className = '' }) {
   const { t, favorites, openFavorites } = useAgencia()
   return (
@@ -158,6 +183,7 @@ export default function AgenciaNav() {
         </div>
 
         <FavoritesButton />
+        <CartButton />
 
         <Link to={to('/tours')} className="a-btn a-btn--primary anav__book" onClick={() => setOpen(false)}>
           {t.nav.book}

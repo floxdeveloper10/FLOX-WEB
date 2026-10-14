@@ -1,0 +1,526 @@
+/* ─── Finalizar reserva ────────────────────────────── */
+.acheck__inner {
+  max-width: 860px;
+}
+
+.acheck__top {
+  margin-bottom: 24px;
+  scroll-margin-top: calc(var(--demobar-h) + var(--anav-h) + 16px);
+}
+
+.acheck__top:focus {
+  outline: none;
+}
+
+.acheck__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* Barra de progreso */
+.asteps {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.asteps__bar {
+  position: absolute;
+  top: 17px;
+  right: 16%;
+  left: 16%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(30, 30, 30, 0.12);
+}
+
+.asteps__fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--a-green);
+  transform-origin: left;
+}
+
+.asteps__list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.asteps__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.asteps__dot {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 3px solid var(--a-sand);
+  border-radius: 50%;
+  background: #d9d2c6;
+  color: var(--a-coal);
+  font-weight: 800;
+}
+
+.asteps__dot .aicon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 3;
+}
+
+.asteps__item.is-current .asteps__dot {
+  background: var(--a-terra);
+  color: var(--a-white);
+}
+
+.asteps__item.is-done .asteps__dot {
+  background: var(--a-green);
+  color: var(--a-white);
+}
+
+.asteps__label {
+  color: var(--a-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.asteps__item.is-current .asteps__label {
+  color: var(--a-coal);
+  font-weight: 800;
+}
+
+/* Tarjetas */
+.acheck__card {
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--a-white);
+}
+
+.acheck__form {
+  display: grid;
+  gap: 16px;
+}
+
+.acheck__row {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .acheck__row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .acheck__card {
+    padding: 28px;
+  }
+}
+
+.acheck__hint {
+  color: var(--a-muted);
+  font-size: 0.82rem;
+}
+
+.acheck__optional {
+  color: var(--a-muted);
+  font-weight: 400;
+}
+
+.acheck__ok {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+  color: #22704f;
+  vertical-align: -3px;
+  stroke-width: 3;
+}
+
+.acheck__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.acheck__review {
+  display: grid;
+  gap: 16px;
+}
+
+.acheck__card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.agencia .acheck__card-title {
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+
+.acheck__card-head .acheck__card-title {
+  margin-bottom: 0;
+}
+
+.acheck__data {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.acheck__data div {
+  display: grid;
+  gap: 2px;
+}
+
+.acheck__data dt {
+  color: var(--a-muted);
+  font-size: 0.82rem;
+}
+
+.acheck__data dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+  .acheck__data {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Reservas listadas */
+.aorder {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aorder__item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--a-line);
+}
+
+.aorder__thumb {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+}
+
+.aorder__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.aorder__name {
+  font-weight: 700;
+}
+
+.aorder__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  color: var(--a-muted);
+  font-size: 0.85rem;
+}
+
+.aorder__line .aicon {
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+}
+
+.aorder__side {
+  display: flex;
+  grid-column: 2;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .aorder__item {
+    grid-template-columns: 88px 1fr auto;
+  }
+
+  .aorder__side {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+}
+
+.aorder__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 14px;
+  font-weight: 700;
+}
+
+.aorder__total strong {
+  font-family: var(--a-display);
+  font-size: 1.7rem;
+}
+
+/* Aviso de demo: sin pago real */
+.acheck__demo {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 2px dashed var(--a-yellow);
+  border-radius: 16px;
+  background: #fff7e3;
+}
+
+.acheck__demo-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--a-yellow);
+}
+
+.acheck__demo-title {
+  margin-bottom: 4px;
+  font-family: var(--a-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.acheck__demo-note {
+  margin-top: 6px;
+  color: var(--a-muted);
+  font-size: 0.9rem;
+}
+
+.acheck__confirm {
+  min-height: 54px;
+}
+
+/* ─── Éxito y comprobante ──────────────────────────── */
+.asuccess__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 860px;
+  text-align: center;
+}
+
+.asuccess__check {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 16px;
+}
+
+.asuccess__inner .a-lead {
+  max-width: 520px;
+}
+
+.asuccess__code {
+  margin-top: 16px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: var(--a-white);
+  font-size: 1.05rem;
+}
+
+.asuccess__code strong {
+  white-space: nowrap;
+  font-family: var(--a-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+}
+
+.asuccess__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0 36px;
+}
+
+.areceipt {
+  width: 100%;
+  padding: 24px;
+  border-top: 8px solid var(--a-terra);
+  border-radius: 16px;
+  background: var(--a-white);
+  text-align: left;
+  box-shadow: 0 24px 50px -36px rgba(30, 30, 30, 0.7);
+}
+
+.areceipt__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--a-line);
+}
+
+.areceipt__doc {
+  text-align: right;
+}
+
+.agencia .areceipt__title {
+  font-size: 1.15rem;
+}
+
+.areceipt__code {
+  white-space: nowrap;
+  margin-top: 4px;
+  color: var(--a-terra-text);
+  font-family: var(--a-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.areceipt__issued {
+  color: var(--a-muted);
+  font-size: 0.82rem;
+}
+
+.areceipt__client {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.areceipt__client dt {
+  color: var(--a-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.areceipt__client dd {
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.areceipt__status {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 8px;
+  background: #fff3d6;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .areceipt {
+    padding: 32px;
+  }
+
+  .areceipt__client {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.areceipt__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.areceipt__table th,
+.areceipt__table td {
+  padding: 10px 6px;
+  border-bottom: 1px solid var(--a-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.areceipt__table thead th {
+  color: var(--a-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.areceipt__table .is-num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.areceipt__table tfoot th,
+.areceipt__table tfoot td {
+  border-bottom: 0;
+  font-size: 1.05rem;
+}
+
+.areceipt__table tfoot th {
+  text-align: right;
+}
+
+.areceipt__extras {
+  display: block;
+  color: var(--a-muted);
+  font-size: 0.8rem;
+}
+
+.areceipt__foot {
+  margin-top: 16px;
+  color: var(--a-muted);
+  font-size: 0.8rem;
+}
+
+/* En el celular la tabla se vuelve tarjetas */
+@media (max-width: 559px) {
+  .areceipt__table thead {
+    display: none;
+  }
+
+  .areceipt__table tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--a-line);
+  }
+
+  .areceipt__table td,
+  .areceipt__table th {
+    padding: 2px 0;
+    border: 0;
+  }
+
+  .areceipt__table td:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .areceipt__table tfoot tr {
+    border-bottom: 0;
+  }
+
+  .areceipt__table tfoot th {
+    text-align: left;
+  }
+}

@@ -46,6 +46,13 @@ export default function Proyectos() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <ProjectCard project={project} size="lg" headingLevel="h2" />
+                  {project.highlights && (
+                    <ul className="gallery__highlights" aria-label={`${projectsPage.includesLabel} ${project.name}`}>
+                      {project.highlights.map((h) => (
+                        <li key={h}>{h}</li>
+                      ))}
+                    </ul>
+                  )}
                 </motion.li>
               ))}
             </AnimatePresence>

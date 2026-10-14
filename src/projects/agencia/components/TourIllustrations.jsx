@@ -260,12 +260,27 @@ const SCENES = {
   'valle-sur': ValleSur,
 }
 
-export default function TourIllustration({ name, colors, title, className = '' }) {
+// mood 'atardecer': la misma escena con cielo cálido y luz de la tarde (para la galería)
+export default function TourIllustration({ name, colors, title, className = '', mood = 'dia' }) {
   const uid = useId().replace(/:/g, '')
   const Scene = SCENES[name] ?? ValleSagrado
+  const dusk = mood === 'atardecer'
+  const sceneColors = dusk ? { ...colors, sky: '#EE9A6A' } : colors
   return (
     <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" className={className} role="img" aria-label={title}>
-      <Scene uid={uid} c={colors} />
+      <Scene uid={uid} c={sceneColors} />
+      {dusk && (
+        <>
+          <defs>
+            <linearGradient id={`tarde-${uid}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#7A3B6B" stopOpacity="0.35" />
+              <stop offset="0.6" stopColor="#C2502E" stopOpacity="0.12" />
+              <stop offset="1" stopColor="#1E1E1E" stopOpacity="0.25" />
+            </linearGradient>
+          </defs>
+          <rect width="400" height="300" fill={`url(#tarde-${uid})`} />
+        </>
+      )}
     </svg>
   )
 }

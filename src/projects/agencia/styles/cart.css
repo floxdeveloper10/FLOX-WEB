@@ -1,0 +1,192 @@
+/* ─── Carrito (usa la base del panel de favoritos) ─── */
+.anav__cart .aicon {
+  color: var(--a-coal);
+}
+
+.anav__cart-count {
+  background: var(--a-green);
+}
+
+.acart__list {
+  display: grid;
+  flex: 1;
+  align-content: start;
+  gap: 12px;
+  margin: 0;
+  padding: 16px 20px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.acart__item {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 14px;
+  background: var(--a-white);
+}
+
+.acart__thumb {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+}
+
+.acart__info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.acart__name {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.acart__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  color: var(--a-muted);
+  font-size: 0.82rem;
+}
+
+.acart__line .aicon {
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+}
+
+.acart__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 0.88rem;
+}
+
+.acart__actions {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.acart__link {
+  min-height: 36px;
+  padding: 0 8px;
+  border: 0;
+  background: none;
+  color: var(--a-terra-text);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.acart__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.acart__total strong {
+  font-family: var(--a-display);
+  font-size: 1.6rem;
+}
+
+.acart__checkout {
+  width: 100%;
+  min-height: 54px;
+}
+
+.acart__empty {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 32px;
+  color: var(--a-muted);
+  text-align: center;
+}
+
+.acart__empty-art {
+  width: 150px;
+  height: auto;
+}
+
+.acart__empty-title {
+  color: var(--a-coal);
+  font-family: var(--a-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.acart__empty .a-btn {
+  margin-top: 8px;
+}
+
+/* ─── Aviso flotante ───────────────────────────────── */
+.atoast-region {
+  position: fixed;
+  right: 16px;
+  bottom: 20px;
+  left: 16px;
+  /* Por encima de la página y la barra inferior, pero debajo de los paneles abiertos (80+):
+     así nunca tapa sus botones */
+  z-index: 75;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.atoast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 460px;
+  padding: 10px 10px 10px 14px;
+  border-radius: 14px;
+  background: var(--a-coal);
+  color: var(--a-white);
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+}
+
+.atoast__icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #3fae6a;
+}
+
+.atoast__icon .aicon {
+  width: 16px;
+  height: 16px;
+  stroke-width: 3;
+}
+
+.atoast__text {
+  font-weight: 600;
+}
+
+.atoast__action {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--a-yellow);
+  color: var(--a-coal);
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}

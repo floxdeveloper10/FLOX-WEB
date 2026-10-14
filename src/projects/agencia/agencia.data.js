@@ -418,3 +418,142 @@ export const certifications = [
 ]
 
 export const languagesSpoken = ['Español', 'English', 'Français', 'Português', 'Runa Simi (quechua)']
+
+// ─── Parte 2: detalle de cada tour, reservas y preguntas ─────
+
+// Tarifas de EJEMPLO por tipo de viajero (descuento sobre el precio de adulto)
+export const travelerTypes = [
+  { id: 'adults', discount: 0, label: { es: 'Adultos', en: 'Adults' }, hint: { es: 'Desde 12 años', en: 'Age 12+' } },
+  { id: 'students', discount: 0.15, label: { es: 'Estudiantes', en: 'Students' }, hint: { es: 'Con carné vigente · −15 %', en: 'With valid ID · −15%' } },
+  { id: 'children', discount: 0.4, label: { es: 'Niños', en: 'Children' }, hint: { es: 'De 3 a 11 años · −40 %', en: 'Ages 3–11 · −40%' } },
+]
+
+// Extras opcionales (precios de EJEMPLO en USD). per: 'persona' | 'grupo'
+export const extras = {
+  almuerzo: { label: { es: 'Almuerzo buffet', en: 'Buffet lunch' }, price: 12, per: 'persona' },
+  bastones: { label: { es: 'Bastones de trekking', en: 'Trekking poles' }, price: 5, per: 'persona' },
+  caballo: { label: { es: 'Caballo de apoyo', en: 'Support horse' }, price: 25, per: 'persona' },
+  'guia-privado': { label: { es: 'Guía privado', en: 'Private guide' }, price: 60, per: 'grupo' },
+}
+
+// Preguntas frecuentes (generales para todos los tours)
+export const faqs = [
+  {
+    q: { es: '¿Qué hago si me da soroche (mal de altura)?', en: 'What if I get altitude sickness?' },
+    a: {
+      es: 'Te recomendamos llegar a Cusco al menos un día antes, tomar mate de coca y caminar despacio. Nuestros guías llevan oxígeno y botiquín.',
+      en: 'We recommend arriving in Cusco at least one day earlier, drinking coca tea and walking slowly. Our guides carry oxygen and a first-aid kit.',
+    },
+  },
+  {
+    q: { es: '¿Qué pasa si llueve?', en: 'What happens if it rains?' },
+    a: {
+      es: 'Los tours salen con lluvia ligera. Si el clima pone en riesgo la seguridad, reprogramamos tu fecha sin costo.',
+      en: 'Tours run in light rain. If the weather puts safety at risk, we reschedule your date at no cost.',
+    },
+  },
+  {
+    q: { es: '¿Puedo cancelar mi reserva?', en: 'Can I cancel my booking?' },
+    a: {
+      es: 'Cancelación gratuita hasta 48 horas antes de la salida (política de ejemplo). Los tours con entradas o trenes comprados pueden tener condiciones distintas.',
+      en: 'Free cancellation up to 48 hours before departure (sample policy). Tours with purchased tickets or trains may have different terms.',
+    },
+  },
+  {
+    q: { es: '¿Me recogen en mi hotel?', en: 'Do you pick me up at my hotel?' },
+    a: {
+      es: 'Sí, recogemos en hoteles del centro histórico de Cusco. Si te alojas más lejos, te indicamos un punto de encuentro cercano.',
+      en: 'Yes, we pick up at hotels in Cusco’s historic center. If you stay farther away, we’ll give you a nearby meeting point.',
+    },
+  },
+  {
+    q: { es: '¿Las propinas están incluidas?', en: 'Are tips included?' },
+    a: {
+      es: 'No. Las propinas son voluntarias; si quedaste contento, el equipo las agradece mucho.',
+      en: 'No. Tips are voluntary; if you were happy, the team really appreciates them.',
+    },
+  },
+]
+
+/*
+ * Datos de la página de detalle de cada tour:
+ * - groupSize: máximo de viajeros · languages: idiomas del guía · extras: ids de `extras`
+ * - gallery: 4 imágenes. scene 'tour' = la escena del tour (mood: 'dia' | 'atardecer');
+ *   scene 'viaje' = escena del viaje (ver TripScenes.jsx). photo: foto real opcional en fotos/
+ * - profile: perfil de altitud (at = avance de 0 a 100) para los tours de altura
+ */
+const SCENE_LABELS = {
+  grupo: { es: 'Grupo con el guía', en: 'Group with the guide' },
+  almuerzo: { es: 'Almuerzo andino', en: 'Andean lunch' },
+  tren: { es: 'Tren por el valle', en: 'Train through the valley' },
+  campamento: { es: 'Campamento bajo las estrellas', en: 'Camp under the stars' },
+  mercado: { es: 'Mercado artesanal', en: 'Artisan market' },
+  caballo: { es: 'Caballo de apoyo', en: 'Support horse' },
+  bus: { es: 'Bus de subida', en: 'Shuttle bus' },
+  ofrenda: { es: 'Ofrenda a la Pachamama', en: 'Offering to Pachamama' },
+}
+
+function gallery(id, scenes) {
+  return [
+    { scene: 'tour', mood: 'dia', photo: `${id}-1.jpg`, alt: { es: 'Vista del tour', en: 'Tour view' } },
+    { scene: 'tour', mood: 'atardecer', photo: `${id}-2.jpg`, alt: { es: 'Al atardecer', en: 'At sunset' } },
+    ...scenes.map((name, i) => ({ scene: 'viaje', name, photo: `${id}-${i + 3}.jpg`, alt: SCENE_LABELS[name] })),
+  ]
+}
+
+const point = (es, en, alt, at) => ({ label: { es, en }, alt, at })
+
+const DETAILS = {
+  'machu-picchu': { groupSize: 15, languages: ['Español', 'English'], extras: ['guia-privado'], gallery: gallery('machu-picchu', ['tren', 'bus']) },
+  vinicunca: {
+    groupSize: 12,
+    languages: ['Español', 'English'],
+    extras: ['bastones', 'caballo', 'guia-privado'],
+    gallery: gallery('vinicunca', ['caballo', 'grupo']),
+    profile: [
+      point('Inicio (Quesiuno)', 'Trailhead (Quesiuno)', 4326, 0),
+      point('Mirador del valle', 'Valley viewpoint', 4650, 38),
+      point('Cumbre Vinicunca', 'Vinicunca summit', 5036, 70),
+      point('Regreso', 'Back down', 4326, 100),
+    ],
+  },
+  humantay: {
+    groupSize: 12,
+    languages: ['Español', 'English'],
+    extras: ['bastones', 'caballo', 'guia-privado'],
+    gallery: gallery('humantay', ['grupo', 'almuerzo']),
+    profile: [
+      point('Soraypampa', 'Soraypampa', 3900, 0),
+      point('Zona de descanso', 'Rest stop', 4050, 35),
+      point('Laguna Humantay', 'Humantay Lake', 4200, 62),
+      point('Regreso', 'Back down', 3900, 100),
+    ],
+  },
+  'valle-sagrado': { groupSize: 15, languages: ['Español', 'English'], extras: ['guia-privado'], gallery: gallery('valle-sagrado', ['mercado', 'almuerzo']) },
+  'city-tour': { groupSize: 15, languages: ['Español', 'English', 'Français'], extras: ['almuerzo', 'guia-privado'], gallery: gallery('city-tour', ['grupo', 'mercado']) },
+  'maras-moray': { groupSize: 15, languages: ['Español', 'English'], extras: ['almuerzo', 'guia-privado'], gallery: gallery('maras-moray', ['grupo', 'almuerzo']) },
+  'camino-inca': {
+    groupSize: 16,
+    languages: ['Español', 'English'],
+    extras: ['bastones', 'guia-privado'],
+    gallery: gallery('camino-inca', ['campamento', 'grupo']),
+    profile: [
+      point('Km 82', 'Km 82', 2720, 0),
+      point('Wayllabamba', 'Wayllabamba', 3000, 18),
+      point('Warmiwañusca', 'Dead Woman’s Pass', 4215, 40),
+      point('Pacaymayo', 'Pacaymayo', 3600, 52),
+      point('Runkurakay', 'Runkurakay', 3950, 64),
+      point('Wiñay Wayna', 'Wiñay Wayna', 2650, 84),
+      point('Machu Picchu', 'Machu Picchu', 2430, 100),
+    ],
+  },
+  'valle-sur': { groupSize: 12, languages: ['Español', 'English'], extras: ['almuerzo', 'guia-privado'], gallery: gallery('valle-sur', ['ofrenda', 'grupo']) },
+}
+
+// Se agregan a cada tour para que todo lo del tour esté en un solo objeto
+tours.forEach((tour) => Object.assign(tour, DETAILS[tour.id]))
+
+export const countries = {
+  es: ['Perú', 'Argentina', 'Alemania', 'Australia', 'Brasil', 'Canadá', 'Chile', 'China', 'Colombia', 'Corea del Sur', 'Ecuador', 'España', 'Estados Unidos', 'Francia', 'Israel', 'Italia', 'Japón', 'México', 'Países Bajos', 'Reino Unido', 'Suiza', 'Uruguay', 'Otro'],
+  en: ['Peru', 'Argentina', 'Australia', 'Brazil', 'Canada', 'Chile', 'China', 'Colombia', 'Ecuador', 'France', 'Germany', 'Israel', 'Italy', 'Japan', 'Mexico', 'Netherlands', 'South Korea', 'Spain', 'Switzerland', 'United Kingdom', 'United States', 'Uruguay', 'Other'],
+}

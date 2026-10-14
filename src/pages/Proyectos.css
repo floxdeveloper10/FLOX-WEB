@@ -48,6 +48,41 @@
   list-style: none;
 }
 
+/* La tarjeta no se estira con la lista de lo que incluye */
+.gallery__list .project-card {
+  height: auto;
+}
+
+.gallery__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery__highlights li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--flox-blanco);
+  color: var(--flox-morado);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.gallery__highlights li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--flox-turquesa);
+  transform: rotate(45deg);
+}
+
 .gallery__empty {
   padding: 40px 16px;
   color: var(--flox-texto-suave);
