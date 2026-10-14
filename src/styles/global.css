@@ -183,6 +183,25 @@ a {
   font-size: clamp(1.9rem, 4vw + 0.9rem, 3rem);
 }
 
+.section-heading__lead {
+  margin-top: 16px;
+  color: var(--flox-texto-suave);
+  font-size: clamp(1.05rem, 1vw + 0.8rem, 1.25rem);
+}
+
+.section-heading--dark .section-heading__title {
+  color: var(--flox-blanco);
+}
+
+.section-heading--dark .section-heading__lead {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.section--morado {
+  background: var(--flox-morado);
+  color: var(--flox-blanco);
+}
+
 @media (min-width: 900px) {
   .section-heading {
     margin-bottom: 56px;

@@ -1,0 +1,870 @@
+/* Paleta propia del restaurante ficticio (terracota), distinta de la marca FLOX */
+.menu {
+  --m-terracota: #7a2812;
+  --m-terracota-2: #a63a1c;
+  --m-ocre: #f2a900;
+  --m-fondo: #fff8f0;
+  --m-crema: #fff1e0;
+  --m-texto: #2b1a12;
+  --m-suave: #6b5446;
+  --m-linea: rgba(122, 40, 18, 0.12);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--m-fondo);
+  color: var(--m-texto);
+}
+
+.menu button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu :focus-visible {
+  outline: 2px solid var(--m-ocre);
+  outline-offset: 2px;
+}
+
+.menu .micon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Todo el contenido hace scroll dentro de la pantalla */
+.menu__scroll {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.menu__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Portada ─────────────────────────────────────────── */
+.menu__top {
+  position: relative;
+}
+
+.menu__cover {
+  position: relative;
+  height: 108px;
+}
+
+.menu__cover-art {
+  display: block;
+  width: 100%;
+  height: 96px;
+}
+
+.textile {
+  display: block;
+  width: 100%;
+  height: 12px;
+}
+
+.menu__toggles {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  left: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Selectores de moneda (izquierda) e idioma (derecha) */
+.menu__toggle {
+  display: flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(43, 26, 18, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.menu .menu__toggle-btn {
+  min-width: 34px;
+  min-height: 28px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  transition: background-color 0.2s;
+}
+
+.menu .menu__toggle-btn[aria-pressed='true'] {
+  background: #fff;
+  color: var(--m-terracota);
+}
+
+/* ─── Datos del restaurante ───────────────────────────── */
+.menu__info {
+  position: relative;
+  margin-top: -6px;
+  padding: 36px 16px 12px;
+  text-align: center;
+}
+
+.menu__logo {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  margin-left: -32px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--m-fondo), 0 6px 16px -6px rgba(43, 26, 18, 0.5);
+}
+
+.menu__name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.menu__tagline {
+  margin-top: 2px;
+  color: var(--m-suave);
+  font-size: 0.76rem;
+}
+
+.menu__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--m-crema);
+  font-size: 0.68rem;
+  line-height: 1.3;
+}
+
+.menu__meta .micon {
+  width: 13px;
+  height: 13px;
+  color: var(--m-terracota);
+}
+
+.menu__meta li:nth-child(2) .micon {
+  color: #1f7a4d;
+}
+
+/* ─── Recomendado del chef ────────────────────────────── */
+.menu .menu__featured {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: calc(100% - 24px);
+  margin: 0 12px 4px;
+  padding: 10px 10px 10px 14px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(255, 209, 102, 0.45), transparent 55%),
+    linear-gradient(135deg, var(--m-terracota), var(--m-terracota-2));
+  color: #fff;
+  text-align: left;
+  box-shadow: 0 10px 22px -12px rgba(122, 40, 18, 0.8);
+  transition: transform 0.2s;
+}
+
+.menu__featured:active {
+  transform: scale(0.98);
+}
+
+.menu__featured-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.menu__featured-label {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 4px;
+  margin-bottom: 4px;
+  padding: 2px 8px 2px 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.menu .menu__featured-label .micon {
+  width: 12px;
+  height: 12px;
+}
+
+.menu__featured-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.menu__featured-desc {
+  margin-top: 2px;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+.menu__featured-price {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--m-terracota);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.menu__featured-art {
+  flex-shrink: 0;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* ─── Pestañas (quedan fijas arriba al bajar) ─────────── */
+.menu__tabs {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  padding: 10px 10px 8px;
+  background: var(--m-fondo);
+  box-shadow: 0 1px 0 var(--m-linea);
+}
+
+.menu .menu__tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-height: 50px;
+  padding: 6px 2px 5px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--m-suave);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.1;
+  transition:
+    background-color 0.2s,
+    transform 0.15s;
+}
+
+.menu .menu__tab .micon {
+  width: 22px;
+  height: 22px;
+}
+
+.menu__tab:active {
+  transform: scale(0.94);
+}
+
+.menu .menu__tab[aria-selected='true'] {
+  background: var(--m-terracota);
+  color: #fff;
+  box-shadow: 0 6px 14px -8px rgba(122, 40, 18, 0.9);
+}
+
+/* ─── Lista de platos ─────────────────────────────────── */
+.menu__panel {
+  padding: 12px 12px 8px;
+}
+
+.menu__panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.menu__panel-title {
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.menu__panel-count {
+  color: var(--m-suave);
+  font-size: 0.7rem;
+}
+
+.menu__dishes {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dish {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(43, 26, 18, 0.07), 0 8px 18px -14px rgba(43, 26, 18, 0.5);
+}
+
+.menu .dish__open {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  padding: 2px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.dish__name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.dish__desc {
+  display: -webkit-box;
+  margin-top: 2px;
+  overflow: hidden;
+  color: var(--m-suave);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.dish__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.dish__price {
+  color: var(--m-terracota);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.dish__media {
+  position: relative;
+  flex-shrink: 0;
+  align-self: center;
+  width: 72px;
+  height: 72px;
+}
+
+.menu .dish__add {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--m-terracota);
+  color: #fff;
+  box-shadow: 0 4px 10px -4px rgba(122, 40, 18, 0.9);
+}
+
+.menu .dish__add .micon {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.6;
+}
+
+.dish__qty {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #1f7a4d;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* Etiquetas */
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.menu .tag .micon {
+  width: 11px;
+  height: 11px;
+}
+
+.tag--popular {
+  background: #fde3d8;
+  color: #9a2f12;
+}
+
+.tag--chef {
+  background: #fff1c7;
+  color: #6e4b00;
+}
+
+.tag--new {
+  background: #d9f2ea;
+  color: #0f6250;
+}
+
+.tag--veg {
+  background: #e4f1d6;
+  color: #3a661c;
+}
+
+.tag--alcohol {
+  background: #efe3f3;
+  color: #6b2c7a;
+}
+
+.tag--spicy {
+  gap: 0;
+  padding: 2px 5px;
+  background: #fde8e6;
+}
+
+.chili {
+  width: 12px;
+  height: 12px;
+}
+
+/* Pie de la carta */
+.menu__footer {
+  padding: 12px 0 18px;
+  color: var(--m-suave);
+  font-size: 0.66rem;
+  text-align: center;
+}
+
+.menu__footer .textile {
+  margin-bottom: 12px;
+}
+
+.menu__powered {
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+/* Espacio para que la barra del pedido no tape el último plato */
+.menu--has-order .menu__footer {
+  padding-bottom: 76px;
+}
+
+/* ─── Barra del pedido ────────────────────────────────── */
+.menu .menu__orderbar {
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+  left: 10px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 14px 0 8px;
+  border: 0;
+  border-radius: 16px;
+  background: #1f7a4d;
+  color: #fff;
+  box-shadow: 0 12px 24px -10px rgba(15, 70, 40, 0.8);
+}
+
+.menu__orderbar-count {
+  display: grid;
+  place-items: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.menu__orderbar-count span {
+  display: inline-block;
+}
+
+.menu__orderbar-label {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.menu__orderbar-total {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* ─── Paneles que suben desde abajo ───────────────────── */
+.sheet__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: rgba(20, 10, 5, 0.5);
+}
+
+.sheet {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  max-height: 88%;
+  border-radius: 22px 22px 0 0;
+  background: var(--m-fondo);
+  box-shadow: 0 -10px 30px -10px rgba(0, 0, 0, 0.4);
+}
+
+.sheet__handle {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 36px;
+  height: 4px;
+  margin-left: -18px;
+  border-radius: 2px;
+  background: rgba(43, 26, 18, 0.2);
+}
+
+.menu .sheet__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(43, 26, 18, 0.08);
+}
+
+.sheet__content {
+  padding: 22px 16px 16px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.sheet__content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ficha del plato */
+.dsheet__hero {
+  display: grid;
+  place-items: center;
+  margin: -6px -16px 12px;
+  padding: 10px 0 14px;
+  background: radial-gradient(circle at 50% 55%, #f9d9b2 0, #fde9d2 45%, transparent 72%);
+}
+
+.dsheet__hero svg {
+  filter: drop-shadow(0 10px 12px rgba(122, 40, 18, 0.3));
+}
+
+.dsheet__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.dsheet__name {
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.dsheet__price {
+  flex-shrink: 0;
+  color: var(--m-terracota);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.dsheet__detail {
+  margin-top: 10px;
+  color: var(--m-suave);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.dsheet__facts {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 16px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--m-crema);
+  font-size: 0.75rem;
+}
+
+.dsheet__facts > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dsheet__facts dt {
+  color: var(--m-suave);
+}
+
+.dsheet__facts dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+}
+
+.dsheet__chilis {
+  display: inline-flex;
+}
+
+.dsheet__chilis .chili {
+  width: 14px;
+  height: 14px;
+}
+
+.dsheet__allergen {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.68rem;
+}
+
+.dsheet__actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Selector de cantidad */
+.stepper {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1.5px var(--m-linea);
+}
+
+.menu .stepper__btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--m-terracota);
+}
+
+.menu .stepper__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.menu .stepper__btn .micon {
+  stroke-width: 2.6;
+}
+
+.stepper__value {
+  min-width: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.menu .stepper--sm .stepper__btn {
+  width: 30px;
+  height: 32px;
+}
+
+.stepper--sm .stepper__value {
+  font-size: 0.8rem;
+}
+
+/* Botones dentro de la carta */
+.menu .menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition:
+    transform 0.15s,
+    background-color 0.25s;
+}
+
+.menu-btn:active {
+  transform: scale(0.97);
+}
+
+.menu .menu-btn--primary {
+  background: var(--m-terracota);
+  color: #fff;
+}
+
+.menu .menu-btn--ghost {
+  margin-top: 6px;
+  background: transparent;
+  color: var(--m-terracota);
+}
+
+.menu .dsheet__add {
+  justify-content: space-between;
+}
+
+/* Resumen del pedido */
+.osheet__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 1.15rem;
+}
+
+.menu .osheet__title .micon {
+  width: 20px;
+  height: 20px;
+  color: var(--m-terracota);
+}
+
+.osheet__list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.osheet__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px 6px 8px;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.osheet__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.osheet__name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.osheet__unit {
+  color: var(--m-terracota);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.osheet__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1.5px dashed var(--m-linea);
+  font-size: 0.9rem;
+}
+
+.osheet__total strong {
+  font-size: 1.15rem;
+}
+
+.osheet__hint {
+  margin: 6px 0 14px;
+  color: var(--m-suave);
+  font-size: 0.72rem;
+}
+
+.menu .osheet__waiter .micon {
+  width: 18px;
+  height: 18px;
+}
+
+.menu .osheet__waiter.is-done {
+  background: #1f7a4d;
+}

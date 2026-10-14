@@ -1,0 +1,83 @@
+.try {
+  padding-top: 0;
+  overflow: hidden;
+}
+
+/* Pirámides sobre el blanco de Servicios, apoyadas en el morado */
+.try__band {
+  background: var(--flox-blanco);
+  margin-bottom: 64px;
+}
+
+/* Brillo suave detrás de los celulares */
+.try::before {
+  content: '';
+  position: absolute;
+  inset: 30% -20% auto;
+  height: 70%;
+  background:
+    radial-gradient(closest-side at 30% 50%, rgba(232, 24, 93, 0.22), transparent),
+    radial-gradient(closest-side at 70% 50%, rgba(0, 184, 169, 0.18), transparent);
+  pointer-events: none;
+}
+
+.try .container {
+  position: relative;
+}
+
+.try__grid {
+  display: grid;
+  gap: 64px;
+}
+
+.try__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Etiqueta sobre cada celular */
+.try__label {
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  border: 1.5px solid rgba(255, 194, 26, 0.5);
+  border-radius: 999px;
+  color: var(--flox-amarillo);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.try__qr {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 320px;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.try__qr-code {
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12);
+}
+
+.try__cta {
+  margin-top: 24px;
+}
+
+@media (min-width: 900px) {
+  .try__band {
+    margin-bottom: 104px;
+  }
+
+  .try__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px;
+    align-items: start;
+  }
+}

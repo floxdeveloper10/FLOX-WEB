@@ -1,0 +1,116 @@
+.phone {
+  --phone-w: min(100%, 300px);
+  --screen-h: 600px;
+  --frame: #170b27;
+
+  position: relative;
+  width: var(--phone-w);
+  margin-inline: auto;
+  padding: 10px;
+  border-radius: 46px;
+  background: var(--frame);
+  box-shadow:
+    inset 0 0 0 2px #3a2a52,
+    0 30px 60px -20px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.phone__button {
+  position: absolute;
+  width: 4px;
+  border-radius: 2px;
+  background: #2b1d40;
+}
+
+.phone__button--power {
+  top: 120px;
+  right: -3px;
+  height: 64px;
+}
+
+.phone__button--volume {
+  top: 100px;
+  left: -3px;
+  height: 90px;
+}
+
+.phone__screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: var(--screen-h);
+  overflow: hidden;
+  border-radius: 36px;
+  background: #fff;
+  /* Aísla el repintado del contenido del resto de la página */
+  contain: layout paint;
+}
+
+.phone__status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 22px;
+  background: var(--status-bg);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.phone__notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 104px;
+  height: 24px;
+  margin-left: -52px;
+  border-radius: 0 0 16px 16px;
+  background: var(--frame);
+}
+
+.phone__status-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.phone__signal {
+  width: 14px;
+  height: 9px;
+  background: linear-gradient(to right, currentColor 0 3px, transparent 3px 5px, currentColor 5px 8px, transparent 8px 10px, currentColor 10px);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.phone__battery {
+  position: relative;
+  width: 20px;
+  height: 10px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+}
+
+.phone__battery::after {
+  content: '';
+  position: absolute;
+  inset: 1px 4px 1px 1px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.phone__app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (min-width: 900px) {
+  .phone {
+    --phone-w: 320px;
+    --screen-h: 640px;
+  }
+}

@@ -122,3 +122,32 @@ export const howWeWork = {
     },
   ],
 }
+
+export const demo = {
+  id: 'demo',
+  title: 'Pruébalo tú mismo',
+  lead: 'Así funciona lo que hacemos para tu negocio. Toca, cambia el idioma y mira cómo responde.',
+  menu: {
+    label: 'Carta digital con QR',
+    qrCaption: 'Así la ven tus clientes al escanear el QR de su mesa',
+    cta: 'Quiero una carta así',
+    message: 'Hola FLOX, quiero una carta así',
+  },
+  chat: {
+    label: 'Chatbot de WhatsApp',
+    note: 'El bot responde en el idioma del turista, las 24 horas.',
+    replay: 'Repetir conversación',
+    cta: 'Quiero un chatbot así',
+    message: 'Hola FLOX, quiero un chatbot así',
+    online: 'en línea',
+    typing: 'escribiendo...',
+    // from: 'guest' (turista, burbuja verde) | 'bot' (restaurante, burbuja blanca)
+    messages: [
+      { from: 'guest', time: '19:02', text: 'Hi! Do you have a table for 4 tonight at 8 pm?' },
+      { from: 'bot', time: '19:02', text: 'Hi! 👋 Yes, we have a table for 4 at 8:00 pm. May I have your name?' },
+      { from: 'guest', time: '19:03', text: 'Sarah' },
+      { from: 'bot', time: '19:03', text: 'Perfect, Sarah! Your table is booked for tonight at 8:00 pm ✅' },
+      { from: 'bot', time: '19:03', type: 'location' },
+    ],
+  },
+}

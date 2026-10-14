@@ -21,7 +21,7 @@ function Track({ progress, index, total }) {
 export default function HowWeWork() {
   const headingId = `${howWeWork.id}-titulo`
   const listRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: listRef, offset: ['start 80%', 'end 60%'] })
+  const { scrollYProgress } = useScroll({ target: listRef, offset: ['start 85%', 'end 95%'] })
   const segments = howWeWork.steps.length - 1
 
   return (
