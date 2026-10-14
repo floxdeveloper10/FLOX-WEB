@@ -15,6 +15,8 @@
   --flox-whatsapp: #25d366;
   /* Fucsia oscurecido solo para texto pequeño: el fucsia de marca no llega a 4.5:1 sobre crema/blanco */
   --flox-fucsia-texto: #c2124d;
+  /* Turquesa oscurecido para íconos y texto sobre fondos claros (el de marca no llega al contraste mínimo) */
+  --flox-turquesa-texto: #00786e;
 
   /* Tipografía */
   --font-base: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;

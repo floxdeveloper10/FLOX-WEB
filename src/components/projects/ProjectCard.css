@@ -1,0 +1,143 @@
+.project-card {
+  display: flex;
+  flex-direction: column;
+  /* Color propio: la tarjeta también va sobre secciones moradas */
+  color: var(--flox-texto);
+  text-decoration: none;
+}
+
+.project-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 22px 22px;
+}
+
+.project-card__labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.project-card__label {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(45, 20, 80, 0.07);
+  color: var(--flox-morado);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* "Muy pronto": morado sobre amarillo (contraste 9:1) */
+.project-card__label--soon {
+  background: var(--flox-amarillo);
+}
+
+.project-card__name {
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+.project-card__type {
+  margin-top: 4px;
+  color: var(--type-color);
+  font-weight: 700;
+}
+
+.project-card__desc {
+  margin-top: 12px;
+  color: var(--flox-texto-suave);
+}
+
+.project-card__services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-card__services li {
+  padding: 4px 12px;
+  border: 1.5px solid rgba(45, 20, 80, 0.12);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.project-card__view {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 18px;
+  font-weight: 700;
+}
+
+.project-card__arrow {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.project-card:hover .project-card__arrow {
+  transform: translateX(4px);
+}
+
+/* Tarjeta pequeña (franja del inicio) */
+.project-card--sm .project-card__body {
+  padding: 16px 18px 18px;
+}
+
+.project-card--sm .project-card__labels {
+  margin-bottom: 8px;
+}
+
+.project-card--sm .project-card__name {
+  font-size: 1.15rem;
+}
+
+.project-card--sm .project-card__type {
+  font-size: 0.92rem;
+}
+
+.project-card--sm .project-card__view {
+  padding-top: 12px;
+  font-size: 0.92rem;
+}
+
+/* Escritorio: tarjeta grande en horizontal (vista previa a la izquierda) */
+@media (min-width: 900px) {
+  .project-card--lg {
+    flex-direction: row;
+  }
+
+  .project-card--lg .pp {
+    flex: 0 0 56%;
+    aspect-ratio: auto;
+    min-height: 340px;
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  }
+
+  .project-card--lg .project-card__body {
+    justify-content: center;
+    padding: 36px 40px;
+  }
+
+  .project-card--lg .project-card__name {
+    font-size: 1.9rem;
+  }
+
+  /* En escritorio "Ver proyecto" aparece sobre la vista previa; aquí queda la flecha */
+  .project-card--lg .project-card__view {
+    color: var(--flox-texto-suave);
+  }
+}

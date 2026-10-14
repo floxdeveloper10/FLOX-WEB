@@ -1,24 +1,29 @@
-import Header from './components/Header.jsx'
-import Hero from './components/Hero.jsx'
-import Problems from './components/Problems.jsx'
-import Services from './components/Services.jsx'
-import TryIt from './components/TryIt.jsx'
-import HowWeWork from './components/HowWeWork.jsx'
-import WhatsAppFloat from './components/WhatsAppFloat.jsx'
+import { lazy } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Layout from './layout/Layout.jsx'
+import Home from './pages/Home.jsx'
+import { HOME_SECTIONS } from './data/site.js'
+
+// Las demás páginas se descargan solo cuando alguien entra (el inicio carga más rápido)
+const Nosotros = lazy(() => import('./pages/Nosotros.jsx'))
+const Proyectos = lazy(() => import('./pages/Proyectos.jsx'))
+const Proyecto = lazy(() => import('./pages/Proyecto.jsx'))
+const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 
 export default function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <Problems />
-        <Services />
-        <TryIt />
-        <HowWeWork />
-        {/* Próximas partes: Precios, Por qué FLOX, Contacto */}
-      </main>
-      <WhatsAppFloat />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        {/* #/precios, #/contacto…: el inicio, bajando a esa sección */}
+        {HOME_SECTIONS.map((id) => (
+          <Route key={id} path={id} element={<Home />} />
+        ))}
+        <Route path="nosotros" element={<Nosotros />} />
+        <Route path="proyectos" element={<Proyectos />} />
+        <Route path="proyectos/:slug" element={<Proyecto />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   )
 }

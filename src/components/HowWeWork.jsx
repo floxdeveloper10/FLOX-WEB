@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Reveal from './Reveal.jsx'
 import SectionHeading from './SectionHeading.jsx'
-import { CHAKANA_OUTLINE } from './brand/Chakana.jsx'
+import { CHAKANA_OUTLINE } from './brand/geometry.js'
 import { howWeWork } from '../data/site.js'
 import './HowWeWork.css'
 

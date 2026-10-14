@@ -32,13 +32,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   height: 100%;
 }
 
 .header__brand {
   display: block;
+  margin-right: auto;
   padding: 6px 0;
   border-radius: 8px;
 }
@@ -48,29 +48,242 @@
   width: auto;
 }
 
+/* ─── Menú de escritorio ─────────────────────────────── */
 .header__nav {
   display: none;
 }
 
-.header__nav ul {
+.header__nav > ul {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 2px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.header__nav a {
-  display: block;
-  padding: 10px 14px;
+.header__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 0;
   border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
   font-weight: 700;
   text-decoration: none;
+  cursor: pointer;
   transition: opacity 0.2s;
 }
 
-.header__nav a:hover {
+.header__link:hover {
   opacity: 0.7;
+}
+
+/* Subrayado fucsia de la página o sección activa */
+.header__link::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  bottom: 4px;
+  left: 12px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--flox-fucsia);
+  transform: scaleX(0);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.header__link.is-active::after {
+  transform: scaleX(1);
+}
+
+.header__link.is-active:hover {
+  opacity: 1;
+}
+
+.header__cta {
+  flex-shrink: 0;
+}
+
+/* ─── Desplegable de proyectos ───────────────────────── */
+.dropdown {
+  position: relative;
+}
+
+.dropdown__chevron {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+
+.dropdown__toggle[aria-expanded='true'] .dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown__toggle.is-active::after {
+  right: 30px;
+}
+
+.dropdown__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+  padding: 8px;
+  border-radius: 18px;
+  background: var(--flox-blanco);
+  color: var(--flox-morado);
+  box-shadow: 0 24px 48px -16px rgba(45, 20, 80, 0.4), 0 0 0 1px rgba(45, 20, 80, 0.06);
+}
+
+/* Puente invisible para que el menú no se cierre al bajar el mouse */
+.dropdown__panel::before {
+  content: '';
+  position: absolute;
+  inset: -12px 0 auto;
+  height: 12px;
+}
+
+.dropdown__list {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dropdown__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+.dropdown__link:hover,
+.dropdown__link:focus-visible {
+  background: var(--flox-crema);
+}
+
+.dropdown__swatch {
+  position: relative;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.dropdown__swatch span {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dropdown__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dropdown__name {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.dropdown__type {
+  color: var(--flox-texto-suave);
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
+.dropdown__link--all {
+  justify-content: space-between;
+  margin-top: 4px;
+  border-top: 1px solid rgba(45, 20, 80, 0.08);
+  border-radius: 0 0 12px 12px;
+  font-weight: 700;
+}
+
+.dropdown__link--all svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ─── Botón de menú (celular) ────────────────────────── */
+.menu-button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.menu-button svg {
+  width: 26px;
+  height: 26px;
+  overflow: visible;
+}
+
+.menu-button__line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 0.3s var(--ease-out),
+    opacity 0.2s;
+}
+
+.menu-button.is-open .menu-button__line--top {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.menu-button.is-open .menu-button__line--mid {
+  opacity: 0;
+}
+
+.menu-button.is-open .menu-button__line--bot {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.menu-button--light {
+  color: var(--flox-blanco);
+}
+
+@media (max-width: 380px) {
+  .header__cta {
+    padding-inline: 0.9em;
+    font-size: 0.9rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -79,9 +292,16 @@
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1080px) {
   .header__nav {
     display: block;
-    margin-left: auto;
+  }
+
+  .header__menu-button {
+    display: none;
+  }
+
+  .header__cta {
+    margin-left: 8px;
   }
 }

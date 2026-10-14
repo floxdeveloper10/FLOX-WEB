@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import Chakana from './brand/Chakana.jsx'
 import WhatsAppIcon from './WhatsAppIcon.jsx'
@@ -40,9 +41,9 @@ export default function Hero() {
               <WhatsAppIcon />
               Pide tu demo gratis por WhatsApp
             </a>
-            <a className="btn btn--ghost" href="#demo">
+            <Link className="btn btn--ghost" to="/demo">
               Ver cómo funciona
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
 

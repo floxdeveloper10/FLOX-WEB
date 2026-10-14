@@ -140,6 +140,12 @@ a {
   }
 }
 
+/* Mientras se descarga una página: fondo morado del alto de su portada */
+.page-fallback {
+  min-height: 70vh;
+  background: var(--flox-morado);
+}
+
 /* Secciones: fondos alternados crema / blanco */
 .section {
   position: relative;

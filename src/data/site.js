@@ -23,6 +23,13 @@ export const site = {
   url: 'https://floxdeveloper10.github.io/flox-web/',
 }
 
+const SOCIAL_NAMES = { facebook: 'Facebook', instagram: 'Instagram', tiktok: 'TikTok' }
+
+// Redes con enlace: las que están en null no se muestran
+export const socialLinks = Object.entries(site.social)
+  .filter(([, url]) => url)
+  .map(([name, url]) => ({ name, url, label: SOCIAL_NAMES[name] }))
+
 // Enlace de WhatsApp con un mensaje propio (por ejemplo, el botón "Lo quiero" de cada precio).
 export function whatsappLink(message = WHATSAPP_DEFAULT_MESSAGE) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
@@ -150,4 +157,115 @@ export const demo = {
       { from: 'bot', time: '19:03', type: 'location' },
     ],
   },
+}
+
+// Secciones del inicio que también son rutas: #/precios abre el inicio y baja a Precios
+export const HOME_SECTIONS = ['problemas', 'servicios', 'demo', 'como-trabajamos', 'precios', 'por-que-flox', 'contacto']
+
+// Menú principal (encabezado, menú del celular y pie de página)
+// section: es una sección del inicio · dropdown: muestra el desplegable de proyectos
+export const nav = [
+  { id: 'inicio', label: 'Inicio', to: '/' },
+  { id: 'servicios', label: 'Servicios', to: '/servicios', section: true },
+  { id: 'proyectos', label: 'Proyectos', to: '/proyectos', dropdown: true },
+  { id: 'nosotros', label: 'Nosotros', to: '/nosotros' },
+  { id: 'precios', label: 'Precios', to: '/precios', section: true },
+  { id: 'contacto', label: 'Contacto', to: '/contacto', section: true },
+]
+
+export const headerUi = {
+  cta: 'Escríbenos',
+  home: 'FLOX, ir al inicio',
+  mainNav: 'Principal',
+  openMenu: 'Abrir menú',
+  closeMenu: 'Cerrar menú',
+  projectsAll: 'Ver todos',
+  mobileCta: 'Escríbenos por WhatsApp',
+}
+
+export const pricing = {
+  id: 'precios',
+  title: 'Precios de lanzamiento',
+  from: 'desde',
+  cta: 'Lo quiero',
+  featuredLabel: 'La más pedida',
+  plans: [
+    {
+      name: 'Carta digital con QR',
+      price: 250,
+      featured: true,
+      features: [
+        'Carta en español e inglés',
+        'Código QR para tus mesas',
+        'Cambios de precios y platos cuando quieras',
+      ],
+      message: 'Hola FLOX, quiero la Carta digital con QR (desde S/ 250)',
+    },
+    {
+      name: 'Web de una página',
+      price: 600,
+      features: [
+        'Diseño a tu medida',
+        'Botón de WhatsApp',
+        'Mapa de ubicación',
+        'Se ve perfecta en celulares',
+      ],
+      message: 'Hola FLOX, quiero la Web de una página (desde S/ 600)',
+    },
+    {
+      name: 'Perfil de Google Maps y redes',
+      price: 150,
+      features: [
+        'Perfil de Google configurado',
+        'Fotos y horarios',
+        'Facebook e Instagram con tu marca',
+      ],
+      message: 'Hola FLOX, quiero el Perfil de Google Maps y redes (desde S/ 150)',
+    },
+  ],
+  note: 'Precio de lanzamiento para los primeros clientes. Trabajamos con 50 % de adelanto.',
+  custom: {
+    before: '¿Necesitas algo distinto?',
+    link: 'Escríbenos',
+    after: 'y te armamos una propuesta.',
+    message: 'Hola FLOX, necesito algo distinto para mi negocio. ¿Me arman una propuesta?',
+  },
+}
+
+export const whyFlox = {
+  id: 'por-que-flox',
+  eyebrow: 'Por qué FLOX',
+  title: 'Tecnología con trato cercano',
+  reasons: [
+    {
+      icon: 'visita',
+      title: 'Somos de Cusco y te visitamos',
+      text: 'Conocemos tu negocio y a tus clientes.',
+    },
+    {
+      icon: 'simple',
+      title: 'Sin términos técnicos',
+      text: 'Te explicamos todo en simple y te enseñamos a usarlo.',
+    },
+    {
+      icon: 'soporte',
+      title: 'Soporte por WhatsApp',
+      text: 'Si algo pasa, nos escribes y lo resolvemos.',
+    },
+  ],
+}
+
+export const contact = {
+  id: 'contacto',
+  title: '¿Listo para vender más?',
+  lead: 'Escríbenos y te mostramos una demo con los datos de tu negocio, sin compromiso.',
+  cta: 'Escríbenos por WhatsApp',
+  emailLabel: 'Correo',
+  cityLabel: 'Ubicación',
+  socialLabel: 'Síguenos',
+}
+
+export const footer = {
+  madeIn: 'Hecho en Cusco',
+  navLabel: 'Enlaces rápidos',
 }

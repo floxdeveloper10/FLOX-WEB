@@ -1,0 +1,50 @@
+.strip .section-heading__eyebrow {
+  color: var(--flox-amarillo);
+}
+
+/* Móvil: tarjetas en fila que se deslizan de lado */
+.strip__list {
+  display: grid;
+  grid-auto-columns: 78%;
+  grid-auto-flow: column;
+  gap: 16px;
+  margin: 0 calc(var(--gutter) * -1);
+  padding: 4px var(--gutter) 20px;
+  overflow-x: auto;
+  list-style: none;
+  scroll-padding-inline: var(--gutter);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.strip__list::-webkit-scrollbar {
+  display: none;
+}
+
+.strip__item {
+  scroll-snap-align: start;
+}
+
+.strip__item .project-card {
+  height: 100%;
+}
+
+.strip__actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .strip__list {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .strip__actions {
+    margin-top: 40px;
+  }
+}

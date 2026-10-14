@@ -1,0 +1,145 @@
+.pricing__grid {
+  display: grid;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px 24px;
+  border: 2px solid rgba(45, 20, 80, 0.08);
+  background: var(--flox-crema);
+  box-shadow: none;
+}
+
+/* La más pedida: borde fucsia y un poco más grande en escritorio */
+.plan--featured {
+  border-color: var(--flox-fucsia);
+  background: var(--flox-blanco);
+  box-shadow: 0 24px 50px -28px rgba(232, 24, 93, 0.55);
+}
+
+.plan__badge {
+  align-self: flex-start;
+  margin-bottom: 14px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--flox-fucsia-texto);
+  color: var(--flox-blanco);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.plan__name {
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+.plan__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.plan__from {
+  color: var(--flox-texto-suave);
+  font-size: 0.95rem;
+}
+
+.plan__amount {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.plan__features {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.plan__features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.plan__features .icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  color: var(--flox-turquesa-texto);
+}
+
+.plan__cta {
+  width: 100%;
+  margin-top: auto;
+}
+
+.pricing__notes {
+  max-width: 640px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.pricing__note {
+  font-weight: 700;
+}
+
+.pricing__custom {
+  margin-top: 8px;
+  color: var(--flox-texto-suave);
+}
+
+.pricing__custom a {
+  color: var(--flox-morado);
+  font-weight: 700;
+  text-decoration-color: var(--flox-naranja);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+@media (min-width: 900px) {
+  .pricing__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 28px;
+    padding-block: 20px;
+  }
+
+  /* En escritorio la más pedida va al centro */
+  .pricing__item--featured {
+    order: 2;
+    margin-block: -20px;
+  }
+
+  .pricing__grid > li:nth-child(2) {
+    order: 1;
+  }
+
+  .pricing__grid > li:nth-child(3) {
+    order: 3;
+  }
+
+  .plan {
+    padding: 32px 28px 28px;
+  }
+
+  .plan--featured {
+    padding: 44px 32px 36px;
+  }
+
+  .plan--featured .plan__amount {
+    font-size: 3rem;
+  }
+}

@@ -1,18 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { getPalette } from './palette.js'
+import { CHAKANA_CONTACTS as CONTACTS, CHAKANA_OUTLINE, CHAKANA_TRACES as TRACES, CHAKANA_VIEWBOX } from './geometry.js'
 import './Chakana.css'
-
-export const CHAKANA_OUTLINE =
-  'M24 0 H40 V8 H48 V16 H56 V24 H64 V40 H56 V48 H48 V56 H40 V64 H24 V56 H16 V48 H8 V40 H0 V24 H8 V16 H16 V8 H24 Z'
-
-// Pistas del chip hacia cada punta (el mismo trazo del brief, separado en 4)
-const TRACES = ['M32 24 V8', 'M32 40 V56', 'M24 32 H8', 'M40 32 H56']
-const CONTACTS = [
-  [32, 8],
-  [32, 56],
-  [8, 32],
-  [56, 32],
-]
 
 // Chakana estática. También se usa dentro de LogoFlox.
 export function ChakanaShapes({ variant = 'color' }) {
@@ -116,7 +105,7 @@ export default function Chakana({ variant = 'color', animated = false, title, cl
 
   return (
     <svg
-      viewBox="-6 -6 76 76"
+      viewBox={CHAKANA_VIEWBOX}
       xmlns="http://www.w3.org/2000/svg"
       className={`chakana ${playing ? 'chakana--animated' : ''} ${className}`.trim()}
       {...a11y}

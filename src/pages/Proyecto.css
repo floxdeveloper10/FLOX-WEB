@@ -1,0 +1,58 @@
+.building {
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+}
+
+.building .page-hero__inner {
+  width: 100%;
+}
+
+.building__logo {
+  width: 120px;
+  height: auto;
+}
+
+.building__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 28px;
+}
+
+/* Etiqueta con franjas de obra (amarillo y morado) */
+.building__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 10px;
+  border-radius: 999px;
+  background: var(--flox-amarillo);
+  color: var(--flox-morado);
+  font-weight: 700;
+}
+
+.building__cone {
+  width: 26px;
+  height: 18px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(-45deg, var(--flox-morado) 0 5px, var(--flox-amarillo) 5px 10px);
+}
+
+.building__text {
+  max-width: 480px;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.building__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.building__actions .btn--ghost {
+  color: var(--flox-blanco);
+}

@@ -1,0 +1,75 @@
+.why__list {
+  display: grid;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.why__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
+  align-items: start;
+  align-content: start;
+}
+
+/* Ícono dentro de un cuadrito escalonado (silueta de la chakana, en pequeño) */
+.why__icon {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  background: var(--accent);
+  color: var(--flox-morado);
+  clip-path: polygon(
+    25% 0, 75% 0, 75% 12.5%, 87.5% 12.5%, 87.5% 25%, 100% 25%, 100% 75%, 87.5% 75%,
+    87.5% 87.5%, 75% 87.5%, 75% 100%, 25% 100%, 25% 87.5%, 12.5% 87.5%, 12.5% 75%, 0 75%,
+    0 25%, 12.5% 25%, 12.5% 12.5%, 25% 12.5%
+  );
+}
+
+.accent--fucsia .why__icon {
+  color: var(--flox-blanco);
+}
+
+.why__icon .icon {
+  width: 28px;
+  height: 28px;
+}
+
+.why__title {
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+.why__text {
+  margin-top: 6px;
+  color: var(--flox-texto-suave);
+}
+
+@media (min-width: 900px) {
+  .why__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+  }
+
+  .why__item {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .why__icon {
+    grid-row: auto;
+    width: 76px;
+    height: 76px;
+    margin-bottom: 18px;
+  }
+
+  .why__icon .icon {
+    width: 34px;
+    height: 34px;
+  }
+}

@@ -1,0 +1,414 @@
+/* Vista previa: el dispositivo asoma desde abajo de un panel con los colores del negocio.
+   Todo se mide en em: el tamaño de letra del panel escala la ilustración completa. */
+.pp {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  container-type: inline-size;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.55), transparent 45%),
+    linear-gradient(160deg, var(--pp-tint), var(--pp-bg));
+}
+
+/* Trama escalonada sutil al fondo */
+.pp::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 30%;
+  background:
+    linear-gradient(135deg, transparent 75%, rgba(255, 255, 255, 0.35) 75%) 0 0 / 16px 16px,
+    linear-gradient(225deg, transparent 75%, rgba(255, 255, 255, 0.35) 75%) 0 0 / 16px 16px;
+  opacity: 0.6;
+}
+
+.pp__device {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  font-size: clamp(5px, 2.6cqi, 11px);
+  transform: translateX(-50%);
+  transition: transform 0.45s var(--ease-out);
+  will-change: transform;
+}
+
+.pp--phone .pp__device {
+  top: 9%;
+  font-size: clamp(5px, 2.9cqi, 12px);
+}
+
+/* Al pasar el mouse (o con el foco) la vista previa se mueve un poco */
+.project-link:hover .pp__device,
+.project-link:focus-visible .pp__device {
+  transform: translateX(-50%) translateY(-5%) rotate(-1.5deg);
+}
+
+.pp__overlay {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--flox-morado);
+  color: var(--flox-blanco);
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px -10px rgba(45, 20, 80, 0.7);
+  opacity: 0;
+  transform: translate(-50%, 10px);
+  transition:
+    opacity 0.25s,
+    transform 0.35s var(--ease-out);
+}
+
+.project-link:hover .pp__overlay,
+.project-link:focus-visible .pp__overlay {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ─── Mini navegador ─────────────────────────────────── */
+.pp__browser {
+  width: 34em;
+  overflow: hidden;
+  border-radius: 1em 1em 0 0;
+  background: var(--pp-bg);
+  box-shadow: 0 2em 4em -1.5em rgba(20, 10, 40, 0.45), 0 0 0 0.1em rgba(0, 0, 0, 0.06);
+}
+
+.pp__bar {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  height: 2.4em;
+  padding: 0 1em;
+  background: #ece7e1;
+}
+
+.pp__dots {
+  display: flex;
+  gap: 0.45em;
+}
+
+.pp__dots i {
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+
+.pp__dots i:nth-child(2) {
+  background: #febc2e;
+}
+
+.pp__dots i:nth-child(3) {
+  background: #28c840;
+}
+
+.pp__url {
+  flex: 1;
+  max-width: 16em;
+  margin: 0 auto;
+  padding: 0.3em 1em;
+  overflow: hidden;
+  border-radius: 1em;
+  background: #fff;
+  color: #6b6b6b;
+  font-size: 0.85em;
+  line-height: 1.2;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pp__page {
+  padding-bottom: 2em;
+}
+
+.pp__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  height: 3em;
+  padding: 0 1.4em;
+  background: var(--pp-primary);
+  color: #fff;
+}
+
+.pp__brand {
+  font-size: 1.05em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pp__nav-links {
+  display: flex;
+  gap: 0.8em;
+  margin-left: auto;
+}
+
+.pp__nav-links i {
+  width: 2.6em;
+  height: 0.4em;
+  border-radius: 0.2em;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.pp__nav-btn {
+  width: 4.4em;
+  height: 1.6em;
+  border-radius: 1em;
+  background: var(--pp-accent);
+}
+
+.pp__hero {
+  position: relative;
+  height: 12.5em;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--pp-primary), var(--pp-secondary));
+}
+
+.pp__hero-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pp__hero-copy {
+  position: absolute;
+  top: 2.2em;
+  left: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+
+.pp__line {
+  display: block;
+  width: 9em;
+  height: 0.55em;
+  border-radius: 0.3em;
+  background: rgba(43, 26, 18, 0.18);
+}
+
+.pp__line--short {
+  width: 6em;
+}
+
+.pp__hero .pp__line--title {
+  width: 14em;
+  height: 1.1em;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.pp__hero .pp__line--short {
+  width: 9em;
+}
+
+.pp__pill {
+  width: 6.5em;
+  height: 1.8em;
+  margin-top: 0.5em;
+  border-radius: 1em;
+  background: var(--pp-accent);
+}
+
+.pp__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2em;
+  padding: 1.6em 1.6em 0;
+}
+
+.pp__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  padding: 0.6em;
+  border-radius: 0.8em;
+  background: #fff;
+  box-shadow: 0 0.4em 1em -0.6em rgba(0, 0, 0, 0.3);
+}
+
+.pp__card .pp__line {
+  width: 80%;
+}
+
+.pp__card .pp__line--short {
+  width: 50%;
+}
+
+.pp__thumb {
+  height: 4.2em;
+  border-radius: 0.5em;
+  background: linear-gradient(135deg, var(--pp-secondary), var(--pp-tint));
+}
+
+.pp__card:nth-child(2) .pp__thumb {
+  background: linear-gradient(135deg, var(--pp-accent), var(--pp-tint));
+}
+
+/* ─── Mini celular ───────────────────────────────────── */
+.pp__phone {
+  position: relative;
+  width: 16em;
+  padding: 0.7em;
+  border-radius: 2.6em;
+  background: #1d1027;
+  box-shadow: 0 2em 4em -1.5em rgba(20, 10, 40, 0.5);
+}
+
+.pp__notch {
+  position: absolute;
+  top: 0.7em;
+  left: 50%;
+  z-index: 1;
+  width: 5.5em;
+  height: 1.3em;
+  margin-left: -2.75em;
+  border-radius: 0 0 0.9em 0.9em;
+  background: #1d1027;
+}
+
+.pp__screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30em;
+  overflow: hidden;
+  border-radius: 2em;
+  background: var(--pp-bg);
+}
+
+.pp__cover {
+  position: relative;
+  width: 100%;
+  height: 6em;
+}
+
+.pp__cover svg {
+  display: block;
+  width: 100%;
+  height: 5.4em;
+}
+
+.pp__textile {
+  position: absolute;
+  inset: auto 0 0;
+  height: 0.6em;
+  background: repeating-linear-gradient(90deg, var(--pp-primary) 0 0.6em, var(--pp-accent) 0.6em 1.2em, #2f7d6d 1.2em 1.8em);
+}
+
+.pp__avatar {
+  width: 3.4em;
+  height: 3.4em;
+  margin-top: -1.7em;
+  border: 0.3em solid var(--pp-bg);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 38%, var(--pp-accent) 0 28%, #fff1e0 30%);
+}
+
+.pp__screen > .pp__line {
+  margin-top: 0.6em;
+}
+
+.pp__line--center {
+  width: 8em;
+  background: rgba(43, 26, 18, 0.55);
+}
+
+.pp__screen > .pp__line--short {
+  margin-top: 0.4em;
+  width: 5em;
+  background: rgba(43, 26, 18, 0.2);
+}
+
+.pp__featured {
+  width: calc(100% - 1.6em);
+  height: 4em;
+  margin-top: 1em;
+  border-radius: 1em;
+  background:
+    radial-gradient(circle at 82% 50%, #fff 0 1.3em, transparent 1.35em),
+    linear-gradient(135deg, var(--pp-primary), var(--pp-secondary));
+}
+
+.pp__tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4em;
+  width: calc(100% - 1.6em);
+  margin-top: 0.9em;
+}
+
+.pp__tabs i {
+  height: 1.9em;
+  border-radius: 0.6em;
+  background: rgba(43, 26, 18, 0.07);
+}
+
+.pp__tabs i.is-on {
+  background: var(--pp-primary);
+}
+
+.pp__dish {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  width: calc(100% - 1.6em);
+  margin-top: 0.7em;
+  padding: 0.6em 0.7em;
+  border-radius: 0.9em;
+  background: #fff;
+  box-shadow: 0 0.3em 0.8em -0.5em rgba(0, 0, 0, 0.3);
+}
+
+.pp__dish-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.45em;
+}
+
+.pp__dish .pp__line {
+  width: 85%;
+  background: rgba(43, 26, 18, 0.5);
+}
+
+.pp__dish .pp__line--short {
+  width: 40%;
+  background: var(--pp-primary);
+  opacity: 0.7;
+}
+
+.pp__plate {
+  width: 2.8em;
+  height: 2.8em;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--pp-accent) 0 35%, #f6eee3 37% 70%, #fff 72%);
+  box-shadow: 0 0 0 0.12em #e8d9c5;
+}
+
+.pp__dish:nth-of-type(2) .pp__plate {
+  background: radial-gradient(circle, var(--pp-secondary) 0 38%, #f6eee3 40% 70%, #fff 72%);
+}
+
+@media (hover: none) {
+  .pp__overlay {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-link:hover .pp__device,
+  .project-link:focus-visible .pp__device {
+    transform: translateX(-50%);
+  }
+}

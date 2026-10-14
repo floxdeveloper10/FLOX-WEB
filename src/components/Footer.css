@@ -1,0 +1,73 @@
+.footer {
+  background: #1e0d36;
+  color: rgba(255, 255, 255, 0.86);
+  /* Espacio para que el botón flotante de WhatsApp no tape el texto */
+  padding-bottom: 88px;
+}
+
+/* Pirámides sobre el morado de Contacto, apoyadas en el pie (más oscuro) */
+.footer__band {
+  background: var(--flox-morado);
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 48px;
+  text-align: center;
+}
+
+.footer__brand {
+  display: block;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.footer__logo {
+  height: 44px;
+  width: auto;
+}
+
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__nav a {
+  display: block;
+  padding: 10px 9px;
+  color: var(--flox-blanco);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer__nav a:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer__copy {
+  font-size: 0.9rem;
+}
+
+@media (min-width: 900px) {
+  .footer {
+    padding-bottom: 40px;
+  }
+
+  .footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 40px;
+    text-align: left;
+  }
+}

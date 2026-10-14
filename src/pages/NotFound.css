@@ -1,0 +1,95 @@
+.notfound {
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+}
+
+.notfound .page-hero__inner {
+  width: 100%;
+}
+
+.chakana-off {
+  width: clamp(150px, 40vw, 220px);
+  height: auto;
+  overflow: visible;
+}
+
+.chakana-off__outline {
+  opacity: 0.35;
+}
+
+.chakana-off__chip {
+  opacity: 0.45;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: chip-dim 3.2s ease-in-out infinite;
+}
+
+/* La chispa salta de vez en cuando en el corte */
+.chakana-off__spark {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spark 2.4s steps(1, end) infinite;
+}
+
+.chakana-off__contact {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: contact-flicker 2.4s linear infinite;
+}
+
+@keyframes spark {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  12% {
+    opacity: 0;
+  }
+  16% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  22% {
+    opacity: 0;
+  }
+}
+
+@keyframes contact-flicker {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  8%,
+  16% {
+    opacity: 1;
+  }
+  12%,
+  24% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes chip-dim {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.notfound__button {
+  margin-top: 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chakana-off__spark {
+    opacity: 1;
+  }
+}
