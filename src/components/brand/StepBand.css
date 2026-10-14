@@ -1,0 +1,25 @@
+.stepband {
+  width: 100%;
+  height: var(--stepband-h);
+  overflow: hidden;
+}
+
+.stepband__track {
+  width: calc(100% + var(--stepband-period));
+  max-width: none;
+  height: var(--stepband-h);
+}
+
+.stepband--animated .stepband__track {
+  animation: stepband-slide 14s linear infinite;
+  will-change: transform;
+}
+
+@keyframes stepband-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(var(--stepband-period) * -1));
+  }
+}

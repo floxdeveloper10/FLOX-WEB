@@ -1,0 +1,87 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--header-h);
+  color: var(--flox-blanco);
+  transition: color 0.3s;
+}
+
+/* El fondo aparece con opacidad (más liviano que animar el color de fondo) */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 246, 236, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px -14px rgba(45, 20, 80, 0.45);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.header--solid {
+  color: var(--flox-morado);
+}
+
+.header--solid::before {
+  opacity: 1;
+}
+
+.header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 100%;
+}
+
+.header__brand {
+  display: block;
+  padding: 6px 0;
+  border-radius: 8px;
+}
+
+.header__logo {
+  height: 36px;
+  width: auto;
+}
+
+.header__nav {
+  display: none;
+}
+
+.header__nav ul {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header__nav a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.header__nav a:hover {
+  opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+  .header__logo {
+    height: 42px;
+  }
+}
+
+@media (min-width: 900px) {
+  .header__nav {
+    display: block;
+    margin-left: auto;
+  }
+}

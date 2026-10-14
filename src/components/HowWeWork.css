@@ -1,0 +1,186 @@
+.how {
+  --badge: 72px;
+  --step-gap: 40px;
+  --track-w: 4px;
+}
+
+.steps {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 560px;
+  list-style: none;
+}
+
+/* Móvil: pasos uno debajo del otro, pista vertical a la izquierda */
+.step {
+  position: relative;
+  padding-bottom: var(--step-gap);
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.step__body {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Número dentro de la silueta escalonada de la chakana */
+.step__badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--badge);
+  height: var(--badge);
+  flex-shrink: 0;
+}
+
+.step__badge svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.step__badge path {
+  fill: var(--flox-morado);
+  stroke: var(--flox-turquesa);
+  stroke-width: 4;
+  stroke-linejoin: miter;
+}
+
+.step__number {
+  position: relative;
+  color: var(--flox-amarillo);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.step__text {
+  padding-top: 10px;
+}
+
+.step__title {
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.step__desc {
+  margin-top: 8px;
+  color: var(--flox-texto-suave);
+}
+
+/* Pista de circuito entre pasos: base punteada + relleno que avanza con el scroll */
+.step__track {
+  position: absolute;
+  top: calc(var(--badge) + 8px);
+  bottom: 8px;
+  left: calc(var(--badge) / 2 - var(--track-w) / 2);
+  width: var(--track-w);
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(45, 20, 80, 0.18) 0 8px,
+    transparent 8px 14px
+  );
+}
+
+.step__track-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, var(--flox-naranja), var(--flox-amarillo));
+  transform-origin: top center;
+  transform: scaleY(var(--fill, 0));
+}
+
+/* Contacto amarillo al final de cada tramo */
+.step__track::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: var(--flox-amarillo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step__track-fill {
+    transform: none;
+  }
+}
+
+/* Escritorio: tres columnas, pista horizontal entre los números */
+@media (min-width: 900px) {
+  .how {
+    --badge: 88px;
+    --step-gap: 40px;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--step-gap);
+    max-width: none;
+  }
+
+  .step {
+    padding-bottom: 0;
+  }
+
+  .step__body {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .step__number {
+    font-size: 2.1rem;
+  }
+
+  .step__text {
+    padding-top: 0;
+    max-width: 30ch;
+  }
+
+  .step__track {
+    top: calc(var(--badge) / 2 - var(--track-w) / 2);
+    bottom: auto;
+    left: calc(50% + var(--badge) / 2 + 12px);
+    width: calc(100% + var(--step-gap) - var(--badge) - 24px);
+    height: var(--track-w);
+    background: repeating-linear-gradient(
+      to right,
+      rgba(45, 20, 80, 0.18) 0 8px,
+      transparent 8px 14px
+    );
+  }
+
+  .step__track-fill {
+    background: linear-gradient(to right, var(--flox-naranja), var(--flox-amarillo));
+    transform-origin: left center;
+    transform: scaleX(var(--fill, 0));
+  }
+
+  .step__track::after {
+    top: 50%;
+    bottom: auto;
+    left: auto;
+    right: -4px;
+    margin: -5px 0 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .step__track-fill {
+      transform: none;
+    }
+  }
+}
