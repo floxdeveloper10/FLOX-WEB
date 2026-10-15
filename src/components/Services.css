@@ -72,7 +72,8 @@
 }
 
 .accent--naranja .service-card__check,
-.accent--turquesa .service-card__check {
+.accent--turquesa .service-card__check,
+.accent--amarillo .service-card__check {
   color: var(--flox-morado);
 }
 
@@ -106,8 +107,30 @@
   transform: translateX(4px);
 }
 
+/* Cuatro líneas: 2×2 en tablet y escritorio mediano, 4 en fila en pantallas anchas */
+@media (min-width: 640px) {
+  .services__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (min-width: 900px) {
   .service-card {
     padding: 36px 32px 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .services__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .service-card {
+    padding: 32px 24px 28px;
+  }
+
+  .service-card__name {
+    font-size: 1.45rem;
   }
 }

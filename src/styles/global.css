@@ -287,6 +287,12 @@ a {
   --accent-suave: rgba(0, 184, 169, 0.14);
 }
 
+/* FLOX Apps: amarillo inti, siempre con texto morado encima (contraste 9.6:1) */
+.accent--amarillo {
+  --accent: var(--flox-amarillo);
+  --accent-suave: rgba(255, 194, 26, 0.18);
+}
+
 .icon {
   width: 24px;
   height: 24px;

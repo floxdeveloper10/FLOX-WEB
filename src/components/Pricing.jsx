@@ -15,13 +15,18 @@ export default function Pricing() {
         <ul className="pricing__grid">
           {pricing.plans.map((plan, i) => (
             <Reveal as="li" key={plan.name} delay={i * 0.1} className={plan.featured ? 'pricing__item--featured' : ''}>
-              <article className={`card plan ${plan.featured ? 'plan--featured' : ''}`}>
+              <article className={`card plan ${plan.featured ? 'plan--featured' : ''} ${plan.quote ? 'plan--quote' : ''}`}>
                 {plan.featured && <p className="plan__badge">{pricing.featuredLabel}</p>}
+                {plan.tag && <p className="plan__tag">{plan.tag}</p>}
                 <h3 className="plan__name">{plan.name}</h3>
-                <p className="plan__price">
-                  <span className="plan__from">{pricing.from}</span>
-                  <span className="plan__amount">S/ {plan.price}</span>
-                </p>
+                {plan.quote ? (
+                  <p className="plan__price plan__price--quote">{plan.quote}</p>
+                ) : (
+                  <p className="plan__price">
+                    <span className="plan__from">{pricing.from}</span>
+                    <span className="plan__amount">S/ {plan.price}</span>
+                  </p>
+                )}
 
                 <ul className="plan__features">
                   {plan.features.map((feature) => (
@@ -37,9 +42,9 @@ export default function Pricing() {
                   href={whatsappLink(plan.message)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${pricing.cta}: ${plan.name}`}
+                  aria-label={`${plan.cta ?? pricing.cta}: ${plan.name}`}
                 >
-                  {pricing.cta}
+                  {plan.cta ?? pricing.cta}
                 </a>
               </article>
             </Reveal>

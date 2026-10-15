@@ -60,7 +60,8 @@ function buildModules() {
 
 const MODULES_PATH = buildModules()
 
-export default function QrCode({ className = '' }) {
+// color: color de los módulos (morado FLOX por defecto)
+export default function QrCode({ className = '', color = '#2D1450' }) {
   return (
     <svg
       viewBox="-2 -2 29 29"
@@ -70,7 +71,7 @@ export default function QrCode({ className = '' }) {
       shapeRendering="crispEdges"
     >
       <rect x="-2" y="-2" width="29" height="29" rx="1.5" fill="#fff" />
-      <path d={MODULES_PATH} fill="#2D1450" />
+      <path d={MODULES_PATH} fill={color} />
     </svg>
   )
 }

@@ -71,6 +71,7 @@ export default function Header() {
   if (onHome) activeId = activeSection ?? 'inicio'
   else if (pathname.startsWith('/proyectos')) activeId = 'proyectos'
   else if (pathname.startsWith('/nosotros')) activeId = 'nosotros'
+  else if (pathname.startsWith('/apps')) activeId = 'apps'
 
   const closeMenu = () => {
     setMenuOpen(false)

@@ -55,7 +55,8 @@
   height: 32px;
   padding: 0 22px;
   background: var(--status-bg);
-  color: #fff;
+  color: var(--status-fg, #fff);
+  transition: background-color 0.3s, color 0.3s;
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -112,5 +113,59 @@
   .phone {
     --phone-w: 320px;
     --screen-h: 640px;
+  }
+}
+
+/* Pequeño: ilustraciones (portada de FLOX Apps) */
+.phone.phone--sm {
+  --phone-w: 220px;
+  --screen-h: 452px;
+  padding: 8px;
+  border-radius: 36px;
+}
+
+.phone--sm .phone__screen {
+  border-radius: 28px;
+}
+
+.phone--sm .phone__status {
+  height: 26px;
+  padding: 0 18px;
+  font-size: 0.65rem;
+}
+
+.phone--sm .phone__notch {
+  width: 76px;
+  height: 18px;
+  margin-left: -38px;
+}
+
+/* Grande: demo de app a pantalla central */
+@media (min-width: 900px) {
+  .phone.phone--lg {
+    --phone-w: 360px;
+    --screen-h: min(740px, calc(100dvh - 140px));
+  }
+}
+
+/* En el celular, la app ocupa la pantalla sin el marco del teléfono */
+@media (max-width: 699px) {
+  .phone.phone--bare-mobile {
+    --phone-w: 100%;
+    --screen-h: 100%;
+    height: 100%;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .phone--bare-mobile .phone__button,
+  .phone--bare-mobile .phone__status {
+    display: none;
+  }
+
+  .phone--bare-mobile .phone__screen {
+    border-radius: 0;
   }
 }

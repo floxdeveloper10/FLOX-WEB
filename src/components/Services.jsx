@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import Reveal from './Reveal.jsx'
 import SectionHeading from './SectionHeading.jsx'
@@ -12,7 +13,7 @@ export default function Services() {
       <div className="container">
         <SectionHeading id={headingId} eyebrow={services.eyebrow} title={services.title} />
 
-        <ul className="card-grid">
+        <ul className="card-grid services__grid">
           {services.items.map((service, i) => (
             <Reveal as="li" key={service.name} delay={i * 0.1}>
               <article className={`card service-card accent--${service.accent}`}>
@@ -33,15 +34,23 @@ export default function Services() {
                   ))}
                 </ul>
 
-                <a
-                  className="service-card__cta"
-                  href={whatsappLink(service.message)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {service.cta}
-                  <Icon name="flecha" />
-                </a>
+                {/* FLOX Apps lleva a su página; las demás líneas, a WhatsApp */}
+                {service.link ? (
+                  <Link className="service-card__cta" to={service.link}>
+                    {service.cta}
+                    <Icon name="flecha" />
+                  </Link>
+                ) : (
+                  <a
+                    className="service-card__cta"
+                    href={whatsappLink(service.message)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {service.cta}
+                    <Icon name="flecha" />
+                  </a>
+                )}
               </article>
             </Reveal>
           ))}

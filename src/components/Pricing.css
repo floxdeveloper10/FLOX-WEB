@@ -109,15 +109,54 @@
   text-underline-offset: 4px;
 }
 
-@media (min-width: 900px) {
+/* App a medida: sin monto, se cotiza (con el amarillo de FLOX Apps) */
+.plan--quote {
+  border-color: rgba(255, 194, 26, 0.7);
+}
+
+.plan__tag {
+  align-self: flex-start;
+  margin-bottom: 14px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--flox-amarillo);
+  color: var(--flox-morado);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.plan__price--quote {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Cuatro planes: 2×2 en tablet, 4 en fila en pantallas anchas */
+@media (min-width: 640px) {
   .pricing__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .plan {
+    padding: 32px 28px 28px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pricing__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     align-items: stretch;
-    gap: 28px;
+    gap: 24px;
     padding-block: 20px;
   }
 
-  /* En escritorio la más pedida va al centro */
+  /* En escritorio la más pedida va en segundo lugar, un poco más alta */
   .pricing__item--featured {
     order: 2;
     margin-block: -20px;
@@ -131,12 +170,16 @@
     order: 3;
   }
 
+  .pricing__grid > li:nth-child(4) {
+    order: 4;
+  }
+
   .plan {
-    padding: 32px 28px 28px;
+    padding: 32px 24px 26px;
   }
 
   .plan--featured {
-    padding: 44px 32px 36px;
+    padding: 44px 26px 34px;
   }
 
   .plan--featured .plan__amount {

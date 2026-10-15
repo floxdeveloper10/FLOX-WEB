@@ -107,6 +107,19 @@ export const services = {
       cta: 'Avísame cuando esté listo',
       message: 'Hola FLOX, avísenme cuando FLOX Sense (sensores con alertas por WhatsApp) esté listo',
     },
+    {
+      name: 'FLOX Apps',
+      accent: 'amarillo',
+      summary: 'Apps móviles a medida para tu negocio: reservas, pedidos, inventario, membresías y lo que imagines. Para Android e iPhone.',
+      features: [
+        'Diseño con tu marca',
+        'Para Android e iPhone',
+        'Panel para administrarla tú mismo',
+      ],
+      cta: 'Ver apps de ejemplo',
+      // Enlace a una página de la web (en vez de WhatsApp)
+      link: '/apps',
+    },
   ],
 }
 
@@ -168,6 +181,7 @@ export const nav = [
   { id: 'inicio', label: 'Inicio', to: '/' },
   { id: 'servicios', label: 'Servicios', to: '/servicios', section: true },
   { id: 'proyectos', label: 'Proyectos', to: '/proyectos', dropdown: true },
+  { id: 'apps', label: 'Apps', to: '/apps' },
   { id: 'nosotros', label: 'Nosotros', to: '/nosotros' },
   { id: 'precios', label: 'Precios', to: '/precios', section: true },
   { id: 'contacto', label: 'Contacto', to: '/contacto', section: true },
@@ -221,6 +235,20 @@ export const pricing = {
         'Facebook e Instagram con tu marca',
       ],
       message: 'Hola FLOX, quiero el Perfil de Google Maps y redes (desde S/ 150)',
+    },
+    {
+      name: 'App móvil a medida',
+      tag: 'FLOX Apps',
+      // Sin monto: se cotiza según las funciones de cada app
+      quote: 'Cotización según tu proyecto',
+      features: [
+        'Diseño personalizado',
+        'Android e iPhone',
+        'Panel para administrar',
+        'Soporte',
+      ],
+      cta: 'Cotizar mi app',
+      message: 'Hola FLOX, quiero cotizar una app móvil a medida para mi negocio',
     },
   ],
   note: 'Precio de lanzamiento para los primeros clientes. Trabajamos con 50 % de adelanto.',

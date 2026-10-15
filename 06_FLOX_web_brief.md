@@ -49,7 +49,7 @@ Guardar todos estos datos en **un solo archivo**, `src/data/site.js`, para cambi
 | Fucsia | #E8185D | Color principal |
 | Morado andino | #2D1450 | Textos y fondos oscuros |
 | Naranja | #FF6B1A | Botones y llamados a la acción |
-| Amarillo inti | #FFC21A | Detalles y acentos |
+| Amarillo inti | #FFC21A | Detalles y acentos. Color de **FLOX Apps** (siempre con texto morado encima, por contraste) |
 | Turquesa | #00B8A9 | Tecnología |
 | Crema | #FFF6EC | Fondos claros |
 
@@ -111,21 +111,31 @@ Todo debe sentirse fluido en un celular de gama media. Usar solo `transform` y `
    - "¿Los turistas te piden la carta en inglés?" → carta digital multilingüe con QR.
    - "¿Pierdes clientes porque no respondes WhatsApp a tiempo?" → chatbot que responde 24/7.
    - "¿Tu negocio no aparece en Google Maps?" → configuramos tu perfil para que te encuentren.
-4. **Servicios:** tres tarjetas, una por línea, cada una con su color.
+4. **Servicios:** cuatro tarjetas, una por línea, cada una con su color.
    - **FLOX Web** (fucsia): páginas web, cartas digitales con QR en varios idiomas, perfiles de Google Maps y redes.
    - **FLOX Auto** (naranja): chatbots de WhatsApp y sistema de citas con recordatorios.
    - **FLOX Sense** (turquesa): sensores con alertas por WhatsApp para refrigeradoras y tanques. Etiqueta **"Próximamente"**.
+   - **FLOX Apps** (amarillo inti #FFC21A, con texto morado encima): "Apps móviles a medida para tu negocio: reservas, pedidos, inventario, membresías y lo que imagines. Para Android e iPhone." Enlace "Ver apps de ejemplo" → página `/apps`.
 5. **Pruébalo tú mismo:** la demo de la carta y la demo del chatbot, una al lado de la otra en escritorio y una debajo de la otra en el móvil.
 6. **Cómo trabajamos:** 3 pasos numerados: "Visitamos tu negocio" → "Te mostramos una demo con tus datos" → "Lo dejamos funcionando y te enseñamos a usarlo".
 7. **Precios:** tres tarjetas con precios "desde":
    - Carta digital con QR: desde S/ 250
    - Web de una página: desde S/ 600
    - Perfil de Google Maps y redes: desde S/ 150
+   - App móvil a medida: **"Cotización según tu proyecto"** (sin monto). Incluye diseño personalizado, Android e iPhone, panel para administrar y soporte. Botón "Cotizar mi app" → WhatsApp.
    - Nota: "Precio de lanzamiento para los primeros clientes. Trabajamos con 50 % de adelanto."
    - Cada tarjeta tiene su botón "Lo quiero", que abre WhatsApp con un mensaje que nombra ese servicio.
 8. **Por qué FLOX:** bloque corto con tres razones: "Somos de Cusco y te visitamos", "Te explicamos todo sin términos técnicos" y "Soporte por WhatsApp".
 9. **Contacto:** fondo morado. Botón grande de WhatsApp, el correo como enlace `mailto:`, "Cusco, Perú" y el ícono de Facebook.
 10. **Pie de página:** logo blanco, franja andina animada y "© 2026 FLOX · Hecho en Cusco".
+
+## 6b. FLOX Apps (cuarta línea de servicio)
+Aplicaciones móviles a medida para cualquier negocio: gimnasios, restaurantes, inventarios, citas, delivery o lo que el cliente necesite.
+- **Color:** amarillo inti #FFC21A, siempre con texto morado #2D1450 encima (el blanco no tiene contraste suficiente sobre amarillo).
+- **Menú:** enlace "Apps" entre Proyectos y Nosotros (también en el menú del celular y en el pie).
+- **Página `/apps`:** portada morada "Tu negocio, en el celular de tus clientes" con 3 celulares flotando · "¿Qué app necesita tu negocio?" (ideas con íconos) · "Prueba nuestras apps de ejemplo" · Cómo creamos tu app (Idea → Diseño → Desarrollo → Publicación y soporte) · Preguntas frecuentes · Cierre "Cuéntanos tu idea de app" → WhatsApp.
+- **Proyectos:** categoría "Apps". Apps de ejemplo: **Puma Fit** (`/proyectos/app-gym`, app de gimnasio, lista), **Qhapaq Pedidos** (`app-restaurante`, en construcción) y **Stock Andino** (`app-inventario`, en construcción).
+- Las demos de apps son ficticias: sin usuarios, contraseñas ni pagos reales; las compras terminan en WhatsApp.
 
 ## 7. SEO y vista previa al compartir
 - `<html lang="es">`

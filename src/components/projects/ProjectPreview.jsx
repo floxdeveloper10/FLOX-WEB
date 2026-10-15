@@ -1,3 +1,4 @@
+import AppScreen from '../apps/AppScreens.jsx'
 import './ProjectPreview.css'
 
 // Ilustración de portada de cada negocio (dentro del mini navegador)
@@ -116,6 +117,18 @@ function Phone() {
   )
 }
 
+// App móvil: celular con la pantalla principal de esa app
+function AppPhone({ slug }) {
+  return (
+    <div className="pp__phone">
+      <span className="pp__notch" />
+      <div className="pp__screen pp__screen--app">
+        <AppScreen app={slug} className="pp__app-screen" />
+      </div>
+    </div>
+  )
+}
+
 /**
  * Vista previa dibujada (sin capturas) de un proyecto: mini celular o navegador
  * con los colores del negocio. Es decorativa.
@@ -134,7 +147,11 @@ export default function ProjectPreview({ project, size = 'lg', overlay }) {
       }}
       aria-hidden="true"
     >
-      <div className="pp__device">{project.preview === 'phone' ? <Phone /> : <Browser project={project} />}</div>
+      <div className="pp__device">
+        {project.preview === 'phone' && <Phone />}
+        {project.preview === 'app' && <AppPhone slug={project.slug} />}
+        {project.preview === 'browser' && <Browser project={project} />}
+      </div>
       {overlay && <span className="pp__overlay">{overlay}</span>}
     </div>
   )
