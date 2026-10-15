@@ -2,6 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import DemoBar from '../shared/DemoBar.jsx'
+import SkipTarget from '../shared/SkipTarget.jsx'
+import { resetPage } from '../../layout/resetPage.js'
 import useGoogleFonts from '../shared/useGoogleFonts.js'
 import { local, session } from '../shared/safeStorage.js'
 import AgenciaNav from './components/AgenciaNav.jsx'
@@ -160,8 +162,9 @@ export default function AgenciaSite() {
       <div className="agencia" lang={lang}>
         <DemoBar message="Hola FLOX, vi la demo de Andes Ruta Travel y quiero una web así para mi agencia" />
         <AgenciaNav />
+        <SkipTarget />
         {/* Cada página interna entra con un fundido; al cambiar de página se vuelve arriba */}
-        <AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
+        <AnimatePresence mode="wait" initial={false} onExitComplete={resetPage}>
           <motion.div key={location.pathname} className="ag-page" {...pageMotion}>
             <Routes location={location}>
               <Route index element={<Inicio />} />

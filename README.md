@@ -1,16 +1,43 @@
-# React + Vite
+# FLOX — web
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Web de **FLOX**, micro agencia de tecnología de Cusco: webs, apps móviles y atención por WhatsApp para negocios.
+Incluye las páginas de FLOX (inicio, Nosotros, Proyectos, Apps) y los proyectos demo con negocios ficticios
+(hotel, agencia de turismo y tres apps).
 
-Currently, two official plugins are available:
+Publicada en: https://floxdeveloper10.github.io/flox-web/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Correr el proyecto en tu computadora
 
-## React Compiler
+Necesitas [Node.js](https://nodejs.org/) 20 o más reciente.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install     # instala las dependencias (solo la primera vez)
+npm run dev     # abre la web en http://localhost:5173/flox-web/
+```
 
-## Expanding the Oxlint configuration
+Otros comandos:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+npm run build    # construye la versión final en la carpeta dist/
+npm run preview  # muestra esa versión final en http://localhost:4173/flox-web/
+npm run lint     # revisa el código
+npm run og       # vuelve a generar la imagen para compartir (public/og-image.png)
+```
+
+## Publicar
+
+La web se publica sola en GitHub Pages cada vez que se sube un cambio a la rama `main`
+(lo hace `.github/workflows/deploy.yml`). Solo hay que activarlo una vez en GitHub:
+**Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+## Cambiar los datos de contacto
+
+Todo está en **`src/data/site.js`**: número de WhatsApp, correo y redes sociales.
+Si cambias el número, todos los botones de WhatsApp de la web (también los de las demos) usan el nuevo.
+
+Otros textos que se cambian seguido:
+
+- `src/data/site.js`: textos del inicio, servicios y precios.
+- `src/data/proyectos.js`: proyectos demo que se muestran en Proyectos.
+- `src/data/seo.js`: título y descripción de cada página (para Google).
+- `src/data/nosotros.js`: página Nosotros (falta la foto del fundador, marcada como `[FOTO FUNDADOR]`).

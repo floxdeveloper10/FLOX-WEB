@@ -5,10 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#2D1450" />
-    <title>FLOX | Webs, cartas digitales y WhatsApp para negocios en Cusco</title>
+    <title>FLOX | Webs, apps y WhatsApp para negocios en Cusco</title>
     <meta
       name="description"
-      content="Ayudamos a restaurantes, hostales, agencias y tiendas de Cusco a vender más con webs, cartas digitales con QR y atención automática por WhatsApp."
+      content="Webs, apps móviles y atención por WhatsApp para restaurantes, hoteles, agencias y tiendas de Cusco. Te mostramos una demo gratis con tu negocio."
     />
     <link rel="canonical" href="https://floxdeveloper10.github.io/flox-web/" />
 
@@ -17,33 +17,61 @@
     <meta property="og:site_name" content="FLOX" />
     <meta property="og:locale" content="es_PE" />
     <meta property="og:url" content="https://floxdeveloper10.github.io/flox-web/" />
-    <meta property="og:title" content="FLOX | Webs, cartas digitales y WhatsApp para negocios en Cusco" />
+    <meta property="og:title" content="FLOX | Webs, apps y WhatsApp para negocios en Cusco" />
     <meta
       property="og:description"
-      content="Ayudamos a restaurantes, hostales, agencias y tiendas de Cusco a vender más con webs, cartas digitales con QR y atención automática por WhatsApp."
+      content="Webs, apps móviles y atención por WhatsApp para restaurantes, hoteles, agencias y tiendas de Cusco. Te mostramos una demo gratis con tu negocio."
     />
     <meta property="og:image" content="https://floxdeveloper10.github.io/flox-web/og-image.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Logo de FLOX sobre morado con la frase: Vende más y pierde menos" />
+    <meta property="og:image:alt" content="Logo de FLOX sobre morado con la frase: Vende más y pierde menos. Webs, apps y WhatsApp para negocios en Cusco" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="FLOX | Webs, cartas digitales y WhatsApp para negocios en Cusco" />
+    <meta name="twitter:title" content="FLOX | Webs, apps y WhatsApp para negocios en Cusco" />
     <meta
       name="twitter:description"
-      content="Ayudamos a restaurantes, hostales, agencias y tiendas de Cusco a vender más con webs, cartas digitales con QR y atención automática por WhatsApp."
+      content="Webs, apps móviles y atención por WhatsApp para restaurantes, hoteles, agencias y tiendas de Cusco. Te mostramos una demo gratis con tu negocio."
     />
     <meta name="twitter:image" content="https://floxdeveloper10.github.io/flox-web/og-image.png" />
-    <meta name="twitter:image:alt" content="Logo de FLOX sobre morado con la frase: Vende más y pierde menos" />
+    <meta name="twitter:image:alt" content="Logo de FLOX sobre morado con la frase: Vende más y pierde menos. Webs, apps y WhatsApp para negocios en Cusco" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Space Grotesk sin bloquear el primer pintado (display=swap: mientras llega, se ve la fuente del sistema) -->
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" />
+    </noscript>
+    <!-- Datos estructurados: negocio local (Google) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "FLOX",
+        "description": "Webs, apps móviles y atención por WhatsApp para negocios en Cusco.",
+        "url": "https://floxdeveloper10.github.io/flox-web/",
+        "logo": "https://floxdeveloper10.github.io/flox-web/favicon.svg",
+        "image": "https://floxdeveloper10.github.io/flox-web/og-image.png",
+        "telephone": "+51 927 484 492",
+        "email": "developerflox@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cusco",
+          "addressRegion": "Cusco",
+          "addressCountry": "PE"
+        },
+        "areaServed": { "@type": "City", "name": "Cusco" },
+        "sameAs": ["https://www.facebook.com/profile.php?id=61576914354970"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -772,8 +772,8 @@
 .acal__nav {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -814,7 +814,7 @@
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
-  min-height: 38px;
+  min-height: 44px;
   padding: 0;
   border: 0;
   border-radius: 10px;
@@ -955,8 +955,8 @@
 .atrav__stepper button {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 0;
   border-radius: 50%;

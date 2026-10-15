@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import DemoBar from '../shared/DemoBar.jsx'
+import SkipTarget from '../shared/SkipTarget.jsx'
 import SideNotes from '../shared/SideNotes.jsx'
 import DemoReset from '../shared/DemoReset.jsx'
 import DemoCta from '../shared/DemoCta.jsx'
@@ -40,8 +41,9 @@ export default function GymSite() {
 
   return (
     <div className="gympage">
-      <DemoBar message="Hola FLOX, vi la demo de la app Puma Fit y quiero una app así para mi negocio" />
+      <DemoBar kind="app" message="Hola FLOX, vi la demo de la app Puma Fit y quiero una app así para mi negocio" />
 
+      <SkipTarget />
       <div className="gympage__main">
         <header className="gympage__intro">
           <PumaLogo className="gympage__logo" />

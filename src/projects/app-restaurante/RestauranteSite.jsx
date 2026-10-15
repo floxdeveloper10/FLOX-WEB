@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import DemoBar from '../shared/DemoBar.jsx'
+import SkipTarget from '../shared/SkipTarget.jsx'
 import SideNotes from '../shared/SideNotes.jsx'
 import DemoReset from '../shared/DemoReset.jsx'
 import DemoCta from '../shared/DemoCta.jsx'
@@ -61,8 +62,9 @@ export default function RestauranteSite() {
   return (
     <PedidosContext.Provider value={pedidos}>
       <div className="qpage" data-side={side}>
-        <DemoBar message="Hola FLOX, vi la demo de Qhapaq Pedidos y quiero una app así para mi restaurante" />
+        <DemoBar kind="app" message="Hola FLOX, vi la demo de Qhapaq Pedidos y quiero una app así para mi restaurante" />
 
+        <SkipTarget />
         <div className="qpage__main">
           <header className="qpage__intro">
             <RestaurantLogo size={52} className="qpage__logo" />

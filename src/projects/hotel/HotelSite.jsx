@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import DemoBar from '../shared/DemoBar.jsx'
+import SkipTarget from '../shared/SkipTarget.jsx'
 import useGoogleFonts from '../shared/useGoogleFonts.js'
 import HotelNav from './components/HotelNav.jsx'
 import HotelHero from './components/HotelHero.jsx'
@@ -83,8 +84,9 @@ export default function HotelSite() {
   return (
     <HotelContext.Provider value={value}>
       <div className="hotel" lang={lang}>
-        <DemoBar projectName="Hotel Killa Wasi" message="Hola FLOX, vi la demo del Hotel Killa Wasi y quiero una web así para mi negocio" />
+        <DemoBar message="Hola FLOX, vi la demo del Hotel Killa Wasi y quiero una web así para mi negocio" />
         <HotelNav />
+        <SkipTarget />
         <HotelHero />
         <Rooms />
         <Experiences />

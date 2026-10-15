@@ -101,18 +101,18 @@ export default function ClienteApp({ view, onViewChange }) {
               type="button"
               className={`qtabs__tab ${active ? 'is-active' : ''}`}
               aria-current={active ? 'page' : undefined}
-              aria-label={tab.id === 'carrito' && count ? `${tab.label}, ${count} ${count === 1 ? 'plato' : 'platos'}` : tab.label}
               onClick={() => go(tab.id)}
             >
               <span className="qtabs__icon" {...(tab.id === 'carrito' ? { 'data-cart-target': true } : {})}>
                 <QIcon name={tab.icon} />
                 {tab.id === 'carrito' && count > 0 && (
-                  <motion.span key={count} className="qtabs__badge" initial={{ scale: 0.4 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 600, damping: 18 }}>
+                  <motion.span key={count} className="qtabs__badge" aria-hidden="true" initial={{ scale: 0.4 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 600, damping: 18 }}>
                     {count}
                   </motion.span>
                 )}
               </span>
-              <span aria-hidden="true">{tab.label}</span>
+              <span>{tab.label}</span>
+              {tab.id === 'carrito' && count > 0 && <span className="q-hidden">, {count} {count === 1 ? 'plato' : 'platos'}</span>}
             </button>
           )
         })}

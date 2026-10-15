@@ -12,6 +12,6 @@ export function useAgencia() {
 // Título de la pestaña de cada página de la agencia
 export function useAgenciaTitle(title) {
   useEffect(() => {
-    document.title = `${title ? `${title} · ` : ''}Andes Ruta Travel · Proyecto demo | FLOX`
+    document.title = `${title ? `${title} · ` : ''}Andes Ruta Travel · Demo FLOX`
   }, [title])
 }

@@ -161,8 +161,9 @@ export default function AgenciaNav() {
   return (
     <header className={`anav ${scrolled ? 'anav--scrolled' : ''}`}>
       <div className="a-container anav__inner">
-        <Link to={to()} className="anav__brand" aria-label={t.nav.logoHome} onClick={() => setOpen(false)}>
+        <Link to={to()} className="anav__brand" onClick={() => setOpen(false)}>
           <AgenciaLogo />
+          <span className="a-visually-hidden">{t.nav.logoHome}</span>
         </Link>
 
         <nav className="anav__nav" aria-label={t.nav.main}>

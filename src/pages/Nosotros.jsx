@@ -6,7 +6,8 @@ import PageHero from '../components/PageHero.jsx'
 import Reveal from '../components/Reveal.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import WhatsAppIcon from '../components/WhatsAppIcon.jsx'
-import useDocumentTitle from '../hooks/useDocumentTitle.js'
+import usePageMeta from '../hooks/usePageMeta.js'
+import { seo } from '../data/seo.js'
 import { nosotros } from '../data/nosotros.js'
 import { whatsappLink } from '../data/site.js'
 import './Nosotros.css'
@@ -30,7 +31,7 @@ function BrandChakana() {
 }
 
 export default function Nosotros() {
-  useDocumentTitle('Nosotros')
+  usePageMeta(seo.nosotros)
   const { hero, story, missionVision, values, brand, founder, closing } = nosotros
 
   return (

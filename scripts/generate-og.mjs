@@ -94,7 +94,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
     <text x="500" y="200" fill="${AMARILLO}" font-size="24" letter-spacing="6">TECNOLOGÍA HECHA EN CUSCO</text>
     <text x="496" y="300" fill="${BLANCO}" font-size="92" letter-spacing="-3">Vende más y</text>
     <text x="496" y="398" fill="${AMARILLO}" font-size="92" letter-spacing="-3">pierde menos</text>
-    <text x="500" y="462" fill="${BLANCO}" fill-opacity="0.85" font-size="30">Webs, cartas digitales y WhatsApp</text>
+    <text x="500" y="462" fill="${BLANCO}" fill-opacity="0.85" font-size="30">Webs, apps y WhatsApp</text>
     <text x="500" y="502" fill="${BLANCO}" fill-opacity="0.85" font-size="30">para negocios en Cusco</text>
   </g>
   ${stepBand({ scale: 1.5 })}

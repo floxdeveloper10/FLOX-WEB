@@ -128,10 +128,10 @@ export default function HotelNav() {
           <button
             type="button"
             className="hnav__brand"
-            aria-label={t.nav.home}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <HotelLogo />
+            <span className="h-visually-hidden">{t.nav.home}</span>
           </button>
 
           <nav className="hnav__nav" aria-label={t.nav.main}>

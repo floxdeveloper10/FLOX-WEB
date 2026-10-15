@@ -61,7 +61,7 @@ export function Testimonials() {
         <ul className="areviews__list">
           {testimonials.map((r, i) => (
             <motion.li key={r.name} className="areview" {...reveal(i)}>
-              <p className="areview__stars" aria-label={t.reviews.rating}>
+              <p className="areview__stars" role="img" aria-label={t.reviews.rating}>
                 {[0, 1, 2, 3, 4].map((n) => (
                   <AgenciaIcon key={n} name="star" filled />
                 ))}

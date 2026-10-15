@@ -4,13 +4,14 @@ import PageHero from '../components/PageHero.jsx'
 import Reveal from '../components/Reveal.jsx'
 import WhatsAppIcon from '../components/WhatsAppIcon.jsx'
 import ProjectCard from '../components/projects/ProjectCard.jsx'
-import useDocumentTitle from '../hooks/useDocumentTitle.js'
+import usePageMeta from '../hooks/usePageMeta.js'
+import { seo } from '../data/seo.js'
 import { projectCategories, projects, projectsPage } from '../data/proyectos.js'
 import { whatsappLink } from '../data/site.js'
 import './Proyectos.css'
 
 export default function Proyectos() {
-  useDocumentTitle(projectsPage.title)
+  usePageMeta(seo.proyectos)
   const [filter, setFilter] = useState('todos')
   const visible = filter === 'todos' ? projects : projects.filter((p) => p.category === filter)
 

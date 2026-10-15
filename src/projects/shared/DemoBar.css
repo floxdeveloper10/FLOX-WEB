@@ -4,11 +4,11 @@
   inset: 0 0 auto;
   z-index: 90;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 8px;
   height: var(--demobar-h, 40px);
-  padding: 0 12px;
+  padding: 0 8px;
   background: #2d1450;
   color: #fff;
   font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -21,7 +21,9 @@
 .demobar__cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
+  min-width: 32px;
   min-height: 32px;
   padding: 0 10px;
   border-radius: 999px;
@@ -32,7 +34,18 @@
 
 .demobar__back {
   justify-self: start;
+  padding: 0 6px;
   color: #fff;
+}
+
+.demobar__back svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .demobar__back:hover {
@@ -46,17 +59,32 @@
   color: #2d1450;
 }
 
+/* "Proyecto demo · negocio ficticio": siempre visible (en el celular, en dos líneas) */
 .demobar__label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
   margin: 0;
-  white-space: nowrap;
+  font-size: 0.72rem;
+  text-align: left;
+}
+
+.demobar__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.demobar__sep {
+  display: none;
 }
 
 .demobar__chakana {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .demobar :focus-visible {
@@ -70,14 +98,34 @@
 
 @media (min-width: 820px) {
   .demobar {
+    grid-template-columns: 1fr auto 1fr;
     padding: 0 20px;
   }
 
+  .demobar__back {
+    padding: 0 10px;
+  }
+
+  .demobar__label {
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .demobar__text {
+    display: block;
+  }
+
+  .demobar__sep,
   .demobar__long {
     display: inline;
   }
 
   .demobar__short {
     display: none;
+  }
+
+  .demobar__chakana {
+    width: 20px;
+    height: 20px;
   }
 }

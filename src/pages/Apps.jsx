@@ -5,14 +5,15 @@ import AppProcess from '../components/apps/AppProcess.jsx'
 import AppFaq from '../components/apps/AppFaq.jsx'
 import Reveal from '../components/Reveal.jsx'
 import WhatsAppIcon from '../components/WhatsAppIcon.jsx'
-import useDocumentTitle from '../hooks/useDocumentTitle.js'
+import usePageMeta from '../hooks/usePageMeta.js'
+import { seo } from '../data/seo.js'
 import { appsPage } from '../data/apps.js'
 import { whatsappLink } from '../data/site.js'
 import './Apps.css'
 
 // FLOX Apps: apps móviles a medida para cualquier negocio
 export default function Apps() {
-  useDocumentTitle(appsPage.title)
+  usePageMeta(seo.apps)
   const { closing } = appsPage
 
   return (

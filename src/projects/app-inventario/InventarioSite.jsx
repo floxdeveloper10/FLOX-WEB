@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DemoBar from '../shared/DemoBar.jsx'
+import SkipTarget from '../shared/SkipTarget.jsx'
 import SideNotes from '../shared/SideNotes.jsx'
 import DemoReset from '../shared/DemoReset.jsx'
 import DemoCta from '../shared/DemoCta.jsx'
@@ -26,8 +27,9 @@ export default function InventarioSite() {
 
   return (
     <div className="ipage">
-      <DemoBar message="Hola FLOX, vi la demo de Stock Andino y quiero una app de inventario para mi negocio" />
+      <DemoBar kind="app" message="Hola FLOX, vi la demo de Stock Andino y quiero una app de inventario para mi negocio" />
 
+      <SkipTarget />
       <div className="ipage__main">
         <header className="ipage__intro">
           <StockLogo size={52} className="ipage__logo" />

@@ -118,7 +118,7 @@ export default function Rutina() {
 
       <AnimatePresence initial={false}>
         {complete && (
-          <motion.p className="gdone-banner" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+          <motion.p className="gdone-banner" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, transition: { duration: 0.12 } }}>
             <GymIcon name="star" />
             ¡Rutina completada! Desbloqueaste un logro.
           </motion.p>

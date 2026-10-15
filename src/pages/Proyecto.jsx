@@ -1,7 +1,8 @@
 import { Link, useParams } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import LogoFlox from '../components/brand/LogoFlox.jsx'
-import useDocumentTitle from '../hooks/useDocumentTitle.js'
+import usePageMeta from '../hooks/usePageMeta.js'
+import { demoSeo, seo } from '../data/seo.js'
 import { projects, projectsPage } from '../data/proyectos.js'
 import NotFound from './NotFound.jsx'
 import { projectSites } from '../projects/registry.js'
@@ -15,11 +16,11 @@ export default function Proyecto() {
   // Subrutas solo en los sitios que tienen varias páginas (la agencia)
   const validPath = !rest || entry?.nested
   const Site = validPath ? entry?.Site : null
-  // Si el proyecto no existe se muestra la 404, con su título.
-  // Los sitios con varias páginas ponen el título de cada página.
-  let title = project ? project.name : 'Página no encontrada'
-  if (Site) title = entry.nested ? undefined : `${project.name} · Proyecto demo`
-  useDocumentTitle(title)
+  // Título y descripción: los del demo; "En construcción" usa el nombre del proyecto.
+  // Los sitios con varias páginas (la agencia) ponen el título de cada página.
+  let meta = project ? { title: `${project.name} · Demo FLOX`, description: project.description } : seo.notFound
+  if (Site) meta = { ...demoSeo[slug], ...(entry.nested ? { title: undefined } : {}) }
+  usePageMeta(meta)
 
   if (!project || !validPath) return <NotFound />
   // Proyecto con sitio demo completo (diseño propio)

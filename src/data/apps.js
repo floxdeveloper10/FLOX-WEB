@@ -1,7 +1,6 @@
 // Textos de la página FLOX Apps (/apps)
 
 export const appsPage = {
-  title: 'Apps móviles a medida',
   hero: {
     eyebrow: 'FLOX Apps',
     title: 'Tu negocio, en el celular de tus clientes',

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import { CHAKANA_OUTLINE, CHAKANA_VIEWBOX } from '../components/brand/geometry.js'
-import useDocumentTitle from '../hooks/useDocumentTitle.js'
+import usePageMeta from '../hooks/usePageMeta.js'
+import { seo } from '../data/seo.js'
 import './NotFound.css'
 
 const TEXTS = {
@@ -34,7 +35,7 @@ function ChakanaDisconnected() {
 }
 
 export default function NotFound() {
-  useDocumentTitle('Página no encontrada')
+  usePageMeta(seo.notFound)
 
   return (
     <PageHero

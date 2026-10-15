@@ -140,10 +140,31 @@ a {
   }
 }
 
-/* Mientras se descarga una página: fondo morado del alto de su portada */
+/* Mientras se descarga una página: la chakana late sobre morado */
 .page-fallback {
+  display: grid;
+  place-items: center;
   min-height: 70vh;
   background: var(--flox-morado);
+}
+
+.page-fallback__chakana {
+  width: 72px;
+  height: 72px;
+  animation: chakana-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes chakana-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
 }
 
 /* Secciones: fondos alternados crema / blanco */
@@ -297,4 +318,138 @@ a {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+}
+
+/* ─── Área táctil mínima de 44 px ─────────────────────
+   Controles compactos (en FLOX y en los proyectos demo): se ven igual, pero un área
+   invisible centrada de al menos 44 × 44 px recibe el toque. */
+.demobar__back,
+.demobar__cta,
+.dcta__link,
+.contact a[href^='mailto:'],
+.menu .menu__toggle-btn,
+.menu .stepper__btn,
+.adhero__crumbs a,
+.afoot__links a,
+.afoot__flox,
+.hfoot__flox,
+.acart__link,
+.acat__chip,
+.acat__clear-link,
+.h-toggle__btn,
+.gbtn--sm,
+.gclass__cancel,
+.gnotice__close,
+.qbtn--sm,
+.qchip,
+.qstep__btn,
+.ibtn--sm,
+.ichip {
+  position: relative;
+}
+
+.demobar__back::before,
+.demobar__cta::before,
+.dcta__link::before,
+.contact a[href^='mailto:']::before,
+.menu .menu__toggle-btn::before,
+.menu .stepper__btn::before,
+.menu .dish__add::before,
+.menu .sheet__close::before,
+.adhero__crumbs a::before,
+.afoot__links a::before,
+.afoot__flox::before,
+.hfoot__flox::before,
+.amap__pin::before,
+.amap__close::before,
+.acart__link::before,
+.acat__chip::before,
+.acat__clear-link::before,
+.a-toggle__btn::before,
+.h-toggle__btn::before,
+.gbtn--sm::before,
+.gclass__cancel::before,
+.gnotice__close::before,
+.qbtn--sm::before,
+.qchip::before,
+.qstep__btn::before,
+.ibtn--sm::before,
+.ichip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, 44px);
+  height: max(100%, 44px);
+  transform: translate(-50%, -50%);
+}
+
+/* ─── "Saltar al contenido" ─── */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--flox-morado);
+  color: var(--flox-blanco);
+  font-family: var(--font-base);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid var(--flox-amarillo);
+  outline-offset: 2px;
+}
+
+#contenido:focus,
+.page-top:focus,
+.skip-target:focus {
+  outline: none;
+}
+
+.page-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.skip-target {
+  display: block;
+  height: 0;
+  scroll-margin-top: 120px;
+}
+
+/* Espacio de una sección que todavía se está descargando (inicio) */
+.lazy-section {
+  min-height: 100vh;
+  background: var(--flox-morado);
+}
+
+/* Página que no se pudo cargar */
+.page-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 70vh;
+  padding: 120px 16px 64px;
+  background: var(--flox-morado);
+  color: var(--flox-blanco);
+  text-align: center;
+}
+
+.page-error__title {
+  font-size: 1.6rem;
+  font-weight: 700;
 }

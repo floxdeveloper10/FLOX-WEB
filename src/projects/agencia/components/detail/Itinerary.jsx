@@ -52,9 +52,9 @@ export default function Itinerary({ tour }) {
                     role="region"
                     aria-labelledby={`${uid}-b${i}`}
                     className="aitin__panel"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, transition: { duration: 0.12 } }}
                     transition={{ duration: 0.25 }}
                   >
                     <p>{stop.text[lang]}</p>

@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
 import Phone from './Phone.jsx'
 import RestaurantLogo from './RestaurantLogo.jsx'
@@ -33,7 +33,7 @@ function Toggle({ label, options, value, onChange }) {
         <button
           key={o.id}
           type="button"
-          aria-label={o.name}
+          aria-label={`${o.label} (${o.name})`}
           aria-pressed={value === o.id}
           className="menu__toggle-btn"
           onClick={() => onChange(o.id)}
@@ -65,6 +65,19 @@ export default function MenuDemo({ label }) {
   const total = allDishes.reduce((sum, d) => sum + d.price * (order[d.id] ?? 0), 0)
   const showOrder = orderOpen && count > 0
   const sheetOpen = Boolean(detailDish) || showOrder
+
+  // Al cerrar una hoja, el foco vuelve al botón que la abrió. Se hace aquí (y no en la hoja)
+  // porque la carta deja de estar "inert" recién cuando la hoja se cierra.
+  const triggerRef = useRef(null)
+  const remember = () => {
+    triggerRef.current = document.activeElement
+  }
+  useEffect(() => {
+    if (sheetOpen || !triggerRef.current) return
+    const el = triggerRef.current
+    triggerRef.current = null
+    requestAnimationFrame(() => el.isConnected && el.focus({ preventScroll: true }))
+  }, [sheetOpen])
 
   const tabId = (id) => `${uid}-tab-${id}`
   const panelId = `${uid}-panel`
@@ -144,7 +157,10 @@ export default function MenuDemo({ label }) {
                 </ul>
               </header>
 
-              <button type="button" className="menu__featured" onClick={() => setDetailId(chefPick.id)} aria-haspopup="dialog">
+              <button type="button" className="menu__featured" onClick={() => {
+                  remember()
+                  setDetailId(chefPick.id)
+                }} aria-haspopup="dialog">
                 <span className="menu__featured-text">
                   <span className="menu__featured-label">
                     <StarIcon />
@@ -191,7 +207,10 @@ export default function MenuDemo({ label }) {
                         lang={lang}
                         price={price(dish.price)}
                         qty={order[dish.id] ?? 0}
-                        onOpen={() => setDetailId(dish.id)}
+                        onOpen={() => {
+                          remember()
+                          setDetailId(dish.id)
+                        }}
                         onAdd={() => changeQty(dish.id, 1)}
                       />
                     </motion.li>
@@ -213,7 +232,10 @@ export default function MenuDemo({ label }) {
               <motion.button
                 type="button"
                 className="menu__orderbar"
-                onClick={() => setOrderOpen(true)}
+                onClick={() => {
+                  remember()
+                  setOrderOpen(true)
+                }}
                 aria-haspopup="dialog"
                 initial={{ y: 80, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

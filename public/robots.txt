@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://floxdeveloper10.github.io/flox-web/sitemap.xml

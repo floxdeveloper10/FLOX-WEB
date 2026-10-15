@@ -68,20 +68,19 @@ export default function InventarioApp({ inv, screen, onScreenChange }) {
           type="button"
           className={`inav__item ${active ? 'is-active' : ''}`}
           aria-current={active ? 'page' : undefined}
-          aria-label={item.id === 'alertas' && alertCount ? `${item.label}, ${alertCount} productos` : item.label}
           onClick={() => go(item.id)}
         >
           <span className="inav__icon">
             <IIcon name={item.icon} />
             {item.id === 'alertas' && alertCount > 0 && (
-              <motion.span key={alertCount} className="inav__badge" initial={{ scale: 0.4 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 600, damping: 18 }}>
+              <motion.span key={alertCount} className="inav__badge" aria-hidden="true" initial={{ scale: 0.4 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 600, damping: 18 }}>
                 {alertCount}
               </motion.span>
             )}
           </span>
-          <span className="inav__label" aria-hidden="true">
-            {item.label}
-          </span>
+          {/* El nombre del botón es su texto visible (+ la cantidad de alertas, oculta) */}
+          <span className="inav__label">{item.label}</span>
+          {item.id === 'alertas' && alertCount > 0 && <span className="i-hidden">, {alertCount} productos</span>}
         </button>
       )
     })

@@ -14,11 +14,18 @@ const item = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 }
+const titleItem = {
+  hidden: { y: 20 },
+  show: { y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+}
 
 export default function Hero() {
   const reduceMotion = useReducedMotion()
   const anim = reduceMotion ? {} : { variants: container, initial: 'hidden', animate: 'show' }
   const child = reduceMotion ? {} : { variants: item }
+  // El título se ve desde el primer instante (solo se desliza): es lo más grande de la portada
+  // y el navegador lo usa para medir cuándo cargó la página.
+  const titleAnim = reduceMotion ? {} : { variants: titleItem }
 
   return (
     <section id="inicio" className="hero" aria-labelledby="hero-title">
@@ -28,7 +35,7 @@ export default function Hero() {
             Tecnología hecha en Cusco
           </motion.p>
 
-          <motion.h1 id="hero-title" className="hero__title" {...child}>
+          <motion.h1 id="hero-title" className="hero__title" {...titleAnim}>
             Vende más y <span className="hero__highlight">pierde menos</span>
           </motion.h1>
 

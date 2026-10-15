@@ -42,9 +42,9 @@ export default function Accordion({ items, defaultOpen = [], className = '', hea
                   role="region"
                   aria-labelledby={buttonId}
                   className="aacc__panel"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, transition: { duration: 0.12 } }}
                   transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div className="aacc__content">{item.content}</div>

@@ -4,12 +4,14 @@ import { useReducedMotion } from 'framer-motion'
 import { pageKeyFromPath, sectionFromPath } from './paths.js'
 
 // Espera a que exista un elemento (la página nueva aparece después de la transición)
+// y a que hayan llegado las secciones que se cargan aparte (si no, la posición cambiaría).
 function waitForElement(id, onFound) {
   let frame
   const started = performance.now()
   const check = () => {
     const el = document.getElementById(id)
-    if (el) onFound(el)
+    const pending = document.querySelector('[data-lazy-pending]')
+    if (el && (!pending || performance.now() - started > 2500)) onFound(el)
     else if (performance.now() - started < 3000) frame = requestAnimationFrame(check)
   }
   check()

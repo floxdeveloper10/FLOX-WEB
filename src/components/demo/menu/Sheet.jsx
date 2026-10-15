@@ -7,12 +7,10 @@ import MenuIcon from './MenuIcon.jsx'
 export default function Sheet({ labelledBy, closeLabel, onClose, className = '', children }) {
   const ref = useRef(null)
 
-  // Al abrir, el foco va al botón de cerrar; al cerrar, vuelve a donde estaba.
+  // Al abrir, el foco va al botón de cerrar (al cerrar, MenuDemo lo devuelve al botón que la abrió).
   // preventScroll evita que la página salte hasta el celular.
   useEffect(() => {
-    const previous = document.activeElement
     ref.current?.querySelector('[data-autofocus]')?.focus({ preventScroll: true })
-    return () => previous?.focus?.({ preventScroll: true })
   }, [])
 
   const onKeyDown = (event) => {
