@@ -2,6 +2,18 @@
 .gympage {
   --demobar-h: 40px;
   --lime: #b6f24a;
+  /* Notas, reinicio y llamado final (piezas compartidas) */
+  --demo-accent: #b6f24a;
+  --demo-accent-ink: #0f0f10;
+  --demo-text: #ffffff;
+  --demo-muted: #b4b4bc;
+  --demo-card: rgba(255, 255, 255, 0.03);
+  --demo-active-bg: rgba(182, 242, 74, 0.08);
+  --demo-line: rgba(255, 255, 255, 0.1);
+  --demo-display: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --demo-note-size: 1.3rem;
+  --demo-cta-transform: uppercase;
+  --demo-cta-spacing: 0.01em;
 
   min-height: 100vh;
   padding-top: var(--demobar-h);
@@ -47,8 +59,7 @@
   text-transform: uppercase;
 }
 
-.gympage__title,
-.gympage__cta-title {
+.gympage__title {
   margin-top: 6px;
   font-family: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
   font-size: clamp(2.6rem, 5vw + 1rem, 4rem);
@@ -76,156 +87,6 @@
 .gympage__device {
   display: flex;
   justify-content: center;
-}
-
-.gnotes {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.gnote {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  color: #fff;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition: border-color 0.25s, background-color 0.25s, transform 0.25s;
-}
-
-.gnote:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.gnote.is-active {
-  border-color: var(--lime);
-  background: rgba(182, 242, 74, 0.08);
-  transform: translateX(var(--note-shift, 0));
-}
-
-.gnote__title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  font-family: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
-  font-size: 1.3rem;
-  font-weight: 800;
-  line-height: 1.1;
-  text-transform: uppercase;
-}
-
-.gnote.is-active .gnote__title {
-  color: var(--lime);
-}
-
-.gnote__arrow {
-  width: 18px;
-  height: 18px;
-  opacity: 0.5;
-}
-
-.gnote__text {
-  color: #b4b4bc;
-  font-size: 0.9rem;
-  line-height: 1.45;
-}
-
-.gympage__reset {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.gympage__reset-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 18px;
-  border: 1.5px solid var(--lime);
-  border-radius: 999px;
-  background: none;
-  color: var(--lime);
-  font: 700 0.95rem 'Inter', system-ui, sans-serif;
-  cursor: pointer;
-}
-
-.gympage__reset-btn .gicon {
-  width: 18px;
-  height: 18px;
-}
-
-.gympage__reset-msg {
-  color: #b4b4bc;
-  font-size: 0.9rem;
-}
-
-/* Llamado final */
-.gympage__cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 56px 16px 72px;
-  text-align: center;
-}
-
-.gympage__cta-title {
-  max-width: 720px;
-  font-size: clamp(2rem, 4vw + 1rem, 3.2rem);
-}
-
-.gympage__cta-text {
-  max-width: 520px;
-  margin-top: 12px;
-  color: #b4b4bc;
-}
-
-.gympage__cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 12px 20px;
-  margin-top: 24px;
-}
-
-.gympage__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 52px;
-  padding: 0 24px;
-  border-radius: 999px;
-  background: var(--lime);
-  color: #0f0f10;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.gympage__btn svg {
-  width: 22px;
-  height: 22px;
-}
-
-.gympage__link {
-  color: #fff;
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: var(--lime);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 5px;
 }
 
 /* Celular: la app ocupa la pantalla; el texto y las notas van debajo */
@@ -338,15 +199,6 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .gnote {
-    transition: none;
-  }
-
-  .gnote.is-active {
-    transform: none;
-  }
-}
 
 /* Marco del celular en gris grafito (el morado es de FLOX) */
 .gympage .phone {

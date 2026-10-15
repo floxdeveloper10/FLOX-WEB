@@ -15,9 +15,9 @@ const item = {
 // Los 3 celulares en perspectiva: cada uno flota con su propio ritmo
 // (con "reducir movimiento" se quedan quietos).
 const PHONES = [
-  { app: 'app-restaurante', tone: '#7A2812', className: 'apps-hero__phone--left', float: 5.5, delay: 0.2 },
+  { app: 'app-restaurante', tone: '#FFF4E2', text: 'dark', className: 'apps-hero__phone--left', float: 5.5, delay: 0.2 },
   { app: 'app-gym', tone: '#0F0F10', className: 'apps-hero__phone--center', float: 6.5, delay: 0 },
-  { app: 'app-inventario', tone: '#123C69', className: 'apps-hero__phone--right', float: 6, delay: 0.4 },
+  { app: 'app-inventario', tone: '#0E4C5A', className: 'apps-hero__phone--right', float: 6, delay: 0.4 },
 ]
 
 export default function AppsHero() {
@@ -60,7 +60,7 @@ export default function AppsHero() {
                 animate={{ y: [0, -12, 0] }}
                 transition={{ duration: p.float, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <Phone size="sm" decorative statusTone={p.tone}>
+                <Phone size="sm" decorative statusTone={p.tone} statusText={p.text}>
                   <AppScreen app={p.app} className="apps-screen" />
                 </Phone>
               </motion.div>

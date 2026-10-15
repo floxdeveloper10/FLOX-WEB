@@ -1,13 +1,11 @@
 import { useCallback, useState } from 'react'
-import { Link } from 'react-router-dom'
 import DemoBar from '../shared/DemoBar.jsx'
+import SideNotes from '../shared/SideNotes.jsx'
+import DemoReset from '../shared/DemoReset.jsx'
+import DemoCta from '../shared/DemoCta.jsx'
 import Phone from '../../components/demo/Phone.jsx'
-import WhatsAppIcon from '../../components/WhatsAppIcon.jsx'
-import { whatsappLink } from '../../data/site.js'
 import PumaFitApp from './PumaFitApp.jsx'
 import PumaLogo from './components/PumaLogo.jsx'
-import SideNotes from './components/SideNotes.jsx'
-import GymIcon from './components/GymIcon.jsx'
 import useGymStore from './useGymStore.js'
 import { notes, pageText } from './gym.data.js'
 import './gym-page.css'
@@ -17,7 +15,6 @@ import './gym-page.css'
 export default function GymSite() {
   const gym = useGymStore()
   const [tab, setTab] = useState('inicio')
-  const [resetMsg, setResetMsg] = useState('')
   const current = gym.entered ? tab : 'bienvenida'
 
   const { enter, logout, reset } = gym
@@ -35,8 +32,6 @@ export default function GymSite() {
   const resetDemo = () => {
     reset()
     setTab('inicio')
-    setResetMsg(pageText.resetDone)
-    setTimeout(() => setResetMsg(''), 2500)
   }
 
   const statusTone = !gym.entered || gym.theme === 'dark' ? '#0F0F10' : '#F2F3EE'
@@ -72,33 +67,13 @@ export default function GymSite() {
 
           <div className="gympage__notes gympage__notes--right">
             <SideNotes notes={right} current={current} onSelect={selectScreen} />
-            <div className="gympage__reset">
-              <button type="button" className="gympage__reset-btn" onClick={resetDemo}>
-                <GymIcon name="reset" />
-                {pageText.reset}
-              </button>
-              <span className="gympage__reset-msg" role="status">
-                {resetMsg}
-              </span>
-            </div>
+            <DemoReset onReset={resetDemo} label={pageText.reset} done={pageText.resetDone} />
           </div>
         </div>
 
-        <section className="gympage__cta" aria-labelledby="gympage-cta">
-          <h2 id="gympage-cta" className="gympage__cta-title">
-            {pageText.ctaTitle}
-          </h2>
-          <p className="gympage__cta-text">{pageText.ctaText}</p>
-          <div className="gympage__cta-actions">
-            <a className="gympage__btn" href={whatsappLink(pageText.ctaMessage)} target="_blank" rel="noopener noreferrer">
-              <WhatsAppIcon />
-              {pageText.ctaButton}
-            </a>
-            <Link className="gympage__link" to="/apps">
-              {pageText.moreApps}
-            </Link>
-          </div>
-        </section>
+        <div className="gympage__cta">
+          <DemoCta id="gympage-cta" title={pageText.ctaTitle} text={pageText.ctaText} button={pageText.ctaButton} message={pageText.ctaMessage} moreLabel={pageText.moreApps} />
+        </div>
       </div>
     </div>
   )

@@ -1,0 +1,183 @@
+/* ─── Piezas comunes de las demos de apps (notas, reinicio y llamado final) ───
+   Cada demo define sus colores con variables:
+   --demo-accent (resaltado), --demo-accent-ink (texto sobre el acento), --demo-text,
+   --demo-muted, --demo-card, --demo-line y --demo-display (fuente de títulos). */
+.snotes {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.snote {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--demo-line);
+  border-radius: 16px;
+  background: var(--demo-card);
+  color: var(--demo-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s, transform 0.25s;
+}
+
+.snote:hover {
+  border-color: var(--demo-accent);
+}
+
+.snote.is-active {
+  border-color: var(--demo-accent);
+  background: var(--demo-active-bg, var(--demo-card));
+  box-shadow: inset 4px 0 0 var(--demo-accent);
+  transform: translateX(var(--note-shift, 0));
+}
+
+.snote__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--demo-display);
+  font-size: var(--demo-note-size, 1.15rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.snote.is-active .snote__title {
+  color: var(--demo-accent-text, var(--demo-accent));
+}
+
+.snote__arrow {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.5;
+}
+
+.snote__text {
+  color: var(--demo-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.sreset {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.sreset__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1.5px solid var(--demo-accent-text, var(--demo-accent));
+  border-radius: 999px;
+  background: none;
+  color: var(--demo-accent-text, var(--demo-accent));
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sreset__btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sreset__msg {
+  color: var(--demo-muted);
+  font-size: 0.9rem;
+}
+
+/* Llamado final */
+.dcta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 16px 72px;
+  text-align: center;
+}
+
+.dcta__title {
+  max-width: 760px;
+  margin: 0;
+  color: var(--demo-text);
+  font-family: var(--demo-display);
+  font-size: var(--demo-cta-size, clamp(2rem, 4vw + 1rem, 3rem));
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: var(--demo-cta-spacing, -0.01em);
+  text-transform: var(--demo-cta-transform, none);
+}
+
+.dcta__text {
+  max-width: 540px;
+  margin: 12px 0 0;
+  color: var(--demo-muted);
+}
+
+.dcta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 20px;
+  margin-top: 24px;
+}
+
+.dcta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: var(--demo-accent);
+  color: var(--demo-accent-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.dcta__btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.dcta__link {
+  color: var(--demo-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--demo-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snote {
+    transition: none;
+  }
+
+  .snote.is-active {
+    transform: none;
+  }
+}

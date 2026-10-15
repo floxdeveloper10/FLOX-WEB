@@ -7,6 +7,8 @@ export const projectSites = {
   hotel: { Site: lazy(() => import('./hotel/HotelSite.jsx')), nested: false },
   agencia: { Site: lazy(() => import('./agencia/AgenciaSite.jsx')), nested: true },
   'app-gym': { Site: lazy(() => import('./app-gym/GymSite.jsx')), nested: false },
+  'app-restaurante': { Site: lazy(() => import('./app-restaurante/RestauranteSite.jsx')), nested: false },
+  'app-inventario': { Site: lazy(() => import('./app-inventario/InventarioSite.jsx')), nested: false },
 }
 
 // Si la ruta pertenece a un sitio demo, devuelve su slug; si no, null.

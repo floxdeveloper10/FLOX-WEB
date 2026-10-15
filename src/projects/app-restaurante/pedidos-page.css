@@ -1,0 +1,302 @@
+/* ─── Página de la demo Qhapaq Pedidos ─────────────────── */
+.qpage {
+  --demobar-h: 40px;
+  --switch-h: 60px;
+  /* Notas, reinicio y llamado final (piezas compartidas) */
+  --demo-accent: #a63a1e;
+  --demo-accent-ink: #ffffff;
+  --demo-text: #3b2418;
+  --demo-muted: #6b5446;
+  --demo-card: #ffffff;
+  --demo-active-bg: #fff8ee;
+  --demo-line: rgba(59, 36, 24, 0.14);
+  --demo-display: 'Fraunces', Georgia, serif;
+  --demo-note-size: 1.12rem;
+
+  min-height: 100vh;
+  padding-top: var(--demobar-h);
+  overflow-x: clip;
+  background:
+    radial-gradient(50% 40% at 15% 10%, rgba(166, 58, 30, 0.1), transparent 70%),
+    radial-gradient(40% 40% at 90% 40%, rgba(92, 122, 58, 0.1), transparent 70%),
+    #fbefdc;
+  color: #3b2418;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+}
+
+.qpage :focus-visible {
+  outline: 2px solid #a63a1e;
+  outline-offset: 3px;
+}
+
+.qpage__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.qpage__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 16px 8px;
+  text-align: center;
+}
+
+.qpage__logo {
+  margin-bottom: 10px;
+}
+
+.qpage__eyebrow {
+  color: #862e17;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.qpage__title {
+  margin-top: 6px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2.4rem, 4vw + 1rem, 3.6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.qpage__lead {
+  max-width: 640px;
+  margin-top: 12px;
+  color: #6b5446;
+  line-height: 1.55;
+}
+
+/* Interruptor cliente / restaurante (solo en pantallas angostas).
+   No queda fijo: así nunca tapa la parte de arriba de la app. */
+.qpage__switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #fbefdc;
+}
+
+.qpage__switch button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1.5px solid rgba(59, 36, 24, 0.2);
+  border-radius: 999px;
+  background: #fff;
+  color: #3b2418;
+  font: 700 0.85rem 'Inter', system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.qpage__switch button[aria-pressed='true'] {
+  border-color: #3b2418;
+  background: #3b2418;
+  color: #fff4e2;
+}
+
+.qpage__switch-badge {
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #a63a1e;
+  color: #fff;
+  font-size: 0.72rem;
+}
+
+.qpage__stage {
+  display: grid;
+  gap: 16px;
+}
+
+.qpage__device {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qpage__label {
+  margin-bottom: 12px;
+  color: #6b5446;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.qpage__device--cocina .phone {
+  --frame: #2a1a11;
+}
+
+.qpage__device--cliente .phone {
+  --frame: #3b2418;
+}
+
+.qpage .phone {
+  box-shadow:
+    inset 0 0 0 2px #5a3a28,
+    0 36px 70px -28px rgba(59, 36, 24, 0.6);
+}
+
+.qpage .phone__button {
+  background: #4a2f20;
+}
+
+/* Pantallas angostas: un solo celular a la vez y las notas de ese lado */
+@media (max-width: 899px) {
+  .qpage[data-side='cliente'] .qpage__device--cocina,
+  .qpage[data-side='cocina'] .qpage__device--cliente,
+  .qpage[data-side='cocina'] .qpage__notes--client,
+  .qpage[data-side='cliente'] .qpage__notes--kitchen .snotes {
+    display: none;
+  }
+
+  .qpage__stage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .qpage__notes {
+    order: 1;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 699px) {
+  .qpage__switch {
+    order: 0;
+  }
+
+  .qpage__stage {
+    order: 1;
+  }
+
+  .qpage__intro {
+    order: 2;
+  }
+
+  .qpage__main > .dcta {
+    order: 3;
+  }
+
+  .qpage__label {
+    display: none;
+  }
+
+  .qpage__device {
+    height: calc(100vh - var(--demobar-h) - var(--switch-h));
+    height: calc(100svh - var(--demobar-h) - var(--switch-h));
+  }
+
+  .qpage__notes--client {
+    margin-top: 12px;
+  }
+}
+
+@media (min-width: 700px) {
+  .qpage__stage {
+    padding: 20px 32px 0;
+  }
+}
+
+/* Dos celulares lado a lado; notas debajo de cada uno */
+@media (min-width: 900px) {
+  .qpage__switch {
+    display: none;
+  }
+
+  .qpage__stage {
+    grid-template-areas:
+      'dc dk'
+      'nc nk';
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .qpage__device--cliente {
+    grid-area: dc;
+    align-items: flex-end;
+  }
+
+  .qpage__device--cocina {
+    grid-area: dk;
+    align-items: flex-start;
+  }
+
+  .qpage__notes--client {
+    grid-area: nc;
+  }
+
+  .qpage__notes--kitchen {
+    grid-area: nk;
+  }
+
+  .qpage__label {
+    align-self: center;
+  }
+}
+
+/* Escritorio ancho: notas | cliente | restaurante | notas */
+@media (min-width: 1280px) {
+  .qpage__stage {
+    grid-template-areas: 'nc dc dk nk';
+    grid-template-columns: minmax(0, 1fr) auto auto minmax(0, 1fr);
+    align-items: center;
+    gap: 36px;
+    max-width: 1420px;
+  }
+
+  .qpage__device--cliente,
+  .qpage__device--cocina {
+    align-items: center;
+  }
+
+  .qpage__notes--client {
+    --note-shift: 6px;
+  }
+
+  .qpage__notes--kitchen {
+    --note-shift: -6px;
+  }
+
+  /* Portada más compacta: los dos celulares caben enteros en la pantalla */
+  .qpage__intro {
+    padding-top: 18px;
+  }
+
+  .qpage__logo {
+    display: none;
+  }
+
+  .qpage__title {
+    font-size: 2.7rem;
+  }
+
+  .qpage__lead {
+    margin-top: 8px;
+    font-size: 0.95rem;
+  }
+
+  .qpage__stage {
+    padding-top: 12px;
+  }
+
+  .qpage__label {
+    margin-bottom: 8px;
+  }
+}

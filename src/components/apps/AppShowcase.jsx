@@ -9,32 +9,44 @@ import AppsIcon from './AppsIcon.jsx'
 import { appsPage } from '../../data/apps.js'
 import { projects } from '../../data/proyectos.js'
 
-// La app Puma Fit real se descarga solo cuando su celular está por aparecer en pantalla
-const PumaFitPhone = lazy(() => import('../../projects/app-gym/PumaFitPhone.jsx'))
+// Cada app real se descarga solo cuando su celular está por aparecer en pantalla
+const LIVE = {
+  'app-gym': lazy(() => import('../../projects/app-gym/PumaFitPhone.jsx')),
+  'app-restaurante': lazy(() => import('../../projects/app-restaurante/QhapaqPhone.jsx')),
+  'app-inventario': lazy(() => import('../../projects/app-inventario/InventarioPhone.jsx')),
+}
+const TONES = { 'app-gym': '#0F0F10', 'app-restaurante': '#FFF4E2', 'app-inventario': '#0E4C5A' }
 
 const apps = projects.filter((p) => p.category === 'apps')
 
-function StaticPhone({ app, tone }) {
+function StaticPhone({ app }) {
   return (
-    <Phone decorative statusTone={tone}>
+    <Phone decorative statusTone={TONES[app]} statusText={app === 'app-restaurante' ? 'dark' : 'light'}>
       <AppScreen app={app} className="apps-screen" />
     </Phone>
   )
 }
 
-function LiveDemo() {
+function LiveDemo({ app }) {
   const ref = useRef(null)
   const near = useInView(ref, { once: true, margin: '400px 0px' })
-  const placeholder = <StaticPhone app="app-gym" tone="#0F0F10" />
+  const App = LIVE[app]
+  const placeholder = <StaticPhone app={app} />
 
   return (
     <div ref={ref}>
-      {near ? <Suspense fallback={placeholder}><PumaFitPhone /></Suspense> : placeholder}
+      {near && App ? (
+        <Suspense fallback={placeholder}>
+          <App />
+        </Suspense>
+      ) : (
+        placeholder
+      )}
     </div>
   )
 }
 
-// "Prueba nuestras apps de ejemplo": Puma Fit funciona; las otras, muy pronto
+// "Prueba nuestras apps de ejemplo": las apps listas funcionan dentro del celular
 export default function AppShowcase() {
   const { showcase } = appsPage
   const headingId = `${showcase.id}-titulo`
@@ -49,7 +61,7 @@ export default function AppShowcase() {
             return (
               <Reveal as="li" key={app.slug} delay={i * 0.1} className={`apps-show__item ${live ? '' : 'is-soon'}`}>
                 <div className="apps-show__device">
-                  {live ? <LiveDemo /> : <StaticPhone app={app.slug} tone={app.colors.primary} />}
+                  {live ? <LiveDemo app={app.slug} /> : <StaticPhone app={app.slug} />}
                   {!live && (
                     <span className="apps-show__soon" aria-hidden="true">
                       {showcase.soon}
