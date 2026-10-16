@@ -1,7 +1,7 @@
 import { useId } from 'react'
 import Icon from '../Icon.jsx'
 import RubroIcon from '../soluciones/RubroIcon.jsx'
-import { extrasFor, fromLabel, services, urgency } from '../../data/precios.js'
+import { extrasFor, fromLabel, maintenancePlans, services, urgency } from '../../data/precios.js'
 import { rubroBySlug, rubros } from '../../data/rubros.js'
 import { soles } from './quoteMessage.js'
 
@@ -175,5 +175,34 @@ export function StepDatos({ q, showErrors }) {
         </div>
       </div>
     </div>
+  )
+}
+
+// Paso 5 (opcional): plan de mantenimiento mensual, aparte del precio del proyecto
+export function StepPlan({ q }) {
+  const id = useId()
+  const options = [...maintenancePlans, { id: 'none', name: 'Por ahora no', summary: 'Puedes contratar un plan más adelante.' }]
+  return (
+    <fieldset className="qz-plans">
+      <legend className="visually-hidden">Plan de mantenimiento</legend>
+      {options.map((p) => (
+        <label key={p.id} className={`qz-radio qz-plan ${q.plan === p.id ? 'is-on' : ''}`}>
+          <input type="radio" name={`${id}-plan`} value={p.id} checked={q.plan === p.id} onChange={() => q.setPlan(p.id)} />
+          <span className="qz-radio__text">
+            <span className="qz-option__title">
+              {p.name}
+              {p.recommended && <span className="qz-tag">Recomendado</span>}
+            </span>
+            <span className="qz-option__detail">{p.summary}</span>
+          </span>
+          {p.monthly && (
+            <span className="qz-option__price qz-plan__price">
+              {soles(p.monthly)}
+              <small> / mes</small>
+            </span>
+          )}
+        </label>
+      ))}
+    </fieldset>
   )
 }

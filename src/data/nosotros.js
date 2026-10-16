@@ -51,8 +51,9 @@ export const nosotros = {
   },
   founder: {
     eyebrow: 'Quién está detrás',
-    // Cambiar por la ruta de la foto (por ejemplo, 'fundador.jpg' dentro de public/) cuando esté lista
-    photo: null,
+    // Foto real: guárdala en public/equipo/alexandro.jpg (vertical 4:5, unos 800×1000 px).
+    // Mientras no exista, se muestra el marcador de abajo.
+    photo: 'equipo/alexandro.jpg',
     photoPlaceholder: '[FOTO FUNDADOR]',
     name: 'Alexandro López Mamani',
     role: 'Fundador',

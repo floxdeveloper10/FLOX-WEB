@@ -9,7 +9,7 @@ export default function Contact() {
   const headingId = `${contact.id}-titulo`
 
   return (
-    <section id={contact.id} className="section section--morado contact" aria-labelledby={headingId}>
+    <section id={contact.id} className="section section--morado contact" data-origen="contacto" aria-labelledby={headingId}>
       <div className="container contact__inner">
         <Reveal as="header" className="contact__head">
           <h2 id={headingId} className="contact__title">

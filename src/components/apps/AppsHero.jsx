@@ -37,7 +37,7 @@ export default function AppsHero() {
             {hero.lead}
           </motion.p>
           <motion.div className="apps-hero__actions" variants={item}>
-            <a className="btn btn--primary" href={whatsappLink(hero.message)} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn--primary" data-origen="apps" href={whatsappLink(hero.message)} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon />
               {hero.cta}
             </a>

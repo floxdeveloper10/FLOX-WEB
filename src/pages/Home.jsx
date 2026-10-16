@@ -4,6 +4,8 @@ import RubroPicker from '../components/RubroPicker.jsx'
 import Problems from '../components/Problems.jsx'
 import Services from '../components/Services.jsx'
 import HowWeWork from '../components/HowWeWork.jsx'
+import Testimonios from '../components/Testimonios.jsx'
+import Compromiso from '../components/Compromiso.jsx'
 import Pricing from '../components/Pricing.jsx'
 import WhyFlox from '../components/WhyFlox.jsx'
 import Contact from '../components/Contact.jsx'
@@ -20,7 +22,8 @@ function Pending() {
   return <div className="lazy-section" data-lazy-pending aria-hidden="true" />
 }
 
-// Página de inicio: las mismas secciones de siempre, más la franja de proyectos antes de Precios.
+// Página de inicio: las mismas secciones de siempre, más la franja de proyectos, los testimonios
+// (si hay) y "Nuestro compromiso" antes de Precios.
 export default function Home() {
   usePageMeta(seo.home)
 
@@ -37,6 +40,9 @@ export default function Home() {
       <Suspense fallback={<Pending />}>
         <ProjectsStrip />
       </Suspense>
+      {/* Solo aparece cuando hay testimonios reales en src/data/testimonios.js */}
+      <Testimonios />
+      <Compromiso />
       <Pricing />
       <WhyFlox />
       <Contact />

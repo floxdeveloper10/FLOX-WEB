@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { local } from '../shared/safeStorage.js'
+import { trackDemoOnce } from '../../lib/analytics.js'
 import { buildSchedule, defaultBookingId, routine } from './gym.data.js'
 
 // Estado de la demo guardado en el navegador (con try/catch en safeStorage):
@@ -46,7 +47,13 @@ export default function useGymStore() {
 
   const enter = useCallback(() => update(() => ({ entered: true })), [update])
   const logout = useCallback(() => update(() => ({ entered: false })), [update])
-  const toggleBooking = useCallback((id) => update((s) => ({ bookings: toggle(s.bookings, id) })), [update])
+  const toggleBooking = useCallback(
+    (id) => {
+      trackDemoOnce('puma-fit', 'reservar-clase')
+      update((s) => ({ bookings: toggle(s.bookings, id) }))
+    },
+    [update],
+  )
   const toggleWaitlist = useCallback((id) => update((s) => ({ waitlist: toggle(s.waitlist, id) })), [update])
   const toggleDone = useCallback((id) => update((s) => ({ done: toggle(s.done, id) })), [update])
   const setTheme = useCallback((theme) => update(() => ({ theme })), [update])

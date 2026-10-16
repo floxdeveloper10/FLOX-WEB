@@ -10,7 +10,7 @@ import { useAgencia, useAgenciaTitle } from '../agenciaState.js'
 import { bookingCode, orderMessage, to } from '../utils.js'
 // En la demo, la reserva llega al WhatsApp de FLOX (src/data/site.js).
 // En la web de una agencia real, aquí iría el número de WhatsApp de la agencia.
-import { whatsappLink } from '../../../data/site.js'
+import { openWhatsApp } from '../../../lib/whatsapp.js'
 
 export const CHECKOUT_KEY = 'andes-ruta:checkout' // paso y datos del formulario (sobreviven a una recarga)
 export const LAST_ORDER_KEY = 'andes-ruta:ultima-reserva' // comprobante de la última reserva
@@ -46,7 +46,7 @@ export default function Reserva() {
   const confirm = () => {
     const code = bookingCode()
     const message = orderMessage({ code, form, items: cart, t, lang, price })
-    window.open(whatsappLink(message), '_blank', 'noopener,noreferrer')
+    openWhatsApp(message, 'demo-agencia')
     session.set(LAST_ORDER_KEY, { code, form, items: cart, currency, issued: new Date().toISOString() })
     session.set(CHECKOUT_KEY, { step: 1, form: EMPTY_FORM })
     clearCart()

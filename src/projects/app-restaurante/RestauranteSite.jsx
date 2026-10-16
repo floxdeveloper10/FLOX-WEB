@@ -61,7 +61,7 @@ export default function RestauranteSite() {
 
   return (
     <PedidosContext.Provider value={pedidos}>
-      <div className="qpage" data-side={side}>
+      <div className="qpage" data-side={side} data-origen="demo-qhapaq">
         <DemoBar kind="app" message="Hola FLOX, vi la demo de Qhapaq Pedidos y quiero una app así para mi restaurante" />
 
         <SkipTarget />

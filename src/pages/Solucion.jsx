@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom'
 import Faq from '../components/Faq.jsx'
+import Testimonios from '../components/Testimonios.jsx'
 import RubroDemo from '../components/soluciones/RubroDemo.jsx'
 import { RubroCta, RubroHero, RubroProblems, RubroServices } from '../components/soluciones/RubroSections.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
@@ -22,6 +23,8 @@ export default function Solucion() {
       <RubroProblems rubro={rubro} />
       <RubroServices rubro={rubro} />
       <RubroDemo rubro={rubro} />
+      {/* Testimonios de clientes de este rubro (si hay) */}
+      <Testimonios rubro={rubro.slug} />
       <Faq id="rubro-preguntas" eyebrow={solucionesUi.faqEyebrow} title={solucionesUi.faqTitle} items={rubro.faqs} />
       <RubroCta rubro={rubro} />
     </div>

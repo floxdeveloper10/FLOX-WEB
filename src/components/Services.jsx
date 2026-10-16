@@ -43,6 +43,7 @@ export default function Services() {
                 ) : (
                   <a
                     className="service-card__cta"
+                    data-origen="servicios"
                     href={whatsappLink(service.message)}
                     target="_blank"
                     rel="noopener noreferrer"

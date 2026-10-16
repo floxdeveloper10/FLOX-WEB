@@ -79,7 +79,7 @@ export default function Alertas() {
             </ul>
             {/* En la demo el pedido llega al WhatsApp de FLOX. En la app de un negocio real,
                 aquí iría el número de WhatsApp de cada proveedor. */}
-            <a className="ibtn ibtn--wa" href={whatsappLink(orderMessage(supplier, items))} target="_blank" rel="noopener noreferrer">
+            <a className="ibtn ibtn--wa" data-origen="demo-stock-andino" href={whatsappLink(orderMessage(supplier, items))} target="_blank" rel="noopener noreferrer">
               <IIcon name="chat" />
               Pedir al proveedor
             </a>

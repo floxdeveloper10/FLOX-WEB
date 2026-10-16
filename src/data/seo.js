@@ -27,6 +27,11 @@ export const seo = {
     description:
       'Arma tu proyecto en pocos pasos y mira un precio referencial al instante: web, carta digital, chatbot, citas o app. Te lo enviamos por WhatsApp.',
   },
+  privacidad: {
+    title: 'Política de privacidad | FLOX',
+    description:
+      'Qué datos recoge la web de FLOX, para qué los usamos, cómo funcionan las cookies de medición y cómo pedir que borremos tus datos.',
+  },
   notFound: {
     title: 'Página no encontrada | FLOX',
     description: 'Esta página no existe. Vuelve al inicio de FLOX: webs, apps y WhatsApp para negocios en Cusco.',

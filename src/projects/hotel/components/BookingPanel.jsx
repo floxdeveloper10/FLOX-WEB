@@ -9,7 +9,8 @@ import { CURRENCY_OPTIONS } from '../hotel.data.js'
 import { addDays, applySearchPatch, bookingMessage, formatDate, nightsBetween, todayISO, validateDates } from '../utils.js'
 // En la demo, la reserva llega al WhatsApp de FLOX (src/data/site.js).
 // En la web de un hotel real, aquí iría el número de WhatsApp del hotel.
-import { whatsappLink } from '../../../data/site.js'
+import { openWhatsApp } from '../../../lib/whatsapp.js'
+import { trackDemoOnce } from '../../../lib/analytics.js'
 import './BookingPanel.css'
 
 const isWide = () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
@@ -79,8 +80,9 @@ function Panel({ room, onClose }) {
       document.getElementById(firstInvalid)?.focus()
       return
     }
+    trackDemoOnce('hotel', 'reservar')
     const message = bookingMessage({ t, room, lang, ...search, nights, currency, name, country })
-    window.open(whatsappLink(message), '_blank', 'noopener,noreferrer')
+    openWhatsApp(message, 'demo-hotel')
   }
 
   const slide = wide

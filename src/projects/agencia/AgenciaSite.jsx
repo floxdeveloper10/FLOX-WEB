@@ -26,6 +26,7 @@ import { BASE, formatPrice, newKey } from './utils.js'
 import './styles/agencia.css'
 import './styles/nav.css'
 import './styles/footer.css'
+import { trackDemoOnce } from '../../lib/analytics.js'
 import './styles/home.css'
 import './styles/catalog.css'
 import './styles/favorites.css'
@@ -119,6 +120,7 @@ export default function AgenciaSite() {
 
   // Carrito: cada reserva guarda tour, fecha, viajeros y extras (el precio se calcula al mostrarla)
   const addToCart = useCallback((booking) => {
+    trackDemoOnce('agencia', 'anadir-al-carrito')
     const key = newKey()
     setCart((items) => [...items, { key, ...booking }])
     return key
@@ -159,7 +161,7 @@ export default function AgenciaSite() {
 
   return (
     <AgenciaContext.Provider value={value}>
-      <div className="agencia" lang={lang}>
+      <div className="agencia" lang={lang} data-origen="demo-agencia">
         <DemoBar message="Hola FLOX, vi la demo de Andes Ruta Travel y quiero una web así para mi agencia" />
         <AgenciaNav />
         <SkipTarget />

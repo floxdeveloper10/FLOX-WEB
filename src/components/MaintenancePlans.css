@@ -1,0 +1,65 @@
+.maint {
+  margin-top: 64px;
+  padding-top: 56px;
+  border-top: 2px solid rgba(45, 20, 80, 0.08);
+}
+
+.maint__head {
+  max-width: 640px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.maint__title {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  line-height: 1.2;
+}
+
+.maint__lead {
+  margin-top: 10px;
+  color: var(--flox-texto-suave);
+}
+
+.maint__grid {
+  display: grid;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.maint-plan .plan__name {
+  font-size: 1.25rem;
+}
+
+.maint-plan__amount {
+  font-size: 2.2rem;
+}
+
+.maint-plan__summary {
+  margin-top: 10px;
+  color: var(--flox-texto-suave);
+  line-height: 1.45;
+}
+
+.maint-plan .plan__features {
+  margin-top: 18px;
+}
+
+@media (min-width: 900px) {
+  .maint__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    padding-block: 16px;
+  }
+
+  /* El recomendado, un poco más alto (como "La más pedida") */
+  .maint__item--featured {
+    margin-block: -16px;
+  }
+
+  .maint-plan.plan--featured {
+    padding-top: 40px;
+    padding-bottom: 32px;
+  }
+}

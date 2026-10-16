@@ -44,7 +44,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div className="hero__actions" {...child}>
-            <a className="btn btn--primary hero__cta" href={site.whatsapp.link} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn--primary hero__cta" data-origen="portada" href={site.whatsapp.link} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon />
               Pide tu demo gratis por WhatsApp
             </a>

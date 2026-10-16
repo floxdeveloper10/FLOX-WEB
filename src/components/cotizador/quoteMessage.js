@@ -23,6 +23,7 @@ export function quoteMessage(q, est) {
     lines.push('', `Total estimado: ${soles(est.total)}`, `Adelanto (${ADVANCE * 100} %): ${soles(est.advance)}`)
   }
   if (est.hasApp) lines.push(est.total > 0 ? '+ App: cotización personalizada' : 'App: cotización personalizada')
+  lines.push('', est.plan ? `Plan de mantenimiento: ${est.plan.name} (${soles(est.plan.monthly)} al mes, aparte)` : 'Plan de mantenimiento: por ahora no')
   lines.push('', '(Precio referencial calculado en el cotizador de la web de FLOX)')
   return lines.join('\n')
 }

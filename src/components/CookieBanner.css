@@ -1,0 +1,109 @@
+/* Aviso de cookies: tarjeta morada abajo (a lo ancho en el celular, a la izquierda en escritorio) */
+.cookies {
+  position: fixed;
+  right: 8px;
+  bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+  left: 8px;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 4px solid var(--flox-fucsia);
+  border-radius: 16px;
+  background: var(--flox-morado);
+  color: var(--flox-blanco);
+  box-shadow: 0 18px 40px -16px rgba(45, 20, 80, 0.6);
+  font-family: var(--font-base);
+}
+
+.cookies__text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.cookies__more {
+  color: var(--flox-amarillo);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.cookies__current {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.cookies__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cookies__btn {
+  flex: 1;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s var(--ease-out), background-color 0.2s;
+}
+
+.cookies__btn:active {
+  transform: scale(0.97);
+}
+
+.cookies__btn:focus-visible,
+.cookies__more:focus-visible {
+  outline: 3px solid var(--flox-amarillo);
+  outline-offset: 2px;
+}
+
+.cookies__btn--primary {
+  /* Fucsia oscurecido: el de marca no llega a 4.5:1 con texto blanco */
+  background: var(--flox-fucsia-texto);
+  color: var(--flox-blanco);
+}
+
+.cookies__btn--primary:hover {
+  background: #a50f41;
+}
+
+.cookies__btn--ghost {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: transparent;
+  color: var(--flox-blanco);
+}
+
+.cookies__btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+  .cookies {
+    right: auto;
+    bottom: 24px;
+    left: 24px;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    max-width: min(720px, calc(100vw - 140px));
+    padding: 14px 16px 14px 22px;
+  }
+
+  .cookies__text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cookies__actions {
+    flex-shrink: 0;
+  }
+
+  .cookies__btn {
+    flex: none;
+  }
+}

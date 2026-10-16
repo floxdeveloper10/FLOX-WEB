@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import LogoFlox from './brand/LogoFlox.jsx'
 import StepBand from './brand/StepBand.jsx'
 import { footer, headerUi, nav, site } from '../data/site.js'
+import { openCookieSettings } from '../lib/consent.js'
 import './Footer.css'
 
 const YEAR = new Date().getFullYear()
@@ -34,9 +35,22 @@ export default function Footer() {
           </ul>
         </nav>
 
-        <p className="footer__copy">
-          © {YEAR} {site.name} · {footer.madeIn}
-        </p>
+        <div className="footer__end">
+          <ul className="footer__legal">
+            <li>
+              <Link to="/privacidad">{footer.privacy}</Link>
+            </li>
+            <li>
+              {/* Vuelve a mostrar el aviso para cambiar la elección */}
+              <button type="button" onClick={openCookieSettings}>
+                {footer.cookies}
+              </button>
+            </li>
+          </ul>
+          <p className="footer__copy">
+            © {YEAR} {site.name} · {footer.madeIn}
+          </p>
+        </div>
       </div>
     </footer>
   )

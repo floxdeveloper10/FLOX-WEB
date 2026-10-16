@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { local } from '../../projects/shared/safeStorage.js'
-import { extras as EXTRAS, serviceById, urgency } from '../../data/precios.js'
+import { extras as EXTRAS, planById, serviceById, urgency } from '../../data/precios.js'
 import { rubroBySlug } from '../../data/rubros.js'
 
 // Estado del cotizador, guardado en el navegador (try/catch en safeStorage): si recargas, sigue igual.
 // Si llegas desde una página de rubro (/cotizar?rubro=…), ese rubro ya queda elegido.
 const KEY = 'flox:cotizador'
-export const LAST_STEP = 4 // 0 rubro · 1 servicios · 2 extras · 3 datos · 4 resumen
+export const LAST_STEP = 5 // 0 rubro · 1 servicios · 2 extras · 3 datos · 4 plan mensual · 5 resumen
 
-const EMPTY = { step: 0, rubro: null, services: [], extras: [], urgency: 'normal', name: '', business: '' }
+// plan: id de un plan de mantenimiento o 'none' ("Por ahora no")
+const EMPTY = { step: 0, rubro: null, services: [], extras: [], urgency: 'normal', name: '', business: '', plan: 'none' }
 const strings = (v) => (Array.isArray(v) ? v.filter((x) => typeof x === 'string') : [])
 const text = (v) => (typeof v === 'string' ? v.slice(0, 80) : '')
 
@@ -23,13 +24,14 @@ function load(rubroFromUrl) {
     urgency: urgency.some((u) => u.id === saved.urgency) ? saved.urgency : 'normal',
     name: text(saved.name),
     business: text(saved.business),
+    plan: planById[saved.plan] ? saved.plan : 'none',
   }
   // Desde una página de rubro: ese rubro elegido y se empieza por el primer paso
   if (rubroBySlug[rubroFromUrl] && rubroFromUrl !== state.rubro) return { ...state, rubro: rubroFromUrl, step: 0 }
   // Nunca quedarse en un paso sin lo que pide el anterior
   if (!state.rubro) state.step = 0
   else if (state.step > 1 && state.services.length === 0) state.step = 1
-  else if (state.step === 4 && (state.name.trim().length < 2 || state.business.trim().length < 2)) state.step = 3
+  else if (state.step >= 4 && (state.name.trim().length < 2 || state.business.trim().length < 2)) state.step = 3
   return state
 }
 
@@ -57,6 +59,7 @@ export default function useCotizador() {
     setUrgency: (id) => set({ urgency: id }),
     setName: (name) => set({ name: text(name) }),
     setBusiness: (business) => set({ business: text(business) }),
+    setPlan: (plan) => set({ plan }),
     reset: () => setState(EMPTY),
   }
 }

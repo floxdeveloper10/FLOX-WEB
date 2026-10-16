@@ -6,6 +6,7 @@ import { whatsappLink } from '../../data/site.js'
 import { ADVANCE, fromLabel, priceNote, urgency } from '../../data/precios.js'
 import { rubroBySlug } from '../../data/rubros.js'
 import { quoteMessage, soles } from './quoteMessage.js'
+import { track } from '../../lib/analytics.js'
 
 // Número que sube hasta su valor (sin animación con "reducir movimiento")
 export function AnimatedSoles({ value, className = '' }) {
@@ -113,12 +114,57 @@ export default function Resumen({ q, est, onEdit }) {
         )}
       </div>
 
+      {/* Plan de mantenimiento: mensual, separado del total del proyecto */}
+      <div className="qz-summary__block qz-summary__plan">
+        <div className="qz-summary__head">
+          <h3 className="qz-summary__title">Mantenimiento mensual</h3>
+          <button type="button" className="qz-edit" onClick={() => onEdit(4)} aria-label="Editar plan de mantenimiento">
+            Editar
+          </button>
+        </div>
+        <ul className="qz-lines">
+          <li>
+            {est.plan ? (
+              <>
+                <span>Plan {est.plan.name}</span>
+                <span>
+                  <strong>{soles(est.plan.monthly)}</strong> al mes
+                </span>
+              </>
+            ) : (
+              <>
+                <span>Por ahora no</span>
+                <span>—</span>
+              </>
+            )}
+          </li>
+        </ul>
+        {est.plan && <p className="qz-summary__aside">Se paga cada mes, aparte del total del proyecto.</p>}
+      </div>
+
       <p className="qz-note">
         <Icon name="simple" />
         {priceNote}
       </p>
 
-      <a className="btn btn--primary qz-send" href={whatsappLink(quoteMessage(q, est))} target="_blank" rel="noopener noreferrer">
+      <a
+        className="btn btn--primary qz-send"
+        data-origen="cotizador"
+        href={whatsappLink(quoteMessage(q, est))}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() =>
+          track('cotizacion_enviada', {
+            rubro: q.rubro,
+            total_estimado: est.total,
+            incluye_app: est.hasApp,
+            plan_mensual: est.plan ? est.plan.monthly : 0,
+            // value + currency: Google Ads puede usar el monto como valor de la conversión
+            value: est.total,
+            currency: 'PEN',
+          })
+        }
+      >
         <WhatsAppIcon />
         Enviar mi cotización por WhatsApp
       </a>

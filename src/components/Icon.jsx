@@ -137,6 +137,39 @@ const PATHS = {
       <path d="M14 14h2v2h-2ZM18 14h2M14 18h2v2M18 18h2v2h-2" />
     </>
   ),
+  // Ojo sobre una pantalla: ves el diseño antes de pagar el saldo
+  diseno: (
+    <>
+      <rect x="3" y="4" width="18" height="13" rx="2" />
+      <path d="M8 21h8M12 17v4" />
+      <path d="M6.5 10.5s2-3 5.5-3 5.5 3 5.5 3-2 3-5.5 3-5.5-3-5.5-3Z" />
+      <circle cx="12" cy="10.5" r="1.3" />
+    </>
+  ),
+  // Flechas en círculo con un 2: dos rondas de cambios
+  rondas: (
+    <>
+      <path d="M20 12a8 8 0 0 1-13.7 5.6" />
+      <path d="M4 12a8 8 0 0 1 13.7-5.6" />
+      <path d="M17.7 2.8v3.8h-3.8M6.3 21.2v-3.8h3.8" />
+      <path d="M10.3 10.2a1.8 1.8 0 1 1 3.1 1.3L10.3 14h3.5" />
+    </>
+  ),
+  // Birrete: te enseñamos a usarlo
+  ensenar: (
+    <>
+      <path d="m2.5 9.5 9.5-4.5 9.5 4.5-9.5 4.5Z" />
+      <path d="M6.5 11.5v4.2c0 1.4 2.5 2.8 5.5 2.8s5.5-1.4 5.5-2.8v-4.2" />
+      <path d="M21.5 9.5v5" />
+    </>
+  ),
+  // Burbuja con calendario: soporte durante el primer mes
+  mes: (
+    <>
+      <path d="M4 4.5h16v11H11l-5 4v-4H4Z" />
+      <path d="M8 8h8M8 8v4.5h8V8M10.5 6.5v2.5M13.5 6.5v2.5" />
+    </>
+  ),
   check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
   flecha: <path d="M5 12h14m-5-5 5 5-5 5" />,
 }

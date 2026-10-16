@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import Reveal from './Reveal.jsx'
+import MaintenancePlans from './MaintenancePlans.jsx'
 import SectionHeading from './SectionHeading.jsx'
 import { pricing, whatsappLink } from '../data/site.js'
 import './Pricing.css'
@@ -9,7 +10,7 @@ export default function Pricing() {
   const headingId = `${pricing.id}-titulo`
 
   return (
-    <section id={pricing.id} className="section section--blanco pricing" aria-labelledby={headingId}>
+    <section id={pricing.id} className="section section--blanco pricing" data-origen="precios" aria-labelledby={headingId}>
       <div className="container">
         <SectionHeading id={headingId} title={pricing.title} />
 
@@ -70,6 +71,8 @@ export default function Pricing() {
             {pricing.custom.after}
           </p>
         </Reveal>
+
+        <MaintenancePlans />
       </div>
     </section>
   )

@@ -40,7 +40,7 @@ export default function GymSite() {
   const right = notes.slice(3)
 
   return (
-    <div className="gympage">
+    <div className="gympage" data-origen="demo-puma-fit">
       <DemoBar kind="app" message="Hola FLOX, vi la demo de la app Puma Fit y quiero una app así para mi negocio" />
 
       <SkipTarget />

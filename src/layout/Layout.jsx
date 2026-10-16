@@ -3,11 +3,13 @@ import { useLocation, useOutlet } from 'react-router-dom'
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
 import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
-import WhatsAppFloat from '../components/WhatsAppFloat.jsx'
+import Asistente from '../components/asistente/Asistente.jsx'
+import CookieBanner from '../components/CookieBanner.jsx'
 import SkipLink from '../components/SkipLink.jsx'
 import Chakana from '../components/brand/Chakana.jsx'
 import ScrollManager from './ScrollManager.jsx'
 import ErrorBoundary from './ErrorBoundary.jsx'
+import AnalyticsListener from '../lib/AnalyticsListener.jsx'
 import { pageKeyFromPath } from './paths.js'
 import { resetPage } from './resetPage.js'
 import { isProjectSitePath } from '../projects/registry.js'
@@ -29,9 +31,9 @@ function PageFallback() {
   )
 }
 
-// Estructura común a todas las páginas: encabezado, contenido con transición, pie y botón flotante.
+// Estructura común a todas las páginas: encabezado, contenido con transición, pie y Asistente FLOX.
 // Los sitios demo completos (/proyectos/hotel) traen su propio diseño: sin el encabezado,
-// el pie ni el botón flotante de FLOX.
+// el pie ni el asistente de FLOX. El aviso de cookies y la medición van en todas.
 export default function Layout() {
   const { pathname } = useLocation()
   const outlet = useOutlet()
@@ -41,6 +43,7 @@ export default function Layout() {
   return (
     <MotionConfig reducedMotion="user">
       <ScrollManager />
+      <AnalyticsListener />
       {/* Al cambiar de página el foco vuelve aquí: el siguiente Tab es "Saltar al contenido" */}
       <span id="inicio-pagina" tabIndex={-1} className="page-top" />
       <SkipLink />
@@ -54,7 +57,8 @@ export default function Layout() {
       </AnimatePresence>
       {floxChrome && <Footer />}
       {/* En el cotizador no va: tapaba sus botones en el celular y ya tiene su envío por WhatsApp */}
-      {floxChrome && pathname !== '/cotizar' && <WhatsAppFloat />}
+      {floxChrome && <Asistente hidden={pathname === '/cotizar'} />}
+      <CookieBanner />
     </MotionConfig>
   )
 }

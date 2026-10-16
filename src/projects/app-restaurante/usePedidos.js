@@ -15,6 +15,7 @@ import {
   STATUSES,
 } from './pedidos.data.js'
 import { ding } from './sound.js'
+import { trackDemoOnce } from '../../lib/analytics.js'
 
 // Pedidos compartidos por la app del cliente y la del restaurante.
 // Se guardan en el navegador y se sincronizan entre pestañas con BroadcastChannel.
@@ -197,6 +198,7 @@ export default function usePedidos({ sound = true } = {}) {
 
   const placeOrder = useCallback(
     ({ type, table, address }) => {
+      trackDemoOnce('qhapaq', 'hacer-pedido')
       const id = data.nextId
       const order = makeOrder({
         id,

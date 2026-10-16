@@ -94,7 +94,7 @@ function RenewSheet({ onClose }) {
             </label>
           ))}
         </fieldset>
-        <a className="gbtn gbtn--primary gbtn--block" href={whatsappLink(message)} target="_blank" rel="noopener noreferrer">
+        <a className="gbtn gbtn--primary gbtn--block" data-origen="demo-puma-fit" href={whatsappLink(message)} target="_blank" rel="noopener noreferrer">
           <GymIcon name="chat" />
           Continuar por WhatsApp
         </a>

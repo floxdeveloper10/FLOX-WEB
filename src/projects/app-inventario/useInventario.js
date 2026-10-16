@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { local } from '../shared/safeStorage.js'
+import { trackDemoOnce } from '../../lib/analytics.js'
 import { addDays, initialMovements, initialProducts, isoDate } from './inventario.data.js'
 
 // Inventario guardado en el navegador (try/catch en safeStorage). Todas las cifras
@@ -57,6 +58,7 @@ export default function useInventario() {
       if (!Number.isInteger(qty) || qty <= 0) return { ok: false, error: 'La cantidad debe ser un número entero mayor que 0.' }
       if (type === 'salida' && qty > product.stock) return { ok: false, error: `Solo hay ${product.stock} unidades en stock.` }
       const stock = type === 'entrada' ? product.stock + qty : product.stock - qty
+      trackDemoOnce('stock-andino', 'registrar-movimiento')
       setState((s) => ({
         ...s,
         products: s.products.map((p) => (p.code === code ? { ...p, stock } : p)),

@@ -83,7 +83,7 @@ export default function HotelSite() {
 
   return (
     <HotelContext.Provider value={value}>
-      <div className="hotel" lang={lang}>
+      <div className="hotel" lang={lang} data-origen="demo-hotel">
         <DemoBar message="Hola FLOX, vi la demo del Hotel Killa Wasi y quiero una web así para mi negocio" />
         <HotelNav />
         <SkipTarget />

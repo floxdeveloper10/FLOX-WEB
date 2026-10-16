@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import PageHero from '../components/PageHero.jsx'
 import Icon from '../components/Icon.jsx'
 import useCotizador, { LAST_STEP } from '../components/cotizador/useCotizador.js'
-import { StepDatos, StepExtras, StepRubro, StepServicios } from '../components/cotizador/Steps.jsx'
+import { StepDatos, StepExtras, StepPlan, StepRubro, StepServicios } from '../components/cotizador/Steps.jsx'
 import Resumen, { AnimatedSoles } from '../components/cotizador/Resumen.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
 import { estimate } from '../data/precios.js'
@@ -15,7 +15,12 @@ const STEPS = [
   { title: '¿Qué negocio tienes?', lead: 'Elige tu rubro.', short: 'Rubro' },
   { title: '¿Qué necesitas?', lead: 'Marca uno o varios. Cada uno muestra su precio "desde".', short: 'Servicios' },
   { title: 'Extras', lead: 'Opcionales, según lo que elegiste.', short: 'Extras' },
-  { title: 'Urgencia y tus datos', lead: 'Para preparar tu cotización.', short: 'Tus datos' },
+  { title: 'Urgencia y tus datos', lead: 'Para preparar tu cotización.', short: 'Datos' },
+  {
+    title: '¿Quieres un plan de mantenimiento?',
+    lead: 'Opcional. Se paga cada mes, aparte del precio del proyecto.',
+    short: 'Plan',
+  },
   { title: 'Tu cotización', lead: 'Revisa todo y envíala por WhatsApp.', short: 'Resumen' },
 ]
 
@@ -70,7 +75,7 @@ export default function Cotizar() {
         titleId="cotizar-titulo"
         eyebrow="Cotizador"
         title="Cotiza tu proyecto"
-        lead="En 4 pasos sabrás un precio referencial. Al final nos lo envías por WhatsApp y te respondemos."
+        lead="En 5 pasos sabrás un precio referencial. Al final nos lo envías por WhatsApp y te respondemos."
       />
 
       <section className="section section--crema qz" aria-labelledby="cotizar-titulo">
@@ -127,7 +132,8 @@ export default function Cotizar() {
                 {q.step === 1 && <StepServicios q={q} />}
                 {q.step === 2 && <StepExtras q={q} />}
                 {q.step === 3 && <StepDatos q={q} showErrors={Boolean(shownError)} />}
-                {q.step === 4 && <Resumen q={q} est={est} onEdit={goTo} />}
+                {q.step === 4 && <StepPlan q={q} />}
+                {q.step === 5 && <Resumen q={q} est={est} onEdit={goTo} />}
               </motion.div>
             </AnimatePresence>
 

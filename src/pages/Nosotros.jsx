@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 import Chakana from '../components/brand/Chakana.jsx'
 import Icon from '../components/Icon.jsx'
@@ -33,6 +33,8 @@ function BrandChakana() {
 export default function Nosotros() {
   usePageMeta(seo.nosotros)
   const { hero, story, missionVision, values, brand, founder, closing } = nosotros
+  // Si public/equipo/alexandro.jpg aún no existe, se muestra el marcador
+  const [photoOk, setPhotoOk] = useState(true)
 
   return (
     <>
@@ -113,8 +115,13 @@ export default function Nosotros() {
         <div className="container">
           <Reveal className="card founder__card">
             <div className="founder__photo">
-              {founder.photo ? (
-                <img src={`${import.meta.env.BASE_URL}${founder.photo}`} alt={founder.name} loading="lazy" />
+              {founder.photo && photoOk ? (
+                <img
+                  src={`${import.meta.env.BASE_URL}${founder.photo}`}
+                  alt={founder.name}
+                  loading="lazy"
+                  onError={() => setPhotoOk(false)}
+                />
               ) : (
                 <span className="founder__placeholder">{founder.photoPlaceholder}</span>
               )}
@@ -138,7 +145,7 @@ export default function Nosotros() {
             {closing.title}
           </h2>
           <p className="about-close__text">{closing.text}</p>
-          <a className="btn btn--primary" href={whatsappLink(closing.message)} target="_blank" rel="noopener noreferrer">
+          <a className="btn btn--primary" data-origen="nosotros" href={whatsappLink(closing.message)} target="_blank" rel="noopener noreferrer">
             <WhatsAppIcon />
             {closing.button}
           </a>

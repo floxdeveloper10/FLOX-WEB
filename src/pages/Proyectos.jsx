@@ -67,7 +67,7 @@ export default function Proyectos() {
           <h2 id="proyectos-cta" className="gallery-cta__title">
             {projectsPage.cta.title}
           </h2>
-          <a className="btn btn--primary" href={whatsappLink(projectsPage.cta.message)} target="_blank" rel="noopener noreferrer">
+          <a className="btn btn--primary" data-origen="proyectos" href={whatsappLink(projectsPage.cta.message)} target="_blank" rel="noopener noreferrer">
             <WhatsAppIcon />
             {projectsPage.cta.button}
           </a>

@@ -120,7 +120,7 @@ export default function Header() {
           >
             {headerUi.quote}
           </Link>
-          <a className="btn btn--primary btn--sm header__cta" href={site.whatsapp.link} target="_blank" rel="noopener noreferrer">
+          <a className="btn btn--primary btn--sm header__cta" data-origen="encabezado" href={site.whatsapp.link} target="_blank" rel="noopener noreferrer">
             {headerUi.cta}
           </a>
 

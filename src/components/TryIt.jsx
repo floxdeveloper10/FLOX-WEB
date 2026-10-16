@@ -8,9 +8,9 @@ import QrCode from './demo/QrCode.jsx'
 import { demo, whatsappLink } from '../data/site.js'
 import './TryIt.css'
 
-function DemoCta({ text, message }) {
+function DemoCta({ text, message, origen }) {
   return (
-    <a className="btn btn--primary try__cta" href={whatsappLink(message)} target="_blank" rel="noopener noreferrer">
+    <a className="btn btn--primary try__cta" data-origen={origen} href={whatsappLink(message)} target="_blank" rel="noopener noreferrer">
       <WhatsAppIcon />
       {text}
     </a>
@@ -39,13 +39,13 @@ export default function TryIt() {
               <QrCode className="try__qr-code" />
               <p>{demo.menu.qrCaption}</p>
             </div>
-            <DemoCta text={demo.menu.cta} message={demo.menu.message} />
+            <DemoCta text={demo.menu.cta} message={demo.menu.message} origen="demo-carta" />
           </Reveal>
 
           <Reveal className="try__col" delay={0.12}>
             <h3 className="try__label">{demo.chat.label}</h3>
             <ChatDemo chat={demo.chat} label={demo.chat.label} />
-            <DemoCta text={demo.chat.cta} message={demo.chat.message} />
+            <DemoCta text={demo.chat.cta} message={demo.chat.message} origen="demo-chatbot" />
           </Reveal>
         </div>
       </div>

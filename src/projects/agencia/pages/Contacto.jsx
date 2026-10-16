@@ -6,7 +6,7 @@ import { agency, tours } from '../agencia.data.js'
 import { formatDate, isValidEmail, todayISO } from '../utils.js'
 // En la demo, el formulario llega al WhatsApp de FLOX (src/data/site.js).
 // En la web de una agencia real, aquí iría el número de WhatsApp de la agencia.
-import { whatsappLink } from '../../../data/site.js'
+import { openWhatsApp } from '../../../lib/whatsapp.js'
 
 const EMPTY = { name: '', email: '', tour: '', from: '', to: '', message: '' }
 
@@ -51,7 +51,7 @@ export default function Contacto() {
     ]
       .filter((line) => line !== null)
       .join('\n')
-    window.open(whatsappLink(message), '_blank', 'noopener,noreferrer')
+    openWhatsApp(message, 'demo-agencia')
   }
 
   const field = (name, label, input) => (

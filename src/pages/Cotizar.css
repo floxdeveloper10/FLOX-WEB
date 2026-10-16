@@ -46,8 +46,10 @@
 
 .qz-progress__steps {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 4px;
+  /* 6 pasos: cada uno ocupa lo que necesita y se reparten a lo ancho */
+  grid-template-columns: repeat(6, auto);
+  justify-content: space-between;
+  gap: 2px;
   margin: 8px 0 0;
   padding: 0;
   list-style: none;
@@ -631,4 +633,53 @@
   width: 100%;
   min-height: 56px;
   font-size: 1.05rem;
+}
+
+/* Paso opcional: plan de mantenimiento mensual */
+.qz-plans {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.qz-plan {
+  align-items: center;
+}
+
+.qz-plan .qz-radio__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.qz-plan__price {
+  flex-shrink: 0;
+}
+
+.qz-plan__price small {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Celular: el precio baja a su propia línea, debajo del texto */
+@media (max-width: 480px) {
+  .qz-plan {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .qz-plan .qz-radio__text {
+    flex-basis: calc(100% - 34px);
+  }
+
+  .qz-plan__price {
+    margin-left: 34px;
+  }
+}
+
+.qz-summary__aside {
+  margin: 6px 0 0;
+  color: var(--flox-texto-suave);
+  font-size: 0.88rem;
 }

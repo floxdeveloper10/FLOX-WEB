@@ -9,6 +9,7 @@ import DishSheet from './menu/DishSheet.jsx'
 import OrderSheet from './menu/OrderSheet.jsx'
 import MenuIcon, { StarIcon } from './menu/MenuIcon.jsx'
 import { allDishes, categories, chefPick, formatPrice, menuUi, restaurant } from '../../data/carta.js'
+import { trackDemoOnce } from '../../lib/analytics.js'
 import './MenuDemo.css'
 
 const LANGS = [
@@ -57,6 +58,11 @@ export default function MenuDemo({ label }) {
   const scrollRef = useRef(null)
   const tabsRef = useRef(null)
   const uid = useId()
+
+  const changeLang = (next) => {
+    setLang(next)
+    trackDemoOnce('carta', 'cambiar-idioma')
+  }
 
   const category = categories.find((c) => c.id === categoryId)
   const detailDish = allDishes.find((d) => d.id === detailId)
@@ -123,7 +129,7 @@ export default function MenuDemo({ label }) {
               <MenuCover />
               <div className="menu__toggles">
                 <Toggle label={menuUi.currencyLabel[lang]} options={CURRENCIES} value={currency} onChange={setCurrency} />
-                <Toggle label={menuUi.languageLabel[lang]} options={LANGS} value={lang} onChange={setLang} />
+                <Toggle label={menuUi.languageLabel[lang]} options={LANGS} value={lang} onChange={changeLang} />
               </div>
             </div>
 

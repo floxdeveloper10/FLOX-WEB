@@ -153,7 +153,7 @@ export default function MobileMenu({ id, activeId, onClose }) {
         <Link to="/cotizar" className="mobile-menu__quote" onClick={onClose}>
           {headerUi.quoteLong}
         </Link>
-        <a className="mobile-menu__whatsapp" href={site.whatsapp.link} target="_blank" rel="noopener noreferrer" onClick={onClose}>
+        <a className="mobile-menu__whatsapp" data-origen="menu-movil" href={site.whatsapp.link} target="_blank" rel="noopener noreferrer" onClick={onClose}>
           <WhatsAppIcon />
           {headerUi.mobileCta}
         </a>

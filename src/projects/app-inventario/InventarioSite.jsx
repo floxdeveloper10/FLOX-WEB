@@ -26,7 +26,7 @@ export default function InventarioSite() {
   }
 
   return (
-    <div className="ipage">
+    <div className="ipage" data-origen="demo-stock-andino">
       <DemoBar kind="app" message="Hola FLOX, vi la demo de Stock Andino y quiero una app de inventario para mi negocio" />
 
       <SkipTarget />

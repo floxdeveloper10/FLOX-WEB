@@ -42,7 +42,7 @@ export function RubroHero({ rubro }) {
             {rubro.hero.lead}
           </motion.p>
           <motion.div className="rubro-hero__actions" variants={item}>
-            <a className="btn btn--primary" href={whatsappLink(rubro.demoMessage)} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn--primary" data-origen={`rubro-${rubro.slug}`} href={whatsappLink(rubro.demoMessage)} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon />
               {ui.heroCta}
             </a>
@@ -135,7 +135,7 @@ export function RubroCta({ rubro }) {
         </h2>
         <p className="rubro-cta__text">{rubro.cta.text}</p>
         <div className="rubro-cta__actions">
-          <a className="btn btn--primary rubro-cta__btn" href={whatsappLink(rubro.cta.message)} target="_blank" rel="noopener noreferrer">
+          <a className="btn btn--primary rubro-cta__btn" data-origen={`rubro-${rubro.slug}`} href={whatsappLink(rubro.cta.message)} target="_blank" rel="noopener noreferrer">
             <WhatsAppIcon />
             {ui.ctaButton}
           </a>

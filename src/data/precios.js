@@ -107,6 +107,56 @@ export const urgency = [
   },
 ]
 
+// Planes de mantenimiento mensual (Precios y último paso del cotizador).
+// Se pagan cada mes, aparte del precio del proyecto. Lo que incluye cada uno también es de ejemplo.
+export const maintenancePlans = [
+  {
+    id: 'basico',
+    name: 'Básico',
+    monthly: 49, // EJEMPLO
+    summary: 'Para que tu web siga en línea y al día.',
+    features: [
+      'Hosting y dominio incluidos',
+      '1 cambio de contenido al mes',
+      'Actualización de carta o precios',
+      'Copias de seguridad mensuales',
+      'Soporte por WhatsApp (respuesta en 48 h hábiles)',
+    ],
+  },
+  {
+    id: 'negocio',
+    name: 'Negocio',
+    monthly: 99, // EJEMPLO
+    recommended: true,
+    summary: 'Para negocios que cambian seguido y quieren ver resultados.',
+    features: [
+      'Hosting y dominio incluidos',
+      '4 cambios de contenido al mes',
+      'Actualización de carta o precios',
+      'Copias de seguridad semanales',
+      'Soporte por WhatsApp (respuesta en 24 h hábiles)',
+      'Reporte mensual de visitas',
+    ],
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    monthly: 199, // EJEMPLO
+    summary: 'Nos encargamos de tu web y de tus redes.',
+    features: [
+      'Hosting y dominio incluidos',
+      'Cambios ilimitados (dentro de lo razonable)',
+      'Actualización de carta o precios',
+      'Copias de seguridad diarias',
+      'Soporte por WhatsApp (respuesta el mismo día)',
+      'Reporte mensual de visitas',
+      '8 publicaciones al mes en tus redes', // EJEMPLO
+    ],
+  },
+]
+
+export const planById = Object.fromEntries(maintenancePlans.map((p) => [p.id, p]))
+
 // Adelanto para empezar el trabajo (como en Precios: "Trabajamos con 50 % de adelanto")
 export const ADVANCE = 0.5
 
@@ -126,7 +176,7 @@ export function extrasFor(serviceIds) {
 }
 
 // Total estimado: servicios con precio + extras que aplican, más el recargo por urgencia
-export function estimate({ services: serviceIds = [], extras: extraIds = [], urgency: urgencyId = 'normal' }) {
+export function estimate({ services: serviceIds = [], extras: extraIds = [], urgency: urgencyId = 'normal', plan: planId = null }) {
   const chosen = serviceIds.map((id) => serviceById[id]).filter(Boolean)
   const priced = chosen.filter((s) => !s.quote)
   const validExtras = extrasFor(serviceIds).filter((e) => extraIds.includes(e.id))
@@ -142,5 +192,7 @@ export function estimate({ services: serviceIds = [], extras: extraIds = [], urg
     surcharge,
     total,
     advance: Math.round(total * ADVANCE),
+    // Plan de mantenimiento: monto MENSUAL, aparte del total del proyecto
+    plan: planById[planId] ?? null,
   }
 }

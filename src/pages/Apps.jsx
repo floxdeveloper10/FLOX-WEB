@@ -32,6 +32,7 @@ export default function Apps() {
           <p className="apps-closing__text">{closing.text}</p>
           <a
             className="btn btn--primary apps-closing__btn"
+            data-origen="apps"
             href={whatsappLink(closing.message)}
             target="_blank"
             rel="noopener noreferrer"

@@ -25,6 +25,9 @@ export const site = {
   },
   github: 'floxdeveloper10',
   url: 'https://floxdeveloper10.github.io/flox-web/',
+  // ID de medición de Google Analytics 4 (Administrar → Flujos de datos → Web).
+  // Mientras sea el valor de ejemplo "G-XXXXXXXXXX", no se carga nada de Google.
+  gaId: 'G-XXXXXXXXXX',
 }
 
 const SOCIAL_NAMES = { facebook: 'Facebook', instagram: 'Instagram', tiktok: 'TikTok' }
@@ -311,4 +314,6 @@ export const contact = {
 export const footer = {
   madeIn: 'Hecho en Cusco',
   navLabel: 'Enlaces rápidos',
+  privacy: 'Privacidad',
+  cookies: 'Cookies',
 }
