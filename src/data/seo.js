@@ -22,6 +22,11 @@ export const seo = {
     description:
       'Apps a medida para tu negocio en Cusco: reservas, pedidos, inventario y membresías, para Android e iPhone. Prueba nuestras apps de ejemplo.',
   },
+  cotizar: {
+    title: 'Cotiza tu proyecto | FLOX Cusco',
+    description:
+      'Arma tu proyecto en pocos pasos y mira un precio referencial al instante: web, carta digital, chatbot, citas o app. Te lo enviamos por WhatsApp.',
+  },
   notFound: {
     title: 'Página no encontrada | FLOX',
     description: 'Esta página no existe. Vuelve al inicio de FLOX: webs, apps y WhatsApp para negocios en Cusco.',

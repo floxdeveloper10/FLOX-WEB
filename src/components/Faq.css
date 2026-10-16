@@ -1,0 +1,71 @@
+/* Preguntas frecuentes */
+.faq__inner {
+  max-width: 820px;
+}
+
+.faq__list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faq__item {
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  background: var(--flox-blanco);
+  transition: border-color 0.25s;
+}
+
+.faq__item.is-open {
+  border-color: var(--flox-amarillo);
+}
+
+.faq__q {
+  font-size: 1.1rem;
+}
+
+.faq__q button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 64px;
+  padding: 16px 20px;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq__chevron {
+  flex-shrink: 0;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--flox-amarillo);
+  color: var(--flox-morado);
+  transition: transform 0.25s var(--ease-out);
+}
+
+.faq__item.is-open .faq__chevron {
+  transform: rotate(180deg);
+}
+
+.faq__a {
+  overflow: hidden;
+}
+
+.faq__a p {
+  padding: 0 20px 20px;
+  color: var(--flox-texto-suave);
+  font-size: 1.02rem;
+}

@@ -2,6 +2,17 @@
   padding-top: 0;
 }
 
+/* Sin franja (en el inicio la franja está arriba, en el selector de rubro) */
+.problems--plain {
+  padding-top: 72px;
+}
+
+@media (min-width: 900px) {
+  .problems--plain {
+    padding-top: 112px;
+  }
+}
+
 /* Pirámides sobre el morado de la portada, apoyadas en el crema */
 .problems__band {
   background: var(--flox-morado);

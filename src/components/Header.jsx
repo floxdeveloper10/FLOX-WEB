@@ -4,7 +4,8 @@ import { AnimatePresence } from 'framer-motion'
 import LogoFlox from './brand/LogoFlox.jsx'
 import MenuButton from './nav/MenuButton.jsx'
 import MobileMenu from './nav/MobileMenu.jsx'
-import ProjectsMenu from './nav/ProjectsMenu.jsx'
+import NavDropdown from './nav/NavDropdown.jsx'
+import { dropdownItems } from './nav/dropdownItems.jsx'
 import { headerUi, nav, site } from '../data/site.js'
 import { pageKeyFromPath } from '../layout/paths.js'
 import './Header.css'
@@ -72,6 +73,7 @@ export default function Header() {
   else if (pathname.startsWith('/proyectos')) activeId = 'proyectos'
   else if (pathname.startsWith('/nosotros')) activeId = 'nosotros'
   else if (pathname.startsWith('/apps')) activeId = 'apps'
+  else if (pathname.startsWith('/soluciones')) activeId = 'soluciones'
 
   const closeMenu = () => {
     setMenuOpen(false)
@@ -88,10 +90,15 @@ export default function Header() {
 
           <nav className="header__nav" aria-label={headerUi.mainNav}>
             <ul>
-              {nav.map((item) => (
+              {nav.filter((item) => !item.mobileOnly).map((item) => (
                 <li key={item.id}>
                   {item.dropdown ? (
-                    <ProjectsMenu label={item.label} active={activeId === item.id} />
+                    <NavDropdown
+                      label={item.label}
+                      active={activeId === item.id}
+                      className={`dropdown--${item.dropdown}`}
+                      {...dropdownItems(item.dropdown)}
+                    />
                   ) : (
                     <Link
                       to={item.to}
@@ -106,6 +113,13 @@ export default function Header() {
             </ul>
           </nav>
 
+          <Link
+            to="/cotizar"
+            className={`btn btn--ghost btn--sm header__quote ${pathname.startsWith('/cotizar') ? 'is-active' : ''}`}
+            aria-current={pathname.startsWith('/cotizar') ? 'page' : undefined}
+          >
+            {headerUi.quote}
+          </Link>
           <a className="btn btn--primary btn--sm header__cta" href={site.whatsapp.link} target="_blank" rel="noopener noreferrer">
             {headerUi.cta}
           </a>

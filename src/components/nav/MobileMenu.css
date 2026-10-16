@@ -94,10 +94,48 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  min-height: 40px;
+  min-height: 44px;
   color: rgba(255, 255, 255, 0.86);
   font-size: 1.05rem;
   text-decoration: none;
+}
+
+/* "Soluciones": botón que abre la lista de rubros */
+.mobile-menu__toggle {
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mobile-menu__chevron {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+
+.mobile-menu__toggle[aria-expanded='true'] .mobile-menu__chevron {
+  transform: rotate(180deg);
+}
+
+.mobile-menu__icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--flox-amarillo);
+}
+
+.mobile-menu__icon .icon {
+  width: 18px;
+  height: 18px;
 }
 
 .mobile-menu__dot {
@@ -110,6 +148,22 @@
   position: relative;
   flex-shrink: 0;
   padding-block: 24px 28px;
+}
+
+/* "Cotiza tu proyecto": amarillo con texto morado (contraste 9.6:1) */
+.mobile-menu__quote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  background: var(--flox-amarillo);
+  color: var(--flox-morado);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 /* Morado sobre verde: contraste 8:1 */

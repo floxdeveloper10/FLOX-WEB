@@ -1,5 +1,9 @@
 // Datos reales de FLOX. Cambiar aquí y se actualiza en toda la web.
 // Las redes pendientes van en null y no se muestran.
+// Los precios están en src/data/precios.js (un solo lugar para todos).
+import { serviceById } from './precios.js'
+
+const PRICE = { carta: serviceById.carta.from, web1: serviceById.web1.from, maps: serviceById.maps.from }
 
 const WHATSAPP_NUMBER = '51927484492'
 const WHATSAPP_DEFAULT_MESSAGE = 'Hola FLOX, quiero una demo para mi negocio'
@@ -176,11 +180,14 @@ export const demo = {
 export const HOME_SECTIONS = ['problemas', 'servicios', 'demo', 'como-trabajamos', 'precios', 'por-que-flox', 'contacto']
 
 // Menú principal (encabezado, menú del celular y pie de página)
-// section: es una sección del inicio · dropdown: muestra el desplegable de proyectos
+// section: es una sección del inicio · dropdown: 'soluciones' | 'proyectos' (muestra un desplegable)
+// mobileOnly: solo en el menú del celular y el pie
 export const nav = [
-  { id: 'inicio', label: 'Inicio', to: '/' },
+  // En escritorio el logo ya lleva al inicio (así cabe todo el menú)
+  { id: 'inicio', label: 'Inicio', to: '/', mobileOnly: true },
   { id: 'servicios', label: 'Servicios', to: '/servicios', section: true },
-  { id: 'proyectos', label: 'Proyectos', to: '/proyectos', dropdown: true },
+  { id: 'soluciones', label: 'Soluciones', to: '/soluciones/restaurantes', dropdown: 'soluciones' },
+  { id: 'proyectos', label: 'Proyectos', to: '/proyectos', dropdown: 'proyectos' },
   { id: 'apps', label: 'Apps', to: '/apps' },
   { id: 'nosotros', label: 'Nosotros', to: '/nosotros' },
   { id: 'precios', label: 'Precios', to: '/precios', section: true },
@@ -194,6 +201,10 @@ export const headerUi = {
   openMenu: 'Abrir menú',
   closeMenu: 'Cerrar menú',
   projectsAll: 'Ver todos',
+  quote: 'Cotizar',
+  quoteLong: 'Cotiza tu proyecto',
+  solutionsAll: 'Cotiza tu proyecto',
+  expandSolutions: 'Ver soluciones por rubro',
   mobileCta: 'Escríbenos por WhatsApp',
 }
 
@@ -206,35 +217,35 @@ export const pricing = {
   plans: [
     {
       name: 'Carta digital con QR',
-      price: 250,
+      price: PRICE.carta,
       featured: true,
       features: [
         'Carta en español e inglés',
         'Código QR para tus mesas',
         'Cambios de precios y platos cuando quieras',
       ],
-      message: 'Hola FLOX, quiero la Carta digital con QR (desde S/ 250)',
+      message: `Hola FLOX, quiero la Carta digital con QR (desde S/ ${PRICE.carta})`,
     },
     {
       name: 'Web de una página',
-      price: 600,
+      price: PRICE.web1,
       features: [
         'Diseño a tu medida',
         'Botón de WhatsApp',
         'Mapa de ubicación',
         'Se ve perfecta en celulares',
       ],
-      message: 'Hola FLOX, quiero la Web de una página (desde S/ 600)',
+      message: `Hola FLOX, quiero la Web de una página (desde S/ ${PRICE.web1})`,
     },
     {
       name: 'Perfil de Google Maps y redes',
-      price: 150,
+      price: PRICE.maps,
       features: [
         'Perfil de Google configurado',
         'Fotos y horarios',
         'Facebook e Instagram con tu marca',
       ],
-      message: 'Hola FLOX, quiero el Perfil de Google Maps y redes (desde S/ 150)',
+      message: `Hola FLOX, quiero el Perfil de Google Maps y redes (desde S/ ${PRICE.maps})`,
     },
     {
       name: 'App móvil a medida',
@@ -257,6 +268,10 @@ export const pricing = {
     link: 'Escríbenos',
     after: 'y te armamos una propuesta.',
     message: 'Hola FLOX, necesito algo distinto para mi negocio. ¿Me arman una propuesta?',
+  },
+  quote: {
+    text: '¿Quieres saber cuánto costaría todo junto?',
+    button: 'Cotiza tu proyecto',
   },
 }
 

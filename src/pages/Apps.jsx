@@ -2,7 +2,7 @@ import AppsHero from '../components/apps/AppsHero.jsx'
 import AppIdeas from '../components/apps/AppIdeas.jsx'
 import AppShowcase from '../components/apps/AppShowcase.jsx'
 import AppProcess from '../components/apps/AppProcess.jsx'
-import AppFaq from '../components/apps/AppFaq.jsx'
+import Faq from '../components/Faq.jsx'
 import Reveal from '../components/Reveal.jsx'
 import WhatsAppIcon from '../components/WhatsAppIcon.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
@@ -22,7 +22,7 @@ export default function Apps() {
       <AppIdeas />
       <AppShowcase />
       <AppProcess />
-      <AppFaq />
+      <Faq id={appsPage.faq.id} eyebrow={appsPage.faq.eyebrow} title={appsPage.faq.title} items={appsPage.faq.items} />
 
       <section className="section section--blanco apps-closing" aria-labelledby="apps-cierre">
         <Reveal className="container apps-closing__inner">

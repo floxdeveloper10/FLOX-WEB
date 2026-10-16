@@ -1,0 +1,287 @@
+/* ─── Soluciones por rubro (/soluciones/:rubro) ─── */
+
+/* Portada */
+.rubro-hero__icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 194, 26, 0.5);
+  color: var(--flox-amarillo);
+}
+
+.rubro-hero__icon .icon {
+  width: 38px;
+  height: 38px;
+}
+
+.rubro-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.rubro-hero__quote,
+.rubro-cta__quote {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--flox-blanco);
+}
+
+/* Soluciones FLOX que aplican */
+.rubro-services__grid {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rubro-services__grid > li {
+  min-width: 0;
+}
+
+.rubro-service {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 24px 22px 22px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--flox-crema);
+}
+
+/* Barra superior del color de la línea */
+.rubro-service::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 6px;
+  background: var(--accent);
+}
+
+.rubro-service__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-top: 4px;
+  border-radius: 14px;
+  background: var(--accent-suave);
+  color: var(--flox-morado);
+}
+
+.rubro-service__name {
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+.rubro-service__text {
+  flex: 1;
+  color: var(--flox-texto-suave);
+  line-height: 1.45;
+}
+
+.rubro-service__price {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--flox-blanco);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .rubro-services__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .rubro-services__grid {
+    grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+/* Banda "¿Cuánto costaría?" */
+.rubro-quote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 32px;
+  padding: 24px;
+  border: 2px dashed var(--flox-amarillo);
+  border-radius: var(--radius-lg);
+  background: #fffaf0;
+}
+
+.rubro-quote__title {
+  font-size: 1.35rem;
+}
+
+.rubro-quote__text {
+  margin-top: 4px;
+  color: var(--flox-texto-suave);
+}
+
+@media (min-width: 760px) {
+  .rubro-quote {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px;
+  }
+}
+
+/* Demo del rubro */
+.rubro-demo.try {
+  padding-top: 72px;
+}
+
+.rubro-demo .section-heading__eyebrow {
+  color: var(--flox-amarillo);
+}
+
+.rubro-demo__single {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.rubro-demo__open {
+  margin-top: 20px;
+}
+
+.rubro-demo__single .rubro-demo__open {
+  margin-top: 0;
+}
+
+.try__col .rubro-demo__open {
+  margin-top: 24px;
+}
+
+.rubro-demo__site {
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.rubro-site {
+  display: grid;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--flox-blanco);
+  color: var(--flox-texto);
+  text-decoration: none;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+}
+
+.rubro-site__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+}
+
+.rubro-site__label {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(45, 20, 80, 0.08);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rubro-site__name {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.rubro-site__desc {
+  color: var(--flox-texto-suave);
+}
+
+.rubro-site__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 6px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--flox-naranja);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+.rubro-site__go .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.rubro-site:focus-visible {
+  outline: 3px solid var(--flox-amarillo);
+  outline-offset: 4px;
+}
+
+@media (min-width: 860px) {
+  .rubro-site {
+    grid-template-columns: 1.25fr 1fr;
+    align-items: center;
+  }
+
+  .rubro-site .pp {
+    height: 100%;
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  }
+
+  .rubro-site__body {
+    padding: 32px;
+  }
+}
+
+/* Llamado final */
+.rubro-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 760px;
+  text-align: center;
+}
+
+.rubro-cta__title {
+  font-size: clamp(2rem, 4vw + 1rem, 3.1rem);
+}
+
+.rubro-cta__text {
+  max-width: 540px;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.1rem;
+}
+
+.rubro-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.rubro-cta__btn {
+  min-height: 56px;
+  padding-inline: 1.6em;
+  font-size: 1.05rem;
+}

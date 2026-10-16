@@ -1,12 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import LogoFlox from '../brand/LogoFlox.jsx'
 import StepBand from '../brand/StepBand.jsx'
 import WhatsAppIcon from '../WhatsAppIcon.jsx'
 import MenuButton from './MenuButton.jsx'
+import RubroIcon from '../soluciones/RubroIcon.jsx'
 import { headerUi, nav, site } from '../../data/site.js'
 import { projectHref, projects } from '../../data/proyectos.js'
+import { rubrosMenu as rubros } from '../../data/rubrosMenu.js'
 import './MobileMenu.css'
 
 const listVariants = {
@@ -25,6 +27,9 @@ const itemVariants = {
  */
 export default function MobileMenu({ id, activeId, onClose }) {
   const panelRef = useRef(null)
+  // "Soluciones" es una lista desplegable (abierta si estás en una página de rubro)
+  const [solutionsOpen, setSolutionsOpen] = useState(activeId === 'soluciones')
+  const solutionsId = useId()
 
   useEffect(() => {
     const root = document.documentElement
@@ -81,25 +86,58 @@ export default function MobileMenu({ id, activeId, onClose }) {
         <motion.ul className="mobile-menu__list" variants={listVariants} initial="hidden" animate="show">
           {nav.map((item) => (
             <motion.li key={item.id} variants={itemVariants}>
-              <Link
-                to={item.to}
-                className={`mobile-menu__link ${activeId === item.id ? 'is-active' : ''}`}
-                aria-current={activeId === item.id ? (item.section ? 'location' : 'page') : undefined}
-                onClick={onClose}
-              >
-                {item.label}
-              </Link>
-              {item.dropdown && (
-                <ul className="mobile-menu__sublist">
-                  {projects.map((p) => (
-                    <li key={p.slug}>
-                      <Link to={projectHref(p)} className="mobile-menu__sublink" onClick={onClose}>
-                        <span className="mobile-menu__dot" style={{ background: p.colors.accent }} aria-hidden="true" />
-                        {p.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              {item.dropdown === 'soluciones' ? (
+                <>
+                  <button
+                    type="button"
+                    className={`mobile-menu__link mobile-menu__toggle ${activeId === item.id ? 'is-active' : ''}`}
+                    aria-expanded={solutionsOpen}
+                    aria-controls={solutionsId}
+                    onClick={() => setSolutionsOpen((o) => !o)}
+                  >
+                    {item.label}
+                    <svg className="mobile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  {solutionsOpen && (
+                    <ul id={solutionsId} className="mobile-menu__sublist">
+                      {rubros.map((r) => (
+                        <li key={r.slug}>
+                          <Link to={`/soluciones/${r.slug}`} className="mobile-menu__sublink" onClick={onClose}>
+                            <span className="mobile-menu__icon" aria-hidden="true">
+                              <RubroIcon name={r.icon} />
+                            </span>
+                            {r.menuName}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <>
+                  <Link
+                    to={item.to}
+                    className={`mobile-menu__link ${activeId === item.id ? 'is-active' : ''}`}
+                    aria-current={activeId === item.id ? (item.section ? 'location' : 'page') : undefined}
+                    onClick={onClose}
+                  >
+                    {item.label}
+                  </Link>
+                  {item.dropdown === 'proyectos' && (
+                    <ul className="mobile-menu__sublist">
+                      {projects.map((p) => (
+                        <li key={p.slug}>
+                          <Link to={projectHref(p)} className="mobile-menu__sublink" onClick={onClose}>
+                            <span className="mobile-menu__dot" style={{ background: p.colors.accent }} aria-hidden="true" />
+                            {p.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
               )}
             </motion.li>
           ))}
@@ -112,6 +150,9 @@ export default function MobileMenu({ id, activeId, onClose }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.35, duration: 0.35 }}
       >
+        <Link to="/cotizar" className="mobile-menu__quote" onClick={onClose}>
+          {headerUi.quoteLong}
+        </Link>
         <a className="mobile-menu__whatsapp" href={site.whatsapp.link} target="_blank" rel="noopener noreferrer" onClick={onClose}>
           <WhatsAppIcon />
           {headerUi.mobileCta}

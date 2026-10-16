@@ -53,7 +53,8 @@ export default function Layout() {
         </motion.main>
       </AnimatePresence>
       {floxChrome && <Footer />}
-      {floxChrome && <WhatsAppFloat />}
+      {/* En el cotizador no va: tapaba sus botones en el celular y ya tiene su envío por WhatsApp */}
+      {floxChrome && pathname !== '/cotizar' && <WhatsAppFloat />}
     </MotionConfig>
   )
 }

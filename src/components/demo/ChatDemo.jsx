@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import Phone from './Phone.jsx'
-import RestaurantLogo from './RestaurantLogo.jsx'
+import ChatAvatar from './ChatAvatar.jsx'
 import { restaurant } from '../../data/carta.js'
 import './ChatDemo.css'
 
@@ -40,7 +40,7 @@ function Ticks() {
   )
 }
 
-function Bubble({ message, animate }) {
+function Bubble({ message, animate, contact, lang }) {
   const isGuest = message.from === 'guest'
   const motionProps = animate
     ? {
@@ -59,11 +59,11 @@ function Bubble({ message, animate }) {
         <div className="chat__location">
           <MiniMap />
           <p className="chat__location-text">
-            <strong>{restaurant.name}</strong> · {restaurant.place}
+            <strong>{contact.name}</strong> · {contact.place}
           </p>
         </div>
       ) : (
-        <span lang="en">{message.text}</span>
+        <span lang={lang}>{message.text}</span>
       )}
       <span className="chat__meta">
         {message.time}
@@ -74,8 +74,11 @@ function Bubble({ message, animate }) {
 }
 
 // Chat de WhatsApp que se escribe solo al aparecer en pantalla (una vez) y se puede repetir.
+// chat: el guion (mensajes y textos). Sin contact, es el de la Picantería Qhapaq (en inglés).
 export default function ChatDemo({ chat, label }) {
   const { messages } = chat
+  const contact = chat.contact ?? { name: restaurant.name, place: restaurant.place, avatar: 'restaurant' }
+  const lang = chat.lang ?? 'en'
   const reduceMotion = useReducedMotion()
   const rootRef = useRef(null)
   const scrollRef = useRef(null)
@@ -138,9 +141,9 @@ export default function ChatDemo({ chat, label }) {
             <svg viewBox="0 0 24 24" className="chat__back" aria-hidden="true" focusable="false">
               <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <RestaurantLogo size={36} />
+            <ChatAvatar avatar={contact.avatar} size={36} />
             <div className="chat__contact">
-              <p className="chat__name">{restaurant.name}</p>
+              <p className="chat__name">{contact.name}</p>
               <p className="chat__status">
                 {typing ? chat.typing : chat.online}
               </p>
@@ -150,7 +153,7 @@ export default function ChatDemo({ chat, label }) {
           <div ref={scrollRef} className="chat__body">
             <ul className="chat__list" aria-label={label}>
               {messages.slice(0, shown).map((message, i) => (
-                <Bubble key={`${run}-${i}`} message={message} animate={!reduceMotion} />
+                <Bubble key={`${run}-${i}`} message={message} animate={!reduceMotion} contact={contact} lang={lang} />
               ))}
               {typing && (
                 <motion.li
@@ -168,7 +171,7 @@ export default function ChatDemo({ chat, label }) {
           </div>
 
           <div className="chat__input" aria-hidden="true">
-            <span className="chat__field">Message</span>
+            <span className="chat__field">{lang === 'es' ? 'Mensaje' : 'Message'}</span>
             <span className="chat__mic">
               <svg viewBox="0 0 24 24">
                 <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11Z" fill="currentColor" />

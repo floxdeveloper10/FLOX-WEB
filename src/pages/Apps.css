@@ -1,10 +1,5 @@
 /* ─── FLOX Apps (/apps) ──────────────────────────────── */
 
-/* Pantallas SVG dentro de los celulares */
-.apps-screen {
-  width: 100%;
-  height: 100%;
-}
 
 /* Portada: texto y 3 celulares flotando en perspectiva */
 .apps-hero {
@@ -444,78 +439,6 @@
     width: auto;
     height: 72px;
   }
-}
-
-/* Preguntas frecuentes */
-.apps-faq__inner {
-  max-width: 820px;
-}
-
-.apps-faq__list {
-  display: grid;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.apps-faq__item {
-  overflow: hidden;
-  border: 2px solid transparent;
-  border-radius: var(--radius-lg);
-  background: var(--flox-blanco);
-  transition: border-color 0.25s;
-}
-
-.apps-faq__item.is-open {
-  border-color: var(--flox-amarillo);
-}
-
-.apps-faq__q {
-  font-size: 1.1rem;
-}
-
-.apps-faq__q button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  width: 100%;
-  min-height: 64px;
-  padding: 16px 20px;
-  border: 0;
-  border-radius: inherit;
-  background: none;
-  color: inherit;
-  font: inherit;
-  font-weight: 700;
-  text-align: left;
-  cursor: pointer;
-}
-
-.apps-faq__chevron {
-  flex-shrink: 0;
-  padding: 4px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--flox-amarillo);
-  color: var(--flox-morado);
-  transition: transform 0.25s var(--ease-out);
-}
-
-.apps-faq__item.is-open .apps-faq__chevron {
-  transform: rotate(180deg);
-}
-
-.apps-faq__a {
-  overflow: hidden;
-}
-
-.apps-faq__a p {
-  padding: 0 20px 20px;
-  color: var(--flox-texto-suave);
-  font-size: 1.02rem;
 }
 
 /* Cierre */

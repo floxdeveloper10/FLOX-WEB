@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import Hero from '../components/Hero.jsx'
+import RubroPicker from '../components/RubroPicker.jsx'
 import Problems from '../components/Problems.jsx'
 import Services from '../components/Services.jsx'
 import HowWeWork from '../components/HowWeWork.jsx'
@@ -26,6 +27,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <RubroPicker />
       <Problems />
       <Services />
       <Suspense fallback={<Pending />}>

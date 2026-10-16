@@ -1,19 +1,15 @@
 import Icon from './Icon.jsx'
 import Reveal from './Reveal.jsx'
 import SectionHeading from './SectionHeading.jsx'
-import StepBand from './brand/StepBand.jsx'
 import { problems } from '../data/site.js'
 import './Problems.css'
 
+// En el inicio la franja andina va arriba del selector de rubro (que sigue a la portada)
 export default function Problems() {
   const headingId = `${problems.id}-titulo`
 
   return (
-    <section id={problems.id} className="section section--crema problems" aria-labelledby={headingId}>
-      {/* Franja andina como unión con la portada morada */}
-      <div className="problems__band">
-        <StepBand />
-      </div>
+    <section id={problems.id} className="section section--crema problems problems--plain" aria-labelledby={headingId}>
 
       <div className="container">
         <SectionHeading id={headingId} eyebrow={problems.eyebrow} title={problems.title} />

@@ -1,15 +1,15 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { headerUi } from '../../data/site.js'
-import { projectHref, projects } from '../../data/proyectos.js'
 
 /**
- * "Proyectos" con menú desplegable: los proyectos y "Ver todos".
+ * Enlace del menú con desplegable (Soluciones, Proyectos).
+ * - items: [{ key, to, name, desc, visual }] (visual: ícono o muestra de color)
+ * - all: { to, label } enlace final ("Ver todos"), opcional
  * Se abre con clic, Enter, flecha abajo o pasando el mouse; se cierra con Escape,
  * al hacer clic afuera, al salir con Tab o al elegir una opción.
  */
-export default function ProjectsMenu({ label, active }) {
+export default function NavDropdown({ label, active, items: entries, all, className = '' }) {
   const [open, setOpen] = useState(false)
   const rootRef = useRef(null)
   const buttonRef = useRef(null)
@@ -83,7 +83,7 @@ export default function ProjectsMenu({ label, active }) {
   return (
     <div
       ref={rootRef}
-      className="dropdown"
+      className={`dropdown ${className}`.trim()}
       onKeyDown={onMenuKeyDown}
       onBlur={onBlur}
       onPointerEnter={onPointerEnter}
@@ -125,27 +125,27 @@ export default function ProjectsMenu({ label, active }) {
             transition={{ duration: 0.18 }}
           >
             <ul className="dropdown__list">
-              {projects.map((p) => (
-                <li key={p.slug}>
-                  <Link className="dropdown__link" to={projectHref(p)} onClick={() => setOpen(false)}>
-                    <span className="dropdown__swatch" style={{ background: p.colors.primary }} aria-hidden="true">
-                      <span style={{ background: p.colors.accent }} />
-                    </span>
+              {entries.map((entry) => (
+                <li key={entry.key}>
+                  <Link className="dropdown__link" to={entry.to} onClick={() => setOpen(false)}>
+                    {entry.visual}
                     <span className="dropdown__text">
-                      <span className="dropdown__name">{p.name}</span>
-                      <span className="dropdown__type">{p.type}</span>
+                      <span className="dropdown__name">{entry.name}</span>
+                      <span className="dropdown__type">{entry.desc}</span>
                     </span>
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link className="dropdown__link dropdown__link--all" to="/proyectos" onClick={() => setOpen(false)}>
-                  {headerUi.projectsAll}
-                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path d="M5 12h14m-5-5 5 5-5 5" />
-                  </svg>
-                </Link>
-              </li>
+              {all && (
+                <li>
+                  <Link className="dropdown__link dropdown__link--all" to={all.to} onClick={() => setOpen(false)}>
+                    {all.label}
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M5 12h14m-5-5 5 5-5 5" />
+                    </svg>
+                  </Link>
+                </li>
+              )}
             </ul>
           </motion.div>
         )}

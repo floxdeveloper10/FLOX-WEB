@@ -144,7 +144,8 @@ a {
 .page-fallback {
   display: grid;
   place-items: center;
-  min-height: 70vh;
+  /* Toda la pantalla: así el pie no "salta" cuando llega la página (mejor CLS) */
+  min-height: 100vh;
   background: var(--flox-morado);
 }
 

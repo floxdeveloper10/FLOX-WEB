@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import Reveal from './Reveal.jsx'
 import SectionHeading from './SectionHeading.jsx'
@@ -50,6 +51,14 @@ export default function Pricing() {
             </Reveal>
           ))}
         </ul>
+
+        <Reveal className="pricing__quote">
+          <p>{pricing.quote.text}</p>
+          <Link className="btn btn--primary" to="/cotizar">
+            <Icon name="moneda" />
+            {pricing.quote.button}
+          </Link>
+        </Reveal>
 
         <Reveal className="pricing__notes">
           <p className="pricing__note">{pricing.note}</p>

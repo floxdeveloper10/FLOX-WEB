@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import LogoFlox from './brand/LogoFlox.jsx'
 import StepBand from './brand/StepBand.jsx'
-import { footer, nav, site } from '../data/site.js'
+import { footer, headerUi, nav, site } from '../data/site.js'
 import './Footer.css'
 
 const YEAR = new Date().getFullYear()
@@ -22,12 +22,15 @@ export default function Footer() {
         <nav aria-label={footer.navLabel}>
           <ul className="footer__nav">
             {nav
-              .filter((item) => item.id !== 'inicio')
+              .filter((item) => item.id !== 'inicio' && item.id !== 'soluciones')
               .map((item) => (
                 <li key={item.id}>
                   <Link to={item.to}>{item.label}</Link>
                 </li>
               ))}
+            <li>
+              <Link to="/cotizar">{headerUi.quote}</Link>
+            </li>
           </ul>
         </nav>
 
